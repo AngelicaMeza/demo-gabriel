@@ -1,0 +1,63 @@
+<odoo>
+	<!-- <record id="crm_customer_report_view_graph" model="ir.ui.view">
+	  <field name="name">crm.report.customer.graph</field>
+	  <field name="model">crm.report.customer</field>
+	  <field name="arch" type="xml">
+		  <graph string="Informe de cliente">
+			  <field name="status" type="col"/>
+			  <field name="date" interval="month" type="row"/>
+		  </graph>
+	  </field>
+  </record>
+
+  <record id="crm_customer_report_view_pivot" model="ir.ui.view">
+	  <field name="name">crm.report.customer.pivot</field>
+	  <field name="model">crm.report.customer</field>
+	  <field name="arch" type="xml">
+		  <pivot >
+			  <field name="status" type="col"/>
+			  <field name="date" interval="month" type="row"/>
+		  </pivot>
+	  </field>
+  </record> -->
+
+	<record id="crm_report_view_tree" model="ir.ui.view">
+		<field name="name">crm.report.view.tree </field>
+		<field name="model">crm.report.customer</field>
+		<field name="arch" type="xml">
+			<tree string="clientes" >
+				<field name="partner_id"/>
+				<field name="affiliated"/>
+				<field name="status_customer"/>
+				<field name="code_categ_id"/>
+				<field name="invoice"/>
+				<field name="date"/>
+				<field name="product_id"/>
+				<field name="quantity"/>
+				<field name="product_uom_id"/>
+				<field name="lot_id"/>
+				<field name="condition_id"/>
+				<field name="status_id"/>
+				<field name="user_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- action -->
+
+	<record id="crm_informe_action" model="ir.actions.act_window">
+		<field name="name">informe de action</field>
+		<field name="res_model">crm.report.customer</field>
+		<field name="view_mode">tree,graph,pivot</field>
+	</record>
+
+	<menuitem
+		id="crm_report_customer_sale_menu"
+		name="Informe Cliente - Venta"
+		action="crm_informe_action"
+		groups="sales_team.group_sale_manager"
+		parent="crm.crm_menu_report"
+		sequence="3"
+	/>
+
+</odoo>

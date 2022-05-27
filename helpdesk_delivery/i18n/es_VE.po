@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* helpdesk_delivery
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-12 12:59+0000\n"
+"PO-Revision-Date: 2022-01-12 12:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: helpdesk_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.delivery_wizard_form
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.return_wizard_form
+msgid "CANCEL"
+msgstr "CANCELAR"
+
+#. module: helpdesk_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.delivery_wizard_form
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.helpdesk_ticket_view_form_delivery
+msgid "DELIVER"
+msgstr "ENTREGAR"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/wizard/delivery_wizard.py:0
+#: code:addons/helpdesk_delivery/wizard/delivery_wizard.py:0
+#, python-format
+msgid "Delivered Picking"
+msgstr "Entregas"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_team__use_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_ticket__use_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.helpdesk_ticket_view_form_delivery
+msgid "Deliveries"
+msgstr "Entregas"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/models/helpdesk.py:0
+#: code:addons/helpdesk_delivery/models/helpdesk.py:0
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_ticket__delivery_picking_ids
+#, python-format
+msgid "Delivery Orders"
+msgstr "Órdenes de entrega"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_delivery_wizard__location_id
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__location_id
+msgid "From"
+msgstr "Ubicación origen"
+
+#. module: helpdesk_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.helpdesk_team_view_form_delivery
+msgid "Generate deliveries from tickets"
+msgstr "Genera entregas desde tickets"
+
+#. module: helpdesk_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.helpdesk_team_view_form_delivery
+msgid "Generate returns from tickets"
+msgstr "Genera devoluciones desde tickets"
+
+#. module: helpdesk_delivery
+#: model:ir.model,name:helpdesk_delivery.model_helpdesk_team
+msgid "Helpdesk Team"
+msgstr "Equipo de Mesa de Ayuda"
+
+#. module: helpdesk_delivery
+#: model:ir.model,name:helpdesk_delivery.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Ticket de Mesa de Ayuda"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_delivery_wizard__lot_id
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__lot_id
+msgid "Lot/Serial Number"
+msgstr "Lote/Nº de serie"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_delivery_wizard__picking_type_id
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__picking_type_id
+msgid "Operation Type"
+msgstr "Tipo de operación"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/models/helpdesk.py:0
+#: code:addons/helpdesk_delivery/models/helpdesk.py:0
+#, python-format
+msgid "Plan Delivery"
+msgstr "Planificar Entrega"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/models/helpdesk.py:0
+#: code:addons/helpdesk_delivery/models/helpdesk.py:0
+#, python-format
+msgid "Plan Return"
+msgstr "Planificar devolución"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_delivery_wizard__product_id
+msgid "Product to deliver"
+msgstr "Equipo a entregar"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__product_id
+msgid "Product to return"
+msgstr "Producto a devolver"
+
+#. module: helpdesk_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.helpdesk_ticket_view_form_delivery
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.return_wizard_form
+msgid "RETURN"
+msgstr "DEVOLVER"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__region_id
+msgid "Region"
+msgstr "Región"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/models/helpdesk.py:0
+#: code:addons/custom-addons/nativa/helpdesk_delivery/wizard/return_wizard.py:0
+#: code:addons/helpdesk_delivery/models/helpdesk.py:0
+#: code:addons/helpdesk_delivery/wizard/return_wizard.py:0
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_ticket__return_picking_ids
+#, python-format
+msgid "Return Orders"
+msgstr "Devoluciones"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_ticket__return_pickings_count
+msgid "Return Orders Count"
+msgstr "Devoluciones"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_team__use_return
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_ticket__use_return
+#: model_terms:ir.ui.view,arch_db:helpdesk_delivery.helpdesk_ticket_view_form_delivery
+msgid "Returns"
+msgstr "Devoluciones"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/models/helpdesk.py:0
+#: code:addons/helpdesk_delivery/models/helpdesk.py:0
+#, python-format
+msgid "There is not device to manager."
+msgstr "No hay equipo para gestionar."
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/wizard/delivery_wizard.py:0
+#: code:addons/helpdesk_delivery/wizard/delivery_wizard.py:0
+#, python-format
+msgid "Ticket delivery: %s (#%s)"
+msgstr "Entrega desde ticket: %s (#%s)"
+
+#. module: helpdesk_delivery
+#: code:addons/custom-addons/nativa/helpdesk_delivery/wizard/return_wizard.py:0
+#: code:addons/helpdesk_delivery/wizard/return_wizard.py:0
+#, python-format
+msgid "Ticket return: %s (#%s)"
+msgstr "Devolucion de ticket: %s (#%s)"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_delivery_wizard__location_dest_id
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__location_dest_id
+msgid "To"
+msgstr "Ubicación destino"
+
+#. module: helpdesk_delivery
+#: model:ir.model,name:helpdesk_delivery.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: helpdesk_delivery
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_delivery_wizard__warehouse_id
+#: model:ir.model.fields,field_description:helpdesk_delivery.field_helpdesk_return_wizard__warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- LAYOUT -->
+	<template id="picking_report_layout">
+		<t t-if="not o" t-set="o" t-value="doc"/>
+		<t t-if="not company">
+			<!-- Multicompany -->
+			<t t-if="company_id">
+				<t t-set="company" t-value="company_id"/>
+			</t>
+			<t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+				<t t-set="company" t-value="o.company_id.sudo()"/>
+			</t>
+			<t t-else="else">
+				<t t-set="company" t-value="res_company"/>
+			</t>
+		</t>
+		<div class="header">
+			<div class="row ml-auto">
+				<div class="col-3">
+					<img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 130px; max-width: 130px" alt="Logo"/>
+				</div>
+				<div class="col-9" style="font-size: 13px; text-align: center;" name="company_address">
+					<div t-field="company.partner_id" t-options='{"widget": "contact", "fields": ["name","address"], "no_marker": true, "no_tag_br": True}'/>
+				</div>
+			</div>
+			<div class="row zero_min_height">
+				<div class="col-12 mt-2">
+					<div style="border-bottom: 1px solid black;"/>
+				</div>
+			</div>
+		</div>
+		<div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o.env.context.get('lang')">
+			<t t-raw="0"/>
+		</div>
+		<div class="footer">
+			<div class="text-center">
+				<div>
+					<div t-if="footer" style="font-size: 11px;">
+						<span t-raw="footer"/>
+					</div>
+					<p>Página: <span class="page"/> / <span class="topage"/></p>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<record id="paperformat_delivery_order_report" model="report.paperformat">
+		<field name="name">paperformat.delivery.order.report</field>
+		<field name="format">Letter</field>
+		<field name="orientation">Landscape</field>
+		<field name="header_spacing">20</field>
+		<field name="margin_top">25</field>
+		<field name="margin_bottom">25</field>
+		<field name="margin_left">5</field>
+		<field name="margin_right">5</field>
+	</record>
+
+	<record id="paperformat_sim_delivery_order_report" model="report.paperformat">
+		<field name="name">paperformat.sim.delivery.order.report</field>
+		<field name="format">Letter</field>
+		<field name="orientation">Portrait</field>
+		<field name="header_spacing">20</field>
+		<field name="margin_top">25</field>
+		<field name="margin_bottom">25</field>
+		<field name="margin_left">5</field>
+		<field name="margin_right">5</field>
+	</record>
+</odoo>

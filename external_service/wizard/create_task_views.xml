@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="stock_create_fsm_task" model="ir.ui.view" >
+			<field name="name">stock.create.fsm.task</field>
+			<field name="model">stock.create.fsm.task</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="company_id" invisible="1"/>
+								<field name="picking_id" invisible="1"/>
+								<field name="region_id" invisible="1"/>
+								<field name="edit_proyect" invisible="1"/>
+								<field name="edit_task_type" invisible="1"/>
+								<field name="name"/>
+								<field
+									name="project_id"
+									domain="[('company_id', '=', company_id), ('is_fsm', '=', True), ('region_id','=', region_id)]"
+									attrs="{'readonly': [('edit_proyect','=',False)]}"
+									options="{'no_create': 1, 'no_open': 1}"
+								/>
+								<field name="partner_id" force_save="1" options="{'no_open': 1}"/>
+							</group>
+							<group>
+								<field
+									name="task_type_id"
+									attrs="{'readonly': [('edit_task_type','=',False)]}"
+									options="{'no_open': 1}"
+									force_save="1"
+								/>
+							</group>
+						</group>
+					</sheet>
+					<footer>
+						<button string="Create Task" class="btn btn-primary" name="action_generate_task" type="object" />
+						<button string="Discard" class="btn btn-secondary" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="create_fsm_task_view_form_region" model="ir.ui.view" >
+			<field name="name">create.fsm.task.view.form.region</field>
+			<field name="model">helpdesk.create.fsm.task</field>
+			<field name="inherit_id" ref="helpdesk_fsm.create_fsm_task_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//sheet/group[1]" position="inside">
+					<group>
+						<field name="edit_task_type" invisible="1"/>
+						<field
+							name="task_type_id"
+							attrs="{
+								'readonly': [('edit_task_type','=',False)],
+								'required': [('edit_task_type','=',True)]
+							}"
+							options="{'no_create': True, 'no_open': True}"
+							force_save="1"
+						/>
+					</group>
+				</xpath>
+				<xpath expr="//field[@name='project_id']" position="before">
+					<field name="region_id" invisible="1"/>
+				</xpath>
+				<xpath expr="//field[@name='project_id']" position="attributes">
+					<attribute name="domain">[('company_id', '=', company_id), ('is_fsm', '=', True), ('region_id', '=', region_id)]</attribute>
+				</xpath>
+				<xpath expr="//field[@name='partner_id']" position="attributes">
+					<attribute name="readonly">1</attribute>
+					<attribute name="options">{'no_open': 1}</attribute>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

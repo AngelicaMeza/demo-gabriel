@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="assets_backend_crm_lead_form" name="CRM backend assets" inherit_id="web.assets_backend">
+		<xpath expr="script[last()]" position="after">
+			<script type="text/javascript" src="/crm_lead_form/static/src/js/basic_model.js"/>
+		</xpath>
+	</template>
+</odoo>

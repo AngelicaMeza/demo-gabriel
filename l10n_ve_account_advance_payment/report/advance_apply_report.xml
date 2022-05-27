@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="action_report_account_advance_payment_apply"
+        model="account.advance.payment.apply"
+        string="Payment Receipt"
+        report_type="qweb-pdf"
+        name="l10n_ve_account_advance_payment.report_advance_payment_receipt"
+        file="l10n_ve_account_advance_payment.report_advance_payment_receipt"
+        attachment_use="True"
+        attachment="object.move_apply_id.name if object.move_apply_id else object.state"
+    />
+
+    <template id="report_advance_payment_receipt">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div t-if="o.state == 'done'" class="page">
+                        <t t-call="l10n_ve_account_advance_payment.advance_payment_receipt_title"/>
+                        <t t-call="l10n_ve_account_advance_payment.advance_payment_receipt_invoice"/>
+                    </div>
+                    <div t-else="" class="page">
+                        <h1>Payment: <span t-field="o.state" /></h1>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="advance_payment_receipt_title" name="Advance Payment Receipt Title">
+            <t t-set="contact_type" t-value="'Customer' if o.advance_id.type == 'customer' else 'Supplier'" />
+            <h1 class="my-5 text-center">Payment Receipt: <span t-field="o.move_apply_id.name" /></h1>
+            <div class="row">
+                <div class="col-6">
+                    <p><strong>Payment date:</strong> <span t-field="o.date_apply" /></p>
+                    <p><strong><span t-esc="contact_type" />:</strong> <span t-field="o.partner_id.name" /></p>
+                    <p><strong>Amount:</strong> <span t-field="o.amount_apply" /></p>
+                </div>
+                <div class="col-6">
+                    <p><strong>Payment method:</strong> <span t-field="o.journal_id.name" /></p>
+                    <p><strong>Payment date:</strong> <span t-field="o.ref" /></p>
+                </div>
+            </div>
+    </template>
+
+    <template id="advance_payment_receipt_invoice" name="Advance Payment Receipt Invoice">
+        <table class="table my-5">
+            <thead>
+                <tr>
+                    <th>Invoice Date</th>
+                    <th>Invoice Number</th>
+                    <th>Reference</th>
+                    <th>Amount Original</th>
+                    <th>Amount Pay</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span t-field="o.invoice_id.date" /></td>
+                    <td><span t-field="o.invoice_id.name" /></td>
+                    <td><span t-field="o.invoice_id.ref" /></td>
+                    <td>
+                        <span t-if="o.has_different_currency_with_invoice is False" t-field="o.invoice_id.amount_total" />
+                        <span t-if="o.has_different_currency_with_invoice is True" 
+                          t-esc="o.invoice_id.currency_id.with_context(date=o.date_apply).compute(o.invoice_id.amount_total, o.currency_id)" 
+                          t-options="{'widget' : 'monetary', 'display_currency': o.currency_id}"/>
+                    </td>
+                    <td><span t-field="o.amount_apply" /></td>
+                    <td><span t-field="o.amount_invoice_currency_advance" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+</odoo>

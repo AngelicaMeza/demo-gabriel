@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-extend="ImportView">
+        <t t-jquery="input[id='oe_import_batch_limit']" t-operation='attributes'>
+            <attribute name="value">500</attribute>
+        </t>
+        <t t-jquery="div[class='js_import_options oe_import_debug_option oe_import_batch_limit']" t-operation='attributes'>
+            <attribute name="class">js_import_options oe_import_batch_limit</attribute>
+        </t>
+    </t>
+</templates>

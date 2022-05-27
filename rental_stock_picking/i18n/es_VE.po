@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rental_stock_picking
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-15 14:52+0000\n"
+"PO-Revision-Date: 2022-01-15 14:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rental_stock_picking
+#: model:ir.model.fields,field_description:rental_stock_picking.field_stock_location__rental_location
+msgid "Is a Rental Location?"
+msgstr "¿Es una ubicación de alquiler?"
+
+#. module: rental_stock_picking
+#: model:ir.model.fields,field_description:rental_stock_picking.field_stock_warehouse__rental_location_id
+msgid "Rental Location"
+msgstr "Ubicación de alquiler"
+
+#. module: rental_stock_picking
+#: model_terms:ir.ui.view,arch_db:rental_stock_picking.view_warehouse_form_rental
+msgid "Shipments and Rental"
+msgstr "Envíos y Alquileres"
+

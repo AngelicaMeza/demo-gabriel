@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_request_keys,access.request.keys,model_request_keys,mrp.group_mrp_user,1,0,0,0
+access_request_keys_manager,access.request.keys.manager,model_request_keys,mrp.group_mrp_manager,1,1,1,1
+access_application_versions,access.application.versions,model_application_versions,mrp.group_mrp_user,1,0,0,0
+access_application_versions_manager,access.application.versions.manager,model_application_versions,mrp.group_mrp_manager,1,1,1,1
+access_mrp_workcenter_user_line,mrp.workcenter.user.line,model_mrp_workcenter_user_line,mrp.group_mrp_manager,1,1,1,1

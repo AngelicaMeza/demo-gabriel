@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <data>
+        <record id="view_account_journal_form" model="ir.ui.view">
+            <field name="name">account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Retención de ITF" name="studio_page_HipIw">
+                        <group name="studio_group_HipIw">
+                            <group name="studio_group_HipIw_left" string="Retención de ITF">
+                                <field name="calculate_wh_itf"/>
+                                <field name="wh_porcentage" attrs="{'invisible': [('calculate_wh_itf', '=', False)]}"/>
+                                <field name="account_wh_itf_id" attrs="{'invisible':[('calculate_wh_itf','=',False)]}"/>
+                            </group>
+                            <group name="studio_group_HipIw_right"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- <record id="view_account_advance_payment_purchase" model="ir.ui.view">
+            <field name="name">view_account_advance_payment_purchase_igtf</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='accounting']/group[1]" position="after">
+                    <group name="studio_group_tM5Mu">
+                        <group name="studio_group_tM5Mu_left" string="Retención de ITF">
+                            <field string="Aplicar retencion de ITF" name="res_itf"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record> -->
+
+    </data>
+</odoo>

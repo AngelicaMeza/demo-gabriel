@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_stock_quant_tree_editable_condition_status" model="ir.ui.view">
+		<field name="name">stock.quant.tree.editable.condition.status</field>
+		<field name="model">stock.quant</field>
+		<field name="inherit_id" ref="stock.view_stock_quant_tree_editable"></field>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='lot_id']" position="after">
+				<field name="condition_id" optional="show"/>
+				<field name="status_id" optional="show"/>
+			</xpath>
+			<xpath expr="//field[@name='inventory_quantity']" position="before">
+				<field name="length_stay" string="Length of stay" optional="show" readonly="True"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

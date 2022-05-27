@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- Payment sequences -->
+		<record id="sequence_causal" model="ir.sequence">
+			<field name="name">Causal sequence</field>
+			<field name="code">helpdesk.causal</field>
+			<field eval="1" name="number_next"/>
+			<field eval="1" name="number_increment"/>
+			<field eval="False" name="company_id"/>
+			<field name="padding">5</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_report_customer_sale,access.crm.report.customer,model_crm_report_customer,,1,0,0,0

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <data>
+
+<!--
+    Generic menu for all modules of vat, income withholding and municipal-->
+
+        <menuitem id="menu_wh_configuration" name="Retenciones" parent="l10n_ve_account_fiscal_requirements.menu_finance_fiscal_settings"/>
+        <menuitem id="menu_withholdings" name="Retenciones" parent="account.menu_finance"/>
+        <record id="wh_inv_customer_supplier" model="ir.ui.view">
+            <field name="name">account.invoice.wh.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='other_info']" position="before">
+                    <page string="Retención IVA" attrs="{'invisible':[('type', '=', 'entry')]}">
+                        <separator colspan="4" string="xsep"  name="xsep" invisible='1'/>
+                        <separator colspan="4"  name="vsep" invisible="1"/>
+                        <separator colspan="4" string="isep" name="isep" invisible="1"/>
+                        <separator colspan="4" name="rsep" invisible="1"/>
+                        <separator colspan="4" string="msep" invisible='1' name="msep" />
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

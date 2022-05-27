@@ -1,0 +1,106 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* subscription_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-02 19:28+0000\n"
+"PO-Revision-Date: 2021-12-02 19:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: subscription_customization
+#: model:res.groups,name:subscription_customization.group_suscription_button
+msgid "Acceso a boton gerente invoice"
+msgstr ""
+
+#. module: subscription_customization
+#: model:ir.model,name:subscription_customization.model_stock_immediate_transfer
+msgid "Immediate Transfer"
+msgstr "Transferencia inmediata"
+
+#. module: subscription_customization
+#: model:ir.model.fields,field_description:subscription_customization.field_sale_subscription__origin_document
+msgid "Origin Document"
+msgstr "Documento de origen"
+
+#. module: subscription_customization
+#: model_terms:ir.ui.view,arch_db:subscription_customization.sale_subscription_view_form_inherit_sale_subscription
+msgid "Product serial"
+msgstr "Serial del Producto"
+
+#. module: subscription_customization
+#: model:ir.model,name:subscription_customization.model_stock_production_lot
+msgid "Products inherit"
+msgstr "Herencia de productos"
+
+#. module: subscription_customization
+#: model:ir.model.fields,field_description:subscription_customization.field_sale_subscription__related_product
+msgid "Related Product"
+msgstr "Producto relacionado"
+
+#. module: subscription_customization
+#: model_terms:ir.ui.view,arch_db:subscription_customization.subscription_inherit_stock_production_lot
+msgid "Related subscription"
+msgstr "Suscripción relacionada"
+
+#. module: subscription_customization
+#: code:addons/extra-addons/nativa/subscription_customization/models/subscription_inherit.py:0
+#: code:addons/subscription_customization/models/subscription_inherit.py:0
+#, python-format
+msgid "Related subscription products are missing"
+msgstr "Faltan productos de suscripción"
+
+#. module: subscription_customization
+#: model:ir.model,name:subscription_customization.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: subscription_customization
+#: model:ir.model.fields,field_description:subscription_customization.field_sale_subscription__stock_lot_id
+msgid "Stock Lot"
+msgstr "Serial/N de lote"
+
+#. module: subscription_customization
+#: model:ir.model,name:subscription_customization.model_sale_subscription
+#: model:ir.model.fields,field_description:subscription_customization.field_stock_production_lot__subscription_id
+msgid "Subscription"
+msgstr "Suscripción"
+
+#. module: subscription_customization
+#: model_terms:ir.ui.view,arch_db:subscription_customization.sale_subscription_view_form_inherit_sale_subscription
+msgid "Subscription related product"
+msgstr "Producto relacionado a la suscripción"
+
+#. module: subscription_customization
+#: code:addons/extra-addons/nativa/subscription_customization/models/subscription_inherit.py:0
+#: code:addons/subscription_customization/models/subscription_inherit.py:0
+#, python-format
+msgid "There are more subscription products than related products"
+msgstr "Hay mas productos de suscripción que productos relacionados"
+
+#. module: subscription_customization
+#: code:addons/extra-addons/nativa/subscription_customization/models/subscription_inherit.py:0
+#: code:addons/subscription_customization/models/subscription_inherit.py:0
+#, python-format
+msgid ""
+"There is a subscription product that is not related to any product in the "
+"list."
+msgstr ""
+"Hay productos de suscripción que no están relacionados a ningún producto"
+
+#. module: subscription_customization
+#: model:ir.model,name:subscription_customization.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: subscription_customization
+#: model_terms:ir.ui.view,arch_db:subscription_customization.sale_subscription_view_form_inherit_sale_subscription
+msgid "origin document"
+msgstr "Documento de origen"

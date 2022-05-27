@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record id="group_mrp_assign" model="res.groups">
+			<field name="name">User Assign</field>
+			<field name="implied_ids" eval="[(4, ref('mrp.group_mrp_user'))]"/>
+			<field name="category_id" ref="base.module_category_manufacturing_manufacturing"/>
+			<field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+		</record>
+	</data>
+
+	<data noupdate="0">
+		<!-- USERS IN group_mrp_assign-->
+		<!-- ONLY THEIRS WORKCENTERS-->
+		<record id="mrp_workcenter_rule_assign" model="ir.rule">
+			<field name="name">User Assign Mrp Workcenter</field>
+			<field name="model_id" search="[('model','=','mrp.workcenter')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('mrp_customization.group_mrp_assign'))]" />
+			<field name="domain_force">[user.workcenter_user_ids and ('id', 'in', user.workcenter_user_ids.workcenter_id.ids) or (1, '=', 1)]</field>
+		</record>
+
+		<record id="mrp_workorder_rule_assign" model="ir.rule">
+			<field name="name">User Assign Mrp Workorder</field>
+			<field name="model_id" search="[('model','=','mrp.workorder')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('mrp_customization.group_mrp_assign'))]" />
+			<field name="domain_force">[user.workcenter_user_ids and ('workcenter_id', 'in', user.workcenter_user_ids.workcenter_id.ids) or (1, '=', 1)]</field>
+		</record>
+
+		<!-- ADMINS IN group_mrp_manager -->
+		<!-- ALL ACCESS -->
+		<record id="manager_mrp_workcenter_rule" model="ir.rule">
+			<field name="name">Manager Mrp Workcenter</field>
+			<field name="model_id" search="[('model','=','mrp.workcenter')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('mrp.group_mrp_manager'))]" />
+			<field name="domain_force">[(1, '=', 1)]</field>
+		</record>
+
+		<record id="manager_mrp_workorder_rule" model="ir.rule">
+			<field name="name">Manager Mrp Workorder</field>
+			<field name="model_id" search="[('model','=','mrp.workorder')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('mrp.group_mrp_manager'))]" />
+			<field name="domain_force">[(1, '=', 1)]</field>
+		</record>
+	</data>
+</odoo>

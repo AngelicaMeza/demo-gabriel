@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<record id="view_crm_form_inherit3" model="ir.ui.view">
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_lead_view_form"/>
+			<field name="arch" type="xml">
+
+			<!-- botones -->
+			<!-- ################################################################################################################ -->
+				<xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+					<field name="stage_code" invisible="True"/>
+					<field name="fail_button" invisible="True"/>
+					<field name="current_stage" readonly="True" force_save="True" invisible="True"/>
+					<button string="Nuevo presupuesto de alquiler" class="oe_stat_button" type="object" name="action_view_rent_quotation" icon="fa-retweet" attrs="{ 'invisible': [('stage_code', 'not in', [3, 4, 5])] }" />
+				</xpath>
+
+				<xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="replace">
+					<button name="mark_lost" string="Marcar Perdida"
+														type="object" class="oe_highlight" context="{'default_lead_id': active_id}" 
+														attrs="{'invisible': ['|', '&amp;','|', ('type', '=', 'lead'),('active', '=', False),('probability', '&lt;', 100), ('stage_code', 'in', [1, 6, 7])]}"/>
+				</xpath>
+				<xpath expr="//button[@name='%(crm.action_crm_lead2opportunity_partner)d']" position="replace">
+					<button name="opportunity_with_validations" string="Convertir a oportunidad" type="object" help="Convert to Opportunity"
+                            class="oe_highlight" attrs="{'invisible': ['|', ('type', '=', 'opportunity'), ('active', '=', False)]}"/>
+				</xpath>
+
+				<xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+					<attribute name="attrs">{'invisible': ['|','|','|', (('stage_code', 'not in', [5])), ('active','=',False), ('probability', '=', 100), ('type', '=', 'lead')]}</attribute>
+				</xpath>
+			<!-- ################################################################################################################ -->
+
+				<!-- campo motivo de negociacion fallida sera movido -->
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[7]/field[1]" position="replace">
+					<!-- eliminado -->
+				</xpath>
+
+			<!-- ajuste de probabilidad y cantidad de producto-->
+			<!-- ################################################################################################################ -->
+				<xpath expr="//field[@name='planned_revenue']" position="attributes">
+					<attribute name="name">product_quantity</attribute>
+					<attribute name="widget"></attribute>
+					<attribute name="options"></attribute>
+					<attribute name="attrs">{'readonly':[('readonly_condition', '=', True)]}</attribute>
+				</xpath>
+
+				<xpath expr="//label[@for='planned_revenue']" position="attributes">
+					<attribute name="for">product_quantity</attribute>
+				</xpath>
+
+				<xpath expr="//sheet/div[2]/h2[1]/div[2]/div[1]/field[@name='probability']" position="attributes">
+					<attribute name="attrs">{'readonly':[('readonly_condition', '=', True)]}</attribute>
+				</xpath>
+			<!-- ################################################################################################################ -->
+
+				<!-- condicion de solo lectura para el nombre -->
+				<xpath expr="//sheet/div[2]/h1[1]/field[1]" position="attributes">
+					<attribute name="attrs">{'readonly':[('readonly_condition', '=', True)]}</attribute>
+				</xpath>
+
+				<!-- identificador secuencial unico para las oportunidades -->
+				<xpath expr="//div[@class='oe_title']" position="before">
+					<h1><field name="lead_sequence" class="oe_title" readonly="True" /></h1>
+				</xpath>
+
+				<!-- numero de afiliacion -->
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='partner_id']" position="before">
+					<field name="affiliated" attrs="{'readonly':['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}" />
+				</xpath>
+			<!-- ################################################################################################################ -->
+
+			<!-- eliminacion de campos -->
+			<!-- ################################################################################################################ -->
+				<!-- eliminando el tlf base para moverlo de posicion -->
+				<xpath expr="//field[@name='phone']" position="replace">
+					<!-- se deja vacio para eliminarlo -->
+				</xpath>
+
+				<!-- eliminando el correo base, ya que se movio de posicion -->
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[2]/label[@for='email_from']" position="replace">
+					<!-- se deja vacio para eliminarlo -->
+				</xpath>
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[@class='o_row o_row_readonly']" position="replace">
+					<!-- se deja vacio para eliminarlo -->
+				</xpath>
+			<!-- ################################################################################################################ -->
+
+				<!-- eliminando la posibilidad de crear usuarios desde la vista de oportunidad -->
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='partner_id']" position="attributes">
+					<attribute name="options">{'no_create':True,'no__edit':True}</attribute>
+					<attribute name="attrs">{'readonly':['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}</attribute>
+				</xpath>
+				
+				<!-- <xpath expr="//form[1]/sheet[1]/group[1]/group[3]/field[@name='phone']" position="attributes">
+					<attribute name="widget"></attribute>
+					<attribute name="options"></attribute>
+				</xpath> -->
+
+			<!-- agrgado de campos vista principal-->
+			<!-- ################################################################################################################ -->
+				<!-- agregado de campos, grupo izquierdo-->
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='partner_id']" position="after">
+					<field name="related_company" force_save="True"/>
+					<field name="denomination"  force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}" />
+					<field name="vat"  force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="cluster_id"  force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="name_owner"  force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<!-- direccion -->
+					<label for="street" string="Dirección de comercio"/>
+						<div class="o_address_format"  required="True">
+							<field name="street" placeholder="Street..." class="o_address_street" readonly="True" force_save="True"/>
+							<field name="street2" placeholder="Street 2..." class="o_address_street" readonly="True" force_save="True"/>
+							<field name="city" placeholder="City" class="o_address_city" readonly="True" force_save="True"/>
+							<field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" readonly="True" force_save="True"/>
+							<field name="zip" placeholder="ZIP" class="o_address_zip" readonly="True" force_save="True"/>
+							<field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" readonly="True" force_save="True"/>
+						</div>
+					<label for="company_address" string="Dirección de factura" class="oe_inline"/>
+					<div class="row" >
+						<div class="col-6">
+							<field name="company_address" options = "{'no_quick_create':True,'no_create_edit':True}" attrs="{'readonly':['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}"/>						
+						</div>
+						<div class="col-6" >
+							<field name="address_affiliated" placeholder='Numero de afiliación' force_save="True"/>  
+						</div>
+					</div>
+					
+					<field name="region"  force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					
+					<!-- telefonos -->
+					<field name="phone" readonly="True" force_save="True"/>
+					<field name="phone_two" widget="phone" options="{'enable_sms': True}" force_save="True"/>
+					<field name="phone_three" widget="phone" options="{'enable_sms': True}" force_save="True" />
+					
+					<!-- correo -->
+					<label for="email_from" class="oe_inline"/>
+					<div class="o_row o_row_readonly">
+							<i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing" aria-label="Blacklisted" attrs="{'invisible': [('is_blacklisted', '=', False)]}" groups="base.group_user"/>
+							<field name="email_from" widget="email" readonly="True" force_save="True"/>
+					</div>
+
+					<field name="team_id" widget="selection" domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]" readonly="True" force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="regional_manager" force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="user_id" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'sales_team.group_sale_salesman_all_leads'], 'team_id': team_id}" readonly="True" force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="type" invisible="1"/>
+					<field name="acquire_bank_id"  force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="bank_segment_id" options="{'no_create': 1, 'no_open': 1}" force_save="True" attrs="{'required': [('type', '=', 'opportunity')]}"/>
+					<field name="mgr_regional_id" options="{'no_create': 1, 'no_open': 1}" force_save="True"/>
+				</xpath>
+
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[5]" position="attributes">
+					<attribute name="attrs" >{'invisible': [('type', '=', 'opportunity')]}</attribute>
+				</xpath>
+				
+				<!-- agregado de campos grupo derecho-->
+				<xpath expr="//form[1]/sheet[1]/group[1]/group[4]" position="replace">
+            <group attrs="{'invisible': [('type', '=', 'lead')]}">
+							<field name="create_date" />
+							<field name="date_deadline_condition" invisible="True" force_save="True"/> 
+							<field name="date_deadline" attrs=" {'readonly': ['|','|', ('date_deadline_condition', '=', True), ('stage_code', '=', 7), ('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]} " />
+							<field name="priority" widget="priority" attrs=" {'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)]} "/>
+							<field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" attrs=" {'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)]} "/>
+							<field name="type_negotiation_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="product_type" attrs="{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="type_point_sale_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 
+																																																																	'invisible': [('product_type', '=', '2')], 
+																																																																	'required': [('product_type', '!=', '2'), ('type', '=', 'opportunity')] } "/>
+							<field name="type_code" invisible="True"/>
+							<field name="company_pos_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 
+																																																															'invisible': ['|',('type_code', 'not in', [1]),('product_type', '=', '2')], 
+																																																															'required': [('type_code', 'in', [1]),('product_type', '!=', '2'), ('type', '=', 'opportunity')]}"/>
+							<field name="origin_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="kind_attention" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="event_name_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'invisible': [('kind_attention', '!=', '2')], 'required': [('kind_attention', '=', '2'), ('type', '=', 'opportunity')]}"/>
+							<field name="task" attrs="{'invisible': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}" />
+
+						<!-- agregado de checks y fechas de marcado -->
+						<!-- ###################################### -->
+							<label for="failed_contact_1" string="Primer contacto fallido" class="oe_inline"/>
+							<div class="row" >
+								<div class="col-6">
+									<field name="failed_contact_1" attrs="{'readonly': ['|','|','|', ('stage_code', '=', 7), ('failed_contact_1_date', '!=', False),('successful_contact', '=', True), ('readonly_condition', '=', True)]}" force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="failed_contact_1_date" attrs="{'invisible': [('failed_contact_1_date', '=', False)]}" force_save="True"/>  
+								</div>
+							</div>
+
+							<label for="failed_contact_2" string="Segundo contacto fallido" class="oe_inline"/>
+							<div class="row" >
+								<div class="col-6">
+									<field name="failed_contact_2" attrs="{'readonly': ['|','|','|','|','|', ('stage_code', '=', 7), ('failed_contact_1_date', '=', False), ('failed_contact_2_date', '!=', False), ('failed_contact_1', '=', False), ('successful_contact', '=', True), ('readonly_condition', '=', True)] }"  force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="failed_contact_2_date" attrs="{'invisible': [('failed_contact_2_date', '=', False)]}" force_save="True"/>
+								</div>
+							</div>
+
+							<label for="failed_contact_3" string="Tercer contacto fallido" class="oe_inline"/>
+							<div class="row" >
+								<div class="col-6">
+									<field name="failed_contact_3" attrs="{'readonly': ['|','|','|','|','|', ('stage_code', '=', 7), ('failed_contact_2_date', '=', False), ('failed_contact_3_date', '!=', False),('failed_contact_2', '=', False), ('successful_contact', '=', True), ('readonly_condition', '=', True)] }" force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="failed_contact_3_date" attrs="{'invisible': [('failed_contact_3_date', '=', False)]}" force_save="True"/>
+								</div>
+							</div>
+
+							<label for="successful_contact" string="Contacto exitoso" class="oe_inline"/>
+							<div class="row" >
+								<div class="col-6">
+									<field name="successful_contact" attrs="{'readonly': ['|','|','|', ('stage_code', '=', 7), ('successful_contact_date', '!=', False),('failed_contact_3', '=', True), ('readonly_condition', '=', True)]}" force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="successful_contact_date" attrs="{'invisible': [('successful_contact_date', '=', False)]}" force_save="True" />
+								</div>
+							</div>
+
+							<label for="budget_send" string="Presupuesto enviado" class="oe_inline"/>
+							<div class="row" >
+								<div class="col-6">
+									<field name="budget_send" readonly="True" force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="budget_send_date" attrs="{'invisible': [('budget_send_date', '=', False)]}" force_save="True"/>
+								</div>
+							</div>
+
+							<label for="budget_confirmed" string="Presupuesto confirmado" class="oe_inline"/>
+							<div class="row" >
+								<div class="col-6">
+									<field name="budget_confirmed" readonly="True" force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="budget_confirmed_date" attrs="{'invisible': [('budget_confirmed_date', '=', False)]}" force_save="True"/>
+								</div>
+							</div>
+
+							<label for="scheduled_date" string="Asistencia a cita confirmada" class="oe_inline" attrs="{'invisible': ['|', ('stage_code', 'in', [1, 2]), ('kind_attention', '!=', '2')]}"/>
+							<div class="row" attrs="{'invisible': [('kind_attention', '!=', '2')]}">
+								<div class="col-6">
+									<field name="scheduled_date" attrs="{'readonly': ['|','|','|','|','|', ('appointment_date', '=', False), ('stage_code', '=', 7), ('budget_confirmed_date', '=', False), ('scheduled_date_date', '!=', False),('successful_contact', '!=', True)], 'invisible': [('stage_code', 'in', [1, 2])], 'required': [('kind_attention', '=', '2')] }" force_save="True"/>
+								</div>
+								<div class="col-6" >
+									<field name="scheduled_date_date" attrs="{'invisible': ['|', ('stage_code', 'in', [1, 2]), ('scheduled_date_date', '=', False)]}" force_save="True"/>
+								</div>
+							</div>
+						<!-- ###################################### -->
+							<field name="appointment_date" attrs="{'readonly': ['|', ('stage_code', '=', 7), ('scheduled_date_date', '!=', False)], 'invisible': ['|', ('stage_code', 'in', [1, 2]), ('budget_send_date', '=', False) ]}" />
+							<field name="lost_reason" string="Causa de Negociación Fallida" attrs="{'invisible': [('stage_code', '!=', 7)]}" readonly="True"/>
+						</group>
+				</xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[6]" position="after">
+          <group attrs="{'invisible': [('type', '=', 'opportunity')]}">
+              <field name="date_deadline" attrs=" {'readonly': ['|','|', ('date_deadline_condition', '=', True), ('stage_code', '=', 7), ('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]} "/>
+              <field name="type_negotiation_id" options = "{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="product_type" attrs="{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+            </group>
+            <group attrs="{'invisible': [('type', '=', 'opportunity')]}">
+							<field name="type_point_sale_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 
+																																																																	'invisible': [('product_type', '=', '2')], 
+																																																																	'required': [('product_type', '!=', '2'), ('type', '=', 'opportunity')] } "/>
+							<field name="type_code" invisible="True"/>
+							<field name="company_pos_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 
+																																																															'invisible': ['|',('type_code', 'not in', [1]),('product_type', '=', '2')], 
+																																																															'required': [('type_code', 'in', [1]),('product_type', '!=', '2'), ('type', '=', 'opportunity')]}"/>
+							<field name="origin_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="kind_attention" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'required': [('type', '=', 'opportunity')]}"/>
+							<field name="event_name_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': ['|', ('stage_code', '=', 7),('readonly_condition', '=', True)], 'invisible': [('kind_attention', '!=', '2')], 'required': [('kind_attention', '=', '2'), ('type', '=', 'opportunity')]}"/>
+            </group>
+        </xpath>
+			
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="readonly_condition" invisible = "1" force_save="True"/>
+				</xpath>
+
+				<xpath expr="//field[@name='user_id']" position="attributes">
+					<attribute name="string">Ejecutivo Cartera</attribute>
+				</xpath>
+			<!-- ################################################################################################################ -->
+
+			<!-- agregado de campos, pestaña "seguimiento" -->
+			<!-- ################################################################################################################ -->
+				<xpath expr="//notebook/page[3]/group[1]" position="after">
+					<group string="Seguimiento de etapas" >
+						<group string="Pendiente de Gestión" >
+							<field name="stage_1_start" readonly="True" force_save="True"/>
+							<field name="stage_1_end" readonly="True" force_save="True"/>
+						</group>
+						<group string="Contacto fallido" >
+							<field name="stage_2_start" readonly="True" force_save="True"/>
+							<field name="stage_2_end" readonly="True" force_save="True"/>
+						</group>
+						<group string="En negociación" >
+							<field name="stage_3_start" readonly="True" force_save="True"/>
+							<field name="stage_3_end" readonly="True" force_save="True"/>
+						</group>
+						<group string="En evaluación del cliente" >
+							<field name="stage_4_start" readonly="True" force_save="True"/>
+							<field name="stage_4_end" readonly="True" force_save="True"/>
+						</group>
+						<group string="En espera de cita" >
+							<field name="stage_5_start" readonly="True" force_save="True"/>
+							<field name="stage_5_end" readonly="True" force_save="True"/>
+						</group>
+					</group>
+				</xpath>
+			<!-- ################################################################################################################ -->
+			
+		<!-- condicion de solo lectura a los campos del seguimiento -->
+		<!-- ################################################################################################################ -->
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/field[@name='partner_name']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/field[@name='website']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/field[@name='lang_id']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			
+			<!-- direccion -->
+			<!-- ###################################### -->
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/div[1]/field[@name='street']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/div[1]/field[@name='street2']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/div[1]/field[@name='city']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/div[1]/field[@name='state_id']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/div[1]/field[@name='zip']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[1]/div[1]/field[@name='country_id']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<!-- ###################################### -->
+
+			<xpath expr="//notebook/page[3]/group[1]/group[2]/div[1]/field[@name='contact_name']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[2]/div[1]/field[@name='title']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[2]/field[@name='function']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[2]/field[@name='mobile']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+
+			<xpath expr="//notebook/page[3]/group[1]/group[3]/field[@name='campaign_id']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[3]/field[@name='medium_id']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[3]/field[@name='source_id']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+
+			<xpath expr="//notebook/page[3]/group[1]/group[4]/field[@name='day_open']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[4]/field[@name='day_close']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[3]/group[1]/group[4]/field[@name='referred']" position="attributes">
+				<attribute name="attrs">{'readonly': ['|', ('stage_code', '=', 7), ('readonly_condition', '=', True)]}</attribute>
+			</xpath>
+
+		<!-- ################################################################################################################ -->
+			<!-- Change -->
+			<xpath expr="//sheet[1]/group[1]/group[1]/field[@name='partner_id']" position="attributes">
+				<attribute name="groups"></attribute>
+			</xpath>
+			<!-- Change -->
+			</field>
+		</record>
+
+
+		<record id="crm_case_kanban_view_leads_inherit" model="ir.ui.view">
+			<field name="name">crm.lead.kanban.lead.inherit</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+			<field name="arch" type="xml">
+					<xpath expr="//field[@name='activity_ids']" position="after">
+						<field name="product_quantity"/>
+					</xpath>
+					<xpath expr="//progressbar[@field='activity_state']" position="attributes">
+						<attribute name="sum_field">product_quantity</attribute>
+					</xpath>
+					<xpath expr="//kanban" position="attributes">
+						<attribute name="quick_create">false</attribute>
+					</xpath>
+					<xpath expr="//field[@name='name']" position="after">
+						<field name="current_stage" invisible="True" readonly="True" force_save="True"/>
+					</xpath>
+					<xpath expr="//t[@t-if='record.planned_revenue.raw_value']" position="replace">
+						<t t-if="record.product_quantity"><field name="product_quantity" /><span t-if="record.partner_id.value">,</span></t>
+					</xpath>
+			</field>
+		</record>
+
+		<record id="quick_create_opportunity_form_inherit" model="ir.ui.view">
+			<field name="name">quick.create.opportunity.form.inherit</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='planned_revenue']" position="replace"/>
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="product_quantity"/>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- agregado de secuencia a la vista arbol -->
+		<record id="crm_lead_inherit_Opportunity" model="ir.ui.view">
+			<field name="name">crm.lead.inherit.Opportunity</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree/field[@name='name']" position="after">
+					<field name="lead_sequence" optional="hide"/>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- identificador unico para las etapas -->
+		<record id="view_crm_stage_inherit" model="ir.ui.view">
+			<field name="name">view.crm.stage.inherit</field>
+			<field name="model">crm.stage</field>
+			<field name="inherit_id" ref="crm.crm_stage_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='is_won']" position="before">
+					<field name="stage_code"/>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- agregado de identificador unico a la vista arbol -->
+		<record id="view_crm_stage_tree_inherit" model="ir.ui.view">
+			<field name="name">view.crm.stage.tree.inherit</field>
+			<field name="model">crm.stage</field>
+			<field name="inherit_id" ref="crm.crm_stage_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='team_id']" position="after">
+					<field name="stage_code"/>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="crm_lead_inherit_sale_crm" model="ir.ui.view">
+			<field name="name">crm.lead.inherit.sale.crm</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='action_sale_quotations_new']" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('stage_code', 'not in', [3, 4, 5]), ('type', '=', 'lead')]}</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="crm_lead_lost_inherit_crm_lead" model="ir.ui.view">
+			<field name="name">crm.lead.lost.inherit.crm.lead</field>
+			<field name="model">crm.lead.lost</field>
+			<field name="inherit_id" ref="crm.crm_lead_lost_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form/group[1]/field[@name='lost_reason_id']" position="attributes">
+					<attribute name="string">Causa de Negociación Fallida</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- filtro para los presupuestos de las oportunidades -->
+		<record id="sale_order_view_search_inherit_quotation_inherit_crm" model="ir.ui.view">
+			<field name="name">view.sales.order.filter.inherit.crm</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='sales']" position="after">
+					<filter string="No Pedidos de venta" name="no_sale" domain="[('state','in',('draft', 'reg_manag', 'fin_approve', 'sent'))]"/>
+				</xpath>
+			</field>
+		</record>
+
+</odoo>

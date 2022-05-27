@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_picking_form_incorporate" model="ir.ui.view">
+		<field name="name">stock.picking.form.incorporate</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='action_assign']" position="before">
+				<field name="incorporate" invisible="1"/>
+				<button name="incorporate_button" attrs="{'invisible': [('incorporate', '=', False)]}" string="Incorporate" type="object" class="oe_highlight"/>
+			</xpath>
+			<xpath expr="//button[@name='button_validate'][1]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', '|', ('state', 'in', ('waiting','confirmed')), ('show_validate', '=', False), ('incorporate', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//button[@name='button_validate'][2]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', '|', ('state', 'not in', ('waiting', 'confirmed')), ('show_validate', '=', False), ('incorporate', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='origin']" position="after">
+				<field name="incorporated_by" attrs="{'invisible': [('incorporated_by', '=', False)]}"/>
+				<field name="incorporated_date" attrs="{'invisible': [('incorporated_date', '=', False)]}"/>
+			</xpath>
+			<xpath expr="//button[@name='do_print_picking']" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', ('state', 'not in', ('assigned', 'partially_available', 'incorporated')), ('is_locked', '=', False)]}</attribute>
+			</xpath>
+			<xpath expr="//button[@name='action_cancel']" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', ('state', 'not in', ('assigned', 'confirmed', 'partially_available', 'draft', 'waiting', 'incorporated')), ('is_locked', '=', False)]}</attribute>
+			</xpath>
+			<xpath expr="//button[@name='do_unreserve']" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('picking_type_code', '=', 'incoming'), ('immediate_transfer', '=', True), ('is_locked', '=', False), '&amp;', ('state', 'not in', ('assigned', 'partially_available','incorporated')), ('move_type', '!=', 'one'), '&amp;', ('state', 'not in', ('assigned', 'partially_available', 'confirmed', 'incorporated')), ('move_type', '=', 'one')]}</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_picking_type_form_bills" model="ir.ui.view">
+		<field name="name">view.picking.type.form.bills</field>
+		<field name="model">stock.picking.type</field>
+		<field name="inherit_id" ref="stock.view_picking_type_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//sheet" position="inside">
+				<group name="bills_group" attrs="{'invisible': [('code', 'not in', ['outgoing','internal'])]}">
+					<group name="op_bills" string="Bills">
+						<field name="bills"/>
+					</group>
+				</group>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,144 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-21 14:33+0000\n"
+"PO-Revision-Date: 2021-12-21 14:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_reports
+#: model:ir.actions.report,name:stock_reports.delivery_order_report
+msgid "Delivery Order"
+msgstr "Nota de entrega"
+
+#. module: stock_reports
+#: model:ir.model,name:stock_reports.model_report_stock_reports_delivery_order
+msgid "Stock delivery report"
+msgstr "Reporte Nota de Entrega"
+
+#. module: stock_reports
+#: code:addons/custom-addons/nativa/stock_reports/reports/delivery_order.py:0
+#: code:addons/stock_reports/reports/delivery_order.py:0
+#, python-format
+msgid ""
+"This document only can be printed if picking is a outgoing operation and its"
+" state is assigned or done."
+msgstr ""
+"Este documento solo puede ser impreso si la operación es de tipo envió y su"
+" estado es PREPARADO o REALIZADO."
+
+#. module: stock_reports
+#: model:ir.actions.report,name:stock_reports.sim_delivery_order_report
+msgid "SIM Delivery Order"
+msgstr "SIM nota de entrega"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>ADDRESS</strong>"
+msgstr "<strong>DIRECCIÓN</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>CITY</strong>"
+msgstr "<strong>CIUDAD</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>COMPANY NAME</strong>"
+msgstr "<strong>NOMBRE DE EMPRESA</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>COURIER</strong>"
+msgstr "<strong>PROVEEDOR DE ENCOMIENDAS</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>Delivery date</strong>"
+msgstr "<strong>Fecha de despacho</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>PARTENER DATA</strong>"
+msgstr "<strong>DATOS DEL DESTINATARIO</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>Package code</strong>"
+msgstr "<strong>Código del paquete</strong>"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "<strong>package number</strong>"
+msgstr "<strong>Número de paquete</strong>"
+
+#. module: stock_reports
+#: model:ir.actions.report,name:stock_reports.delivery_guide_report
+#: model_terms:ir.ui.view,arch_db:stock_reports.view_picking_type_form_inherit_stock_picking
+msgid "Delivery guide"
+msgstr "Guía de despacho"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "Guide number:"
+msgstr "Número de guía:"
+
+#. module: stock_reports
+#: model:ir.model.fields,field_description:stock_reports.field_stock_picking__package_number
+msgid "Package Number"
+msgstr "Número de paquetes"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.view_picking_form_inherit_stock
+msgid "Package number"
+msgstr "Número de paquetes"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.report_delivery_guide_document_custom
+msgid "of"
+msgstr "de"
+
+#. module: stock_reports
+#: model_terms:ir.ui.view,arch_db:stock_reports.view_picking_type_form_inherit_stock_picking
+msgid "Reports"
+msgstr "Reportes"
+
+#. module: stock_reports
+#: code:addons/extra-addons/nativa/stock_reports/reports/delivery_guide.py:0
+#: code:addons/stock_reports/reports/delivery_guide.py:0
+#, python-format
+msgid ""
+"The dispatch guide can only be printed if the type of operation allows it "
+"and if the operation is in the \"prepared\", \"incorporated\" or "
+"\"performed\" status."
+msgstr "La guiá de despacho solo se puede imprimir si el tipo de operación lo permite "
+"y si la operación esta en los estados \"preparado\", \"incorporado\" o "
+"\"realizado\"."
+
+#. module: stock_reports
+#: code:addons/extra-addons/nativa/stock_reports/reports/delivery_order.py:0
+#: code:addons/extra-addons/nativa/stock_reports/reports/sim_delivery_order.py:0
+#: code:addons/stock_reports/reports/delivery_order.py:0
+#: code:addons/stock_reports/reports/sim_delivery_order.py:0
+#, python-format
+msgid ""
+"This document only can be printed if picking is a incoming operation and its"
+" state is assigned or done."
+msgstr ""
+"Este documento solo puede ser impreso si la operación es de tipo recepción y su"
+" estado es PREPARADO o REALIZADO."
+
+#. module: stock_reports
+#: model:ir.model.fields,field_description:stock_reports.field_stock_picking_type__print_delivery_guide
+msgid "Print Delivery Guide"
+msgstr "Imprimir guía de despacho"
+

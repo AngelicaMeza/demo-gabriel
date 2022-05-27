@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="delivery_wizard_form" model="ir.ui.view">
+		<field name="name">delivery.wizard.form</field>
+		<field name="model">helpdesk.delivery.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group col="2">
+							<field name="ticket_id" invisible="1"/>
+							<field name="company_id" invisible="1"/>
+							<field name="region_id" invisible="1"/>
+							<field name="lot_id" invisible="1"/>
+							<field name="view_location_id" invisible="1"/>
+							<field name="location_dest_id" invisible="1"/>
+							<field name="warehouse_id" domain="[('company_id', '=',company_id), ('region', '=', region_id)]" options="{'no_create': 1, 'no_open': 1}"/>
+							<field name="picking_type_id" domain="[('warehouse_id','=',warehouse_id), ('bills', '=', True)]" options="{'no_create': 1, 'no_open': 1}"/>
+							<field name="location_id" options="{'no_create': 1, 'no_open': 1}" domain="[('delivery_location', '=', True), ('id', 'child_of', view_location_id)]"/>
+						</group>
+					</group>
+					<group>
+						<field name="product_id" force_save="1" options="{'no_open': 1}"/>
+					</group>
+				</sheet>
+				<footer>
+					<button name="create_picking" string="DELIVER" type="object"/>
+					<button special="cancel" string="CANCEL"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>

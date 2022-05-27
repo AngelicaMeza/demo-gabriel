@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<record id="group_stock_assign" model="res.groups">
+			<field name="name">User Assign</field>
+			<field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+			<field name="category_id" ref="base.module_category_operations_inventory"/>
+			<field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+		</record>
+	</data>
+
+	<data noupdate="0">
+		<!-- USERS IN group_stock_assign-->
+		<!-- ONLY THEIRS PICKING TYPES-->
+		<record id="user_stock_picking" model="ir.rule">
+			<field name="name">User Stock Picking</field>
+			<field name="model_id" search="[('model','=','stock.picking')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('stock_access_rights.group_stock_assign'))]" />
+			<field name="domain_force">[user.user_line_ids and ('picking_type_id', 'in', user.user_line_ids.picking_type_ids.ids) or (1, '=', 1)]</field>
+		</record>
+		
+		<record id="user_stock_picking_type" model="ir.rule">
+			<field name="name">User Stock Picking Type</field>
+			<field name="model_id" search="[('model','=','stock.picking.type')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('stock_access_rights.group_stock_assign'))]" />
+			<field name="domain_force">[user.user_line_ids and ('id', 'in', user.user_line_ids.picking_type_ids.ids) or (1, '=', 1)]</field>
+		</record>
+
+		<!-- ADMINS IN group_stock_manager -->
+		<!-- ALL ACCESS -->
+		<record id="manager_stock_picking" model="ir.rule">
+			<field name="name">Manager Stock Picking</field>
+			<field name="model_id" search="[('model','=','stock.picking')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('stock.group_stock_manager'))]" />
+			<field name="domain_force">[(1, '=', 1)]</field>
+		</record>
+
+		<record id="manager_stock_picking_type" model="ir.rule">
+			<field name="name">Manager Stock Picking Type</field>
+			<field name="model_id" search="[('model','=','stock.picking.type')]" model="ir.model"/>
+			<field name="groups" eval="[(4, ref('stock.group_stock_manager'))]" />
+			<field name="domain_force">[(1, '=', 1)]</field>
+		</record>
+	</data>
+</odoo>

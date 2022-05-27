@@ -1,0 +1,58 @@
+<odoo>
+	<data>
+		<record id="stock_landed_cost_inherit_customization_add" model="ir.ui.view">
+			<field name="name">stock.landed.cost.inherit.customization.add</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<field name="landed_costs_ids" invisible="1"/>
+					<button string="Landed Costs" type="object"
+						name="action_view_landed_costs"
+						class="oe_stat_button" icon="fa-plus-square"
+						attrs="{'invisible': [('landed_costs_ids', '=', [])]}" />
+				</xpath>
+				
+				<field name="state" position="before">
+					<field name="landed_costs_visible" invisible="1"/>
+					<button name="button_create_landed_costs" class="oe_highlight" string="Create Landed Costs" type="object" groups="account.group_account_invoice" attrs="{'invisible': [('landed_costs_visible', '!=', True)]}"/>
+				</field>
+
+				<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+					<field name="product_type" invisible="1"/>
+					<field name="is_landed_costs_line" string="Landed Costs" attrs="{'readonly': [('product_type', '!=', 'service')], 'column_invisible': [('parent.type', '!=', 'in_invoice')]}" optional="show"/>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="stock_landed_cost_inherit_customization_replace" model="ir.ui.view">
+			<field name="name">stock.landed.cost.inherit.customization.replace</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="stock_landed_costs.account_view_move_form_inherited"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='is_landed_costs_line'][1]" position="replace"></xpath>
+
+				<xpath expr="//button[@name='button_create_landed_costs']" position="replace"></xpath>
+
+				<xpath expr="//button[@name='action_view_landed_costs']" position="replace"></xpath>
+			</field>
+		</record>
+
+		<record id="view_stock_landed_cost_form_inherit_landed_cost_custom" model="ir.ui.view">
+			<field name="name">view.stock.landed.cost.form.inherit.landed.cost.custom</field>
+			<field name="model">stock.landed.cost</field>
+			<field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@class='oe_button_box'][@name='button_box']" position="replace">
+					<div class="oe_button_box" name="button_box">
+						<button string="Valuation" type="object"
+							name="action_view_stock_valuation_layers"
+							class="oe_stat_button" icon="fa-dollar"
+							attrs="{'invisible': ['|' , ('state', 'not in', ['done']), ('stock_valuation_layer_ids', '=', [])]}"/>
+					</div>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>

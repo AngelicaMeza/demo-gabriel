@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_advance_view_form" model="ir.ui.view">
+        <field name="name">res.config.advance.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='invoicing_settings']/preceding::h2[1]" position="before">
+                <h2>Advance Payments</h2>
+                <div class="row mt16 o_settings_container" id="advance_payments_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Advance journals.</span>
+                            <div class="text-muted">
+                                Default journals for new customers and suppliers.
+                            </div>
+                            <div class="mt16">
+                                <label for="default_journal_advance_sales_id" string="Advance Journal Sales"/>
+                                <field name="default_journal_advance_sales_id" />
+
+                            </div>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="default_journal_advance_purchases_id" string="Advance Journal Purchases"/>
+                            <field name="default_journal_advance_purchases_id" />
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Advance accounts.</span>
+                            <div class="text-muted">
+                                Accounting accounts for new customers and suppliers.
+                            </div>
+                            <div class="mt16">
+                                <label for="default_account_advance_sales_id" string="Advance Account Sales"/>
+                                <field name="default_account_advance_sales_id" />
+                            </div>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="default_account_advance_purchases_id" string="Advance Account Purchases"/>
+                            <field name="default_account_advance_purchases_id" />
+                        </div>
+                    </div>
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

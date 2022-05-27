@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="helpdesk_requirements_view_form" model="ir.ui.view">
+		<field name="name">helpdesk.requirements.form</field>
+		<field name="model">helpdesk.ticket.type</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<div class="oe_title">
+							<h1><field name="name" placeholder="Nombre del requerimiento"/></h1>
+						</div>
+					</group>
+					<group>
+						<group>
+							<field name="service_type" options="{'no_create': True, 'no_edit': True}"/>
+							<field name="team_id" options="{'no_create': True, 'no_edit': True}"/>
+							<field name="template_id" domain="[('model','=','helpdesk.ticket')]"/>
+							<field name="select_user_id"/>
+						</group>
+						<group>
+							<field name="failure"/>
+							<field name="devices"/>
+                            <field name="include_affiliated" />
+							<field name="stage_id" domain="[('team_ids','=',team_id), ('is_sub_stage','=',False)]"/>
+							<field name="substage_unit" attrs="{'invisible': [('stage_id','=',False)], 'required': [('stage_id','!=',False)]}"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Descripción">
+							<field name="description" placeholder="Descripción del requerimiento"/>
+						</page>
+						<page string="Cluster no aplica">
+							<field name="excluded_cluster_ids" options="{'no_create': True, 'no_edit': True}"/>
+						</page>
+						<page string="Modelo de negocio no aplica" attrs="{'invisible': [('devices','=',False)]}">
+							<field name="excluded_negotiation_type_id" options="{'no_create': True, 'no_edit': True}">
+								<tree create='1' delete='1'>
+									<field name="name"/>
+								</tree>
+							</field>
+						</page>
+						<page string="Etapas resolutora" attrs="{'invisible': [('stage_id','=',False)]}">
+							<field name="substage_ids" attrs="{'required': [('stage_id','!=',False)]}">
+								<tree>
+									<field name="sequence" widget="handle"/>
+									<field name="stage_id"/>
+									<field name="is_close"/>
+									<field name="team_id"/>
+									<field name="time_percent" attrs="{'column_invisible': [('parent.substage_unit','=','N/A')]}" sum="Total Percent"/>
+								</tree>
+							</field>
+						</page>
+						<page string="Responsable(s)" attrs="{'invisible': [('select_user_id','!=','custom')]}">
+							<field name="user_ids"
+								attrs="{'required': [('select_user_id','=','custom')]}"
+								options="{'no_create': True, 'no_edit': True}">
+								<tree create='1' delete='1'>
+									<field name="name"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="helpdesk_subestage_view_form" model="ir.ui.view">
+		<field name="name">helpdesk.subestage.view.form</field>
+		<field name="model">helpdesk.substage</field>
+		<field name="arch" type="xml">
+			<form string="Etapa resolutora">
+				<field name="sequence" invisible="1"/>
+				<field name="is_close" invisible="1"/>
+				<field name="ticket_type_id" invisible="1"/>
+				<group>
+					<group>
+						<field name="stage_id" domain="[('team_ids','=',parent.team_id), ('is_sub_stage','=',True)]" options="{'no_create': True, 'no_edit': True}"/>
+						<field name="team_id" attrs="{'invisible': [('is_close','=',True)]}" options="{'no_create': True, 'no_edit': True}"/>
+						<field name="time_percent" attrs="{'invisible': ['|',('parent.substage_unit','=','N/A'), ('is_close','=',True)], 'required': [('parent.substage_unit','!=','N/A'), ('is_close','=',False)]}"/>
+					</group>
+					<group>
+						<field name="causal_ids" widget="many2many_tags" attrs="{'invisible': [('is_close','=',False)]}" options="{'no_create': True, 'no_edit': True}"/>
+						<field name="select_user_id" attrs="{'invisible': [('is_close','=',True)]}"/>
+						<field name="user_ids" widget="many2many_tags" attrs="{'invisible': ['|',('select_user_id','!=','custom'), ('is_close','=',True)]}" options="{'no_create': True, 'no_edit': True}"/>
+					</group>
+				</group>
+			</form>
+		</field>
+	</record>
+
+	<record id="helpdesk_requirements_view_tree" model="ir.ui.view">
+		<field name="name">helpdesk.requirements.tree</field>
+		<field name="model">helpdesk.ticket.type</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_ticket_type_view_tree"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="editable"></attribute>
+			</xpath>
+			<field name="name" position="attributes">
+				<attribute name="string">Nombre del requerimiento</attribute>
+			</field>
+			<field name="name" position="after">
+				<field name="service_type"/>
+				<field name="team_id"/>
+			</field>
+		</field>
+	</record>
+
+	<record id="helpdesk_requirements_view_search" model="ir.ui.view">
+		<field name="name">helpdesk.requirements.search</field>
+		<field name="model">helpdesk.ticket.type</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="helpdesk_sla_view_form_cluster" model="ir.ui.view">
+		<field name="name">helpdesk.sla.form.cluster</field>
+		<field name="model">helpdesk.sla</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_sla_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='ticket_type_id']" position="attributes">
+				<attribute name="domain">[('team_id','=',team_id)]</attribute>
+			</xpath>
+			<field name="description" position="replace"></field>
+			<xpath expr="//sheet" position="inside">
+				<notebook>
+					<page string="Descripción">
+						<field name="description" placeholder="Descripción de la politica..."/>
+					</page>
+					<page string="Cluster(s)">
+						<field name="cluster_ids" options="{'no_create': True, 'no_edit': True}"/>
+					</page>
+				</notebook>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="helpdesk_stage_view_form_sub_stages" model="ir.ui.view">
+		<field name="name">helpdesk.stage.form.sub.stages</field>
+		<field name="model">helpdesk.stage</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_stage_view_form"/>
+		<field name="arch" type="xml">
+			<field name="fold" position="after">
+				<field name="is_sub_stage"/>
+			</field>
+		</field>
+	</record>
+
+	<record id="helpdesk_stage_view_search" model="ir.ui.view">
+		<field name="name">helpdesk.stage.search</field>
+		<field name="model">helpdesk.stage</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="helpdesk_channel_view_tree" model="ir.ui.view">
+		<field name="name">helpdesk.channel.tree</field>
+		<field name="model">helpdesk.channel</field>
+		<field name="arch" type="xml">
+			<tree editable="top" string="Tag">
+				<field name="sequence" widget="handle"/>
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="helpdesk_channel_view_search" model="ir.ui.view">
+		<field name="name">helpdesk.channel.search</field>
+		<field name="model">helpdesk.channel</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="helpdesk_service_type_tree" model="ir.ui.view">
+		<field name="name">helpdesk.service.type.tree</field>
+		<field name="model">helpdesk.service.type</field>
+		<field name="arch" type="xml">
+			<tree editable="top" string="Tag">
+				<field name="sequence" widget="handle"/>
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="helpdesk_service_type_search" model="ir.ui.view">
+		<field name="name">helpdesk.service.type.search</field>
+		<field name="model">helpdesk.service.type</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="helpdesk_analyst_tree" model="ir.ui.view">
+		<field name="name">helpdesk.analyst.tree</field>
+		<field name="model">helpdesk.analyst.user</field>
+		<field name="arch" type="xml">
+			<tree editable="top" string="Tag">
+				<field name="user_id"/>
+				<field name="region_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="helpdesk_analyst_search" model="ir.ui.view">
+		<field name="name">helpdesk.analyst.search</field>
+		<field name="model">helpdesk.analyst.user</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="user_id"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="helpdesk_causal_tree" model="ir.ui.view">
+		<field name="name">helpdesk.causal.tree</field>
+		<field name="model">helpdesk.causal</field>
+		<field name="arch" type="xml">
+			<tree editable="top" string="Tag">
+				<field name="name"/>
+                <field name="team_id" />
+				<field name="code"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="helpdesk_causal_search" model="ir.ui.view">
+		<field name="name">helpdesk.causal.search</field>
+		<field name="model">helpdesk.causal</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="helpdesk_failure_tree" model="ir.ui.view">
+		<field name="name">helpdesk.failure.tree</field>
+		<field name="model">helpdesk.failure</field>
+		<field name="arch" type="xml">
+			<tree editable="top">
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="helpdesk_failure_search" model="ir.ui.view">
+		<field name="name">helpdesk.failure.search</field>
+		<field name="model">helpdesk.failure</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+	
+	<record id="helpdesk_channel_action" model="ir.actions.act_window">
+		<field name="name">Canal de Atención</field>
+		<field name="res_model">helpdesk.channel</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Crea un nuevo canal de atención
+			</p>
+		</field>
+	</record>
+
+	<record id="helpdesk_service_type_action" model="ir.actions.act_window">
+		<field name="name">Tipo de servicio</field>
+		<field name="res_model">helpdesk.service.type</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+			Crea un nuevo tipo de servicio
+			</p>
+		</field>
+	</record>
+
+	<record id="helpdesk_analyst_action" model="ir.actions.act_window">
+		<field name="name">Analistas</field>
+		<field name="res_model">helpdesk.analyst.user</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+			Agrega un nuevo Analista
+			</p>
+		</field>
+	</record>
+
+	<record id="helpdesk_causal_action" model="ir.actions.act_window">
+		<field name="name">Causales</field>
+		<field name="res_model">helpdesk.causal</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Crea un nuevo Causal
+			</p>
+		</field>
+	</record>
+
+	<record id="helpdesk_failure_action" model="ir.actions.act_window">
+		<field name="name">Fallas</field>
+		<field name="res_model">helpdesk.failure</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Describe una nueva Falla
+			</p>
+		</field>
+	</record>
+
+	<record id="helpdesk_stage_history_view_form" model="ir.ui.view">
+		<field name="name">helpdesk.subestage.view.form</field>
+		<field name="model">helpdesk.stage.history</field>
+		<field name="arch" type="xml">
+			<form string="Historial de fecha">
+				<group>
+					<field name="ticket_id" invisible="True"/>
+					<field name="history_line_close" invisible="1"/>
+					<group>
+						<field name="substage_id" options="{'no_open': True}"/>
+						<field name="team_id" options="{'no_open': True}"/>
+						<field name="sla_status" />
+					</group>
+					<group>
+						<field name="substage_time" />
+						<field name="date_assigned" />
+						<field name="date_reached" />
+						<field name="execution_time" />
+					</group>
+				</group>
+			</form>
+		</field>
+	</record>
+	
+	<menuitem id="helpdesk_channel_menu" action="helpdesk_channel_action" sequence="1" parent="helpdesk.helpdesk_menu_config"/>
+	<menuitem id="helpdesk_service_type_menu" action="helpdesk_service_type_action" sequence="1" parent="helpdesk.helpdesk_menu_config"/>
+	<menuitem id="helpdesk_analyst_menu" action="helpdesk_analyst_action" sequence="1" parent="helpdesk.helpdesk_menu_config"/>
+	<menuitem id="helpdesk_causal_menu" action="helpdesk_causal_action" sequence="1" parent="helpdesk.helpdesk_menu_config"/>
+	<menuitem id="helpdesk_failure_menu" action="helpdesk_failure_action" sequence="1" parent="helpdesk.helpdesk_menu_config"/>
+	
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rif_verification_inherit_res_users" model="ir.ui.view">
+        <field name="name">rif.verification.inherit.res.users</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]/group[1]" position="after">
+                <label for="rif_notification" string="Supplier Supervisor" class="oe_inline"/>
+                <div>
+                    <field name="rif_notification" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_mail_activities_2"
+        name="Activities"
+        action="mail.mail_activity_action"
+        parent="base.menu_administration"
+        />
+
+</odoo>

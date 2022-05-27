@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="helpdesk_requirements_task_type" model="ir.ui.view">
+		<field name="name">helpdesk.requirements.task.type</field>
+		<field name="model">helpdesk.ticket.type</field>
+		<field name="inherit_id" ref="helpdesk_ticket.helpdesk_requirements_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='substage_unit']" position="after">
+				<field name="task_type_id"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="helpdesk_subestage_view_form_outsourcing" model="ir.ui.view">
+		<field name="name">helpdesk.subestage.view.form.outsourcing</field>
+		<field name="model">helpdesk.substage</field>
+		<field name="inherit_id" ref="helpdesk_ticket.helpdesk_subestage_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//group/group[1]" position="inside">
+				<field name="outsourcing"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="helpdesk_requirements_view_form_outsourcing" model="ir.ui.view">
+		<field name="name">helpdesk.requirements.form.outsourcing</field>
+		<field name="model">helpdesk.ticket.type</field>
+		<field name="inherit_id" ref="helpdesk_ticket.helpdesk_requirements_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='substage_ids']/tree/field[@name='team_id']" position="after">
+				<field name="outsourcing"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

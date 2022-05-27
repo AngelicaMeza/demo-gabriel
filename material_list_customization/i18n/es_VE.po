@@ -1,0 +1,138 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* material_list_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-27 13:58+0000\n"
+"PO-Revision-Date: 2021-12-27 13:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid ""
+"At least one work order has a quantity produced lower than the quantity "
+"produced in the manufacturing order. You must complete the work orders "
+"before posting the inventory."
+msgstr ""
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Lista de materiales"
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid ""
+"BoM cannot concern product %s and have a line with attributes (%s) at the "
+"same time."
+msgstr ""
+"LdM no puede referirce al producto%s y tener una linea con attributos (%s) "
+"al mismo tiempo."
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid "BoM line product %s should not be the same as BoM product."
+msgstr ""
+"El producto de la linea LdM%s no debería ser el mismo que el producto LdM."
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_stock_location
+msgid "Inventory Locations inherit"
+msgstr ""
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid ""
+"It is not possible to reserve more products of %s than you have in stock."
+msgstr ""
+"No es posible reservar más productos que los %s que tiene en existencias."
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid ""
+"It is not possible to unreserve more products of %s than you have in stock."
+msgstr ""
+"No es posible deshacer la reserva de más productos que los %s que tiene en "
+"existencias."
+
+#. module: material_list_customization
+#: model:ir.model.fields,field_description:material_list_customization.field_stock_location__deconfiguration_location
+msgid "It's a location for deconfiguration?"
+msgstr "¿Es una ubicación para desconfiguración?"
+
+#. module: material_list_customization
+#: model:ir.model.fields,field_description:material_list_customization.field_stock_production_lot__is_configured
+msgid "It's configured?"
+msgstr "¿Esta configurado?"
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_stock_production_lot
+msgid "Products inherit"
+msgstr "Herencia de productos"
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_mrp_product_produce
+msgid "Record Production"
+msgstr "Registrar Producción"
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid ""
+"The attribute value %s set on product %s does not match the BoM product %s."
+msgstr ""
+"El valor del atributo%s establecido en el producto %sno coincide con el "
+"producto LdM%s."
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: material_list_customization
+#: model:ir.model,name:material_list_customization.model_mrp_workorder
+msgid "Work Order"
+msgstr "Orden de trabajo"
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid "Work order %s is still running"
+msgstr "La orden de trabajo %s está funcionando"
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid "You can not consume without telling for which lot you consumed it"
+msgstr "No puede consumirlos sin decir para qué lote lo consumió."
+
+#. module: material_list_customization
+#: code:addons/material_list_customization/models/models.py:0
+#, python-format
+msgid ""
+"You must indicate a non-zero amount consumed for at least one of your "
+"components"
+msgstr ""

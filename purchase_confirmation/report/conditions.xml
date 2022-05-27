@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="condition_layout" name="custom_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')" style="font-size: 10px">
+                <t t-if="content">
+                    <t t-raw="content"/>
+                </t>
+                <t t-if="footer">
+                    <div class="footer row">
+                        <t t-raw="footer"/>
+                    </div>
+                </t>
+            </div>
+    </template>
+
+    <template id="report_purchaseorder_conditions" name="terms_and_conditions">
+        <t t-call="purchase_confirmation.condition_layout">
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+            <t t-set="content">
+                <div class="text-center" >
+                    <strong style="font-size: 13px">ORDEN DE COMPRA/SERVICIO</strong>
+                </div>
+                <div>
+                    EL PROVEEDOR identificado en el anverso de este instrumento, una vez recibida la presente ORDEN DE COMPRA/SERVICIO, se obliga a cumplir con NATIVA HOLDING MEDIOS DE PAGO, S.L. (en lo sucesivo NATIVA), las condiciones que a continuación se señalan:
+                </div>
+                <div class="text-center" >
+                    <strong style="font-size: 13px">CONDICIONES GENERALES</strong>
+                </div>
+                <div>
+                    1. EL PROVEEDOR se compromete a suministrar a NATIVA la mercancía o a prestar el servicio descrito en el anverso de esta ORDEN DE COMPRA/SERVICIO, en los términos y condiciones expuestos en este instrumento, en la Oferta presentada por EL PROVEEDOR y/o en el Contrato suscrito por las partes, estos últimos si los hubiere; por su parte, NATIVA se obliga a pagar a  EL PROVEEDOR por el suministro de la mercancía o la prestación de dicho servicio, según sea el caso, la contraprestación establecida igualmente en el anverso de este instrumento.<br/>
+                    2. EL PROVEEDOR deberá entregar la mercancía o prestar el servicio, según corresponda, en el LUGAR indicado en el anverso de este instrumento y dentro del PLAZO especificado igualmente en el anverso de la presente ORDEN DE COMPRA/SERVICIO. <br/>
+                    3. EL PROVEEDOR será el único responsable por el suministro de la mercancía o la ejecución del servicio objeto de la presente ORDEN DE COMPRA/SERVICIO; en tal sentido, asumirá todas las responsabilidades por el uso que hiciere de cualquier método, artículo o producto que esté registrado como perteneciente a otra persona y estará obligado a indemnizar a NATIVA por los daños y perjuicios que cause, bien sea por errores, omisiones o negligencia de EL PROVEEDOR, del personal a su cargo o causados por los equipos y/o maquinarias que utilice.<br/>
+                    4. NATIVA no aceptará ningún tipo de modificación en las condiciones del servicio, precio, clase, calidad, tipo, marca, modelo, presentación, embalaje, tamaño, medida, numeración o color de la mercancía especificada en esta ORDEN DE COMPRA/SERVICIO.<br/>
+                    5. Si a juicio de NATIVA, la mercancía no cumple con las condiciones convenidas, no hubiere sido entregada en el lugar y oportunidad señalada o el servicio ha sido ejecutado en forma defectuosa, EL PROVEEDOR deberá suministrar nuevamente la mercancía  o ejecutar nuevamente el servicio, según corresponda, a sus expensas; lo anterior, anterior, sin menoscabo de la facultad a cargo de NATIVA de dejar sin efecto la presente ORDEN DE COMPRA/SERVICIO. En este supuesto, EL PROVEEDOR deberá indemnizar los daños y perjuicios que dicho incumplimiento hubiere causado a NATIVA, estimados éstos en una cantidad equivalente a las ganancias netas obtenidas por EL PROVEEDOR en virtud de la presente ORDEN DE COMPRA/SERVICIO, salvo que de resultar cuantificables tales daños y perjuicios, su monto exceda de la citada cantidad, en cuyo caso, EL PROVEEDOR quedará obligado a indemnizar a NATIVA dichos daños así cuantificados.<br/>
+                    6. NATIVA pagará a EL PROVEEDOR el monto de la factura, en un plazo que no excederá de treinta (30) días hábiles bancarios contados a partir de la presentación de la misma, mediante su abono en cuenta que EL PROVEEDOR le indique. La factura deberá indicar los impuestos cuyo pago correspondan a NATIVA, de conformidad con la legislación tributaria vigente para la fecha de emisión del instrumento.<br/>
+                    7. EL PROVEEDOR no podrá ceder ninguno de los derechos y obligaciones establecidos en la presente ORDEN DE COMPRA/SERVICIO, sin el consentimiento previo dado por escrito por NATIVA.<br/>
+                    8. En el supuesto que alguna de las partes no pueda cumplir con los términos y condiciones especificados en esta ORDEN DE COMPRA/SERVICIO producto de un hecho o circunstancia que se califique como “fuerza mayor”, se considerará resuelta la presente ORDEN DE COMPRA/SERVICIO, sin estar obligada la parte afectada al pago de indemnización alguna a la otra parte por este concepto.<br/>
+                    9. En los casos en que NATIVA requiera de EL PROVEEDOR la constitución de cualquier garantía que avale el fiel cumplimiento de las obligaciones derivadas de la presente ORDEN DE COMPRA/SERVICIO, éste deberá consignarla antes de la entrega de la mercancía o la prestación del servicio que corresponda.<br/>
+                    10. NATIVA se abstendrá de pagar aquellas facturas que no hubieren sido entregadas en la Vicepresidencia de Administración o cuando no se hubiere anexado a éstas, las correspondientes notas de entrega o relación de servicios prestados, según corresponda, debidamente firmadas y selladas por un funcionario de NATIVA. <br/>
+                    11. Toda factura deberá contener las siguientes menciones: i) El número de la ORDEN DE COMPRA/SERVICIO, indicada en el anverso del presente documento; i) Monto a pagar, el cual deberá coincidir con el monto indicado en la presente ORDEN DE COMPRA/SERVICIO; iii) Número de la factura; iv) Número de Contribuyente Fiscal; v) Número de Control; vi) Dirección Fiscal de EL PROVEEDOR; vii) Demás requisitos establecidos en las leyes vigentes sobre la materia.<br/>
+                    12. En el supuesto que las partes suscriban un Contrato que regule la compra del bien o la prestación del servicio a que se refiere la presente ORDEN DE COMPRA/SERVICIO o NATIVA se adhiera a lo establecido en la Oferta presentada por EL PROVEEDOR, se aplicará en primer término, lo previsto en el Contrato o en la Oferta y en todo lo no previsto expresamente en dichos documentos, se aplicará la presente ORDEN DE COMPRA/SERVICIO.<br/>
+                    13. Si luego de la emisión de la presente ORDEN DE COMPRA/SERVICIO ocurren eventos o situaciones que no habían sido contemplados de manera razonable por NATIVA al momento de su emisión y que de manera fundamental alteren el equilibrio de las prestaciones a cargo, creando para ella una carga excesiva, la presente ORDEN DE COMPRA/SERVICIO quedará sin efecto a partir de la notificación que a tal efecto realice NATIVA a EL PROVEEDOR. En este supuesto, los pagos realizados por NATIVA a favor de EL PROVEEDOR antes de la notificación a que alude este inciso, no serán objeto de reintegro.<br/>
+                </div>
+                <div class="text-center" >
+                    <strong style="font-size: 13px">CONDICIONES PARTICULARES APLICABLES A LA COMPRA DE MERCANCÍA</strong>
+                </div>
+                <div>
+                    A. Los fletes, seguros, traslados, aduanas y cualesquiera otros gastos correspondientes a la mercancía indicada en esta ORDEN DE COMPRA/SERVICIO, van por cuenta de EL PROVEEDOR hasta la entrega del bien en el lugar señalado en el anverso de este documento, salvo pacto en contrario.<br/>
+                    B. NATIVA no aceptará entregas parciales de la mercancía objeto de la presente ORDEN DE COMPRA/SERVICIO. Se hará excepción sólo mediante acuerdo por escrito entre EL PROVEEDOR y NATIVA.<br/>
+                </div>
+                <div class="text-center" >
+                    <strong style="font-size: 13px">CONDICIONES PARTICULARES APLICABLES A LA PRESTACIÓN DE SERVICIOS</strong>
+                </div>
+                <div>
+                    A. Para hacer efectivo el pago de su acreencia, EL PROVEEDOR deberá presentar la respectiva factura conjuntamente con la copia fotostática de la presente ORDEN DE COMPRA/SERVICIO y la respectiva relación de tiempo especificando el servicio prestado, en original.<br/>
+                    B. EL PROVEEDOR utilizará su propio personal en la ejecución del servicio objeto de la presente ORDEN DE COMPRA/SERVICIO. Queda entendido que EL PROVEEDOR será el único patrono de sus trabajadores actuales así como de aquellos que contrate con motivo de la prestación del servicio y en consecuencia, asume frente a ellos todas las obligaciones y responsabilidades que se deriven de su condición de patrono en cumplimiento de lo establecido en las normas en materia laboral y de seguridad social, quedando entendido que no existe ninguna relación entre dichos trabajadores y NATIVA. En  tal sentido, EL PROVEEDOR se obliga expresamente a asumir la defensa de NATIVA ante cualesquiera reclamaciones demandas, procedimientos o denuncias por los conceptos antes mencionados, así como a indemnizar a NATIVA en caso de que ésta sea condenada al pago de cualquier cantidad de dinero por una autoridad judicial o administrativa, en relación con una reclamación iniciada por algún trabajador de EL PROVEEDOR. La obligación a cargo de EL PROVEEDOR prevista en este inciso, no se extingue con la culminación de los servicios contratados.<br/>
+                    C. EL PROVEEDOR declara conocer y aceptar que toda la información que NATIVA le suministre para la prestación de servicios a los cuales refiere la presente ORDEN DE COMPRA/SERVICIO, es información confidencial, comprometiéndose a: (i) ejercer el mismo nivel de protección y cuidado que utiliza en la salvaguarda de su propia información confidencial; (ii) no revelarla a terceros, sin la autorización previa y por escrito de NATIVA; y (iii) utilizarla únicamente para llevar a cabo los servicios contratados. La obligación de confidencialidad a cargo del PROVEEDOR no se extingue con la culminación de los servicios contratados.<br/>
+                    D. EL PROVEEDOR se compromete a cumplir con el servicio contratado con la mayor diligencia, asegurando el resultado esperado por NATIVA; en caso de que el PROVEEDOR no logre el objetivo o incumpla con las obligaciones a su cargo, NATIVA podrá abstenerse de realizar pago alguno, sin menoscabo de las acciones que resulten aplicables de acuerdo al derecho.<br/>
+                    E. El incumplimiento por parte de EL PROVEEDOR de las obligaciones a su cargo, dará derecho a NATIVA a abstenerse de efectuar pago alguno por lo servicios comprendidos en la presente ORDEN DE COMPRA/SERVICIO, quedando facultada incluso para deducir de dichas cantidades, las indemnizaciones a que hubiere lugar por el incumplimiento de EL PROVEEDOR.<br/>
+                    F. EL PROVEEDOR permitirá a NATIVA realizar evaluaciones periódicas del servicio contratado, incluyendo aquellas que sean requeridas por las autoridades competentes.<br/>
+                </div>
+                <div class="text-center" >
+                    <strong style="font-size: 13px">CONDICIONES PARTICULARES APLICABLES A LOS SERVICIOS TECNOLÓGICOS</strong>
+                </div>
+                <div>
+                    A. Con respecto a las licencias otorgadas, EL PROVEEDOR garantiza a NATIVA acceso a los programas fuentes en caso de quiebra y/o situaciones contingentes, en las cuales no pueda prestar sus servicios a NATIVA.<br/>
+                    B. EL PROVEEDOR deberá indemnizar a NATIVA por daños y perjuicios causados a ésta en caso de fraudes y/o sabotajes cibernéticos, en los términos establecidos en la sección 5 de las CONDICIONES GENERALES.<br/>
+                    C. EL PROVEEDOR deberá mantener políticas, normas y procedimientos que garanticen la confidencialidad de la información de NATIVA, así como aquellas tendentes a prevenir pérdidas, atrasos o deterioros de los datos almacenados en los sistemas de NATIVA y en caso que ocurra alguna infracción a lo antes dispuesto, deberá indemnizar a NATIVA por daños y perjuicios causados a ésta en los términos establecidos en la sección 5 de las CONDICIONES GENERALES.<br/>
+                    D. EL PROVEEDOR declara bajo juramento ser propietario de los derechos intelectuales de los programas que licencia o haber sido autorizado por el propietario de los derechos intelectuales, para realizar la comercialización de los programas a que se refiere la presente ORDEN DE COMPRA/SERVICIO y se comprometerse a indemnizar a NATIVA, en caso de que éste sea objeto de alguna demanda por un tercero que pretenda ser el propietario de los derechos intelectuales de dichos programas, en los términos establecidos en la sección 5 de las CONDICIONES GENERALES.<br/>
+                </div>
+            </t>
+            <t t-set="footer">
+                <div class="col-11"></div>
+                <div class="col-1 text-right">
+                    P <span t-esc="steps+1"/>/<span t-esc="steps+1"/>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

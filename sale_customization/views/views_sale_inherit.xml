@@ -1,0 +1,348 @@
+<odoo>
+	<data>
+		<!-- hacer solo lectura los campos apartir del estado de aprobacion gerente general -->
+		<record id="opportunity_field_inherit" model="ir.ui.view">
+			<field name="name">opportunity.field.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_crm.sale_view_inherit123"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='opportunity_id']" position="before">
+					<field name="change_opportunity" invisible="True"/>
+				</xpath>
+				<xpath expr="//field[@name='opportunity_id']" position="attributes">
+					<attribute name="attrs">{'readonly': ['|', ('state', '!=', 'sent'), ('change_opportunity', '=', False)]}</attribute>
+					<attribute name="groups"></attribute>
+					<attribute name="options" >{'no_create' : True}</attribute>
+					<attribute name="domain">[('partner_id', '=', partner_id), ('stage_code', '=', 3), ('order_ids', '=', False)]</attribute>
+				</xpath>
+			</field>
+		</record>
+		<record id="view_order_form_inherit" model="ir.ui.view">
+			<field name="name">view.order.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="." position="inside">
+					<field name="asigned_partner" invisible="True" force_save="True" />
+				</xpath>
+
+				<xpath expr="//field[@name='partner_id']" position="before">
+					<field name="affiliated" attrs="{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}" required="1"/>
+					<field name="condition_create_invoice" invisible="1"/>
+					<field name="create_invoice_scheduled_date" invisible="1"/>
+				</xpath>
+
+				<xpath expr="//field[@name='origin']" position="attributes">
+					<attribute name="attrs">{'readonly': ['|', ('state', '!=', 'sent'), ('change_opportunity', '=', False)]}</attribute>
+				</xpath>
+
+				<xpath expr="//field[@name='partner_invoice_id']" position="before">
+					<field name="denomination" readonly="1" force_save="1"/>
+					<field name="cluster_id" readonly="1" force_save="1"/>
+					<field name="name_owner" readonly="1" force_save="1"/>
+					<field name="region_id" readonly="1" force_save="1"/>
+					<field name="phone_one" readonly="1" force_save="1"/>
+					<field name="phone_two" readonly="1" force_save="1"/>
+					<field name="phone_three" readonly="1" force_save="1"/>
+					<label for="street" string="Domicilio de la compañía" force_save="1"/>
+					<div>
+							<div class="o_address_format" name="div_address">
+									<field name="street" placeholder="Street..." class="o_address_street" readonly="1" force_save="1"/>
+									<field name="street2" placeholder="Street 2..." class="o_address_street" readonly="1" force_save="1"/>
+									<field name="city" placeholder="City" class="o_address_city" readonly="1" force_save="1"/>
+									<field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' context="{'country_id': country_id, 'zip': zip}" readonly="1" force_save="1"/>
+									<field name="zip" placeholder="ZIP" class="o_address_zip" readonly="1" force_save="1"/>
+									<field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' readonly="1" force_save="1"/>
+									<field name="warehouse_domain" invisible="True"/>
+							</div>
+					</div>
+				</xpath>
+
+				<xpath expr="//field[@name='validity_date']" position="before">
+					<field name="parent_id" readonly="1" force_save="1" attrs="{'invisible': [('parent_id', '=', False)]}"/>
+					<field name="user_id" readonly="1" force_save="1"/>
+					<field name="sales_executive" options = "{'no_create' : True}"/>
+					<field name="regional_manager" readonly="1" force_save="1"/>
+					<field name="type_negotiation_id" force_save="1" required="True" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+					<field name="product_type" force_save="1" required="True" attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+					<field name="type_point_sale_id" force_save="1" options="{'no_create': 1, 'no_open': 1}" attrs="{'invisible' : [('product_type', '=', '2')], 'required': [('product_type', '!=', '2')], 'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+					<field name="type_code" invisible="True"/>
+					<field name="company_pos_id" force_save="1" options="{'no_create': 1, 'no_open': 1}" attrs="{'invisible' : ['|',('type_code', 'not in', [1]),('product_type', '=', '2')], 'required': [('type_code', 'in', [1]),('product_type', '!=', '2')], 'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+					<field name="origin_id" force_save="1" required="True" options="{'no_create': 1, 'no_open': 1}" attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+					<field name="kind_attention" force_save="1" required="True" attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}" />
+					<field name="event_name_id" force_save="1" options="{'no_create': 1, 'no_open': 1}" attrs="{'invisible' : [('kind_attention', '!=', '2')], 'required': [('kind_attention', '=', '2')], 'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+					<field name="mail_partner_id" invisible="True" force_save="True"/>
+				</xpath>
+
+				<xpath expr="//page[@name='customer_signature']" position="after">
+					<page name="documents" string="Documentos" >
+						<group>
+							<group>
+								<field name="currency_selection" attrs= "{'required' : [('state', '=', 'sent')],
+																													'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+								<field name="bolivar_payment" string="Forma de pago" attrs= "{'invisible' : [('currency_selection','!=','0')],
+																											'required' : [('currency_selection','=','0'), ('state', '=', 'sent')],
+																											'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+								<field name="dollar_payment" string="Forma de pago" attrs= "{'invisible' : [('currency_selection','!=','1')],
+																											'required' : [('currency_selection','=','1'), ('state', '=', 'sent')],
+																											'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+								<field name="not_apply" string="Forma de pago" attrs= "{'invisible' : [('currency_selection','!=','2')],
+																											'required' : [('currency_selection','=','2'), ('state', '=', 'sent')],
+																											'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+
+								<field name="foreign_currency_payroll" attrs= "{'invisible' : [('dollar_payment','!=','0')],
+																																'required' : [('dollar_payment','=','0'), ('state', '=', 'sent')],
+																																'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+								<field name="fund_availability" attrs= "{'invisible' : [('bolivar_payment','!=','1')],
+																												 'required' : [('bolivar_payment','=','1'), ('state', '=', 'sent')],
+																												 'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+								
+								<field name="bank_transfer_receipt" attrs= "{'invisible' : [('bolivar_payment','!=','0'), ('dollar_payment','!=','1')],
+																														 'required' : [('state', '=', 'sent'), '|', ('bolivar_payment','=','0'), ('dollar_payment','=','1')],
+																														 'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+
+								<field name="contract" attrs= "{'invisible' : [('dollar_payment','!=','0'), ('dollar_payment','!=','1'), ('bolivar_payment','!=','0'), ('bolivar_payment','!=','1')],
+																								'required' : [('state', '=', 'sent'), '|', ('currency_selection','=','0'), ('currency_selection','=','1')],
+																								'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+
+								<field name="use_letter" attrs= "{'invisible' : [('dollar_payment','!=','0'), ('dollar_payment','!=','1'), ('bolivar_payment','!=','0'), ('bolivar_payment','!=','1')],
+																									'required' : [('state', '=', 'sent'), '|', ('currency_selection','=','0'), ('currency_selection','=','1')],
+																									'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+	
+								<field name="release_authorization" attrs= "{'invisible' : [('not_apply','!=','0')],
+																														 'required' : [('not_apply','=','0'), ('state', '=', 'sent')],
+																														 'readonly': [('state', 'in', ['reg_manag', 'fin_approve', 'sale'])]}"/>
+							</group>
+							<group>
+								<field name="sales_operational_worksheet" attrs= "{'invisible' : [('kind_attention','!=','2')]
+																																	 }"/>
+							</group>
+						</group>
+					</page>
+				</xpath>
+
+				<xpath expr="//field[@name='user_id']" position="attributes">
+					<attribute name="string">Ejecutivo Cartera</attribute>
+				</xpath>
+
+				<xpath expr="//field[@name='payment_term_id']" position="after">
+					<label for="approved_regional_management_user" string="Aprobación de gerencia regional" class="oe_inline"/>
+					<div class="row" >
+						<div class="col-6">
+							<field name="approved_regional_management_user" force_save="1" readonly="1"/>
+						</div>
+						<div class="col-6" >
+							<field name="approved_regional_management_date" attrs="{'invisible': [('approved_regional_management_user', '=', False)]}"/>  
+						</div>
+					</div>
+					<label for="finance_approved_user" string="Aprobación de finanzas" class="oe_inline"/>
+					<div class="row">
+							<div class="col-6">
+								<field name="finance_approved_user" force_save="1" readonly="1"/>
+							</div>
+							<div class="col-6" >
+								<field name="finance_approved_date" attrs="{'invisible': [('finance_approved_user', '=', False)]}"/>  
+							</div>
+					</div>
+					<field name="appointment_date" attrs="{'invisible' : [('state', '!=', 'sale')],
+																								 'required' : [('state', '=', 'sale'), ('kind_attention', '=', '2')]}"/>
+				</xpath>
+
+				<xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+					<div style="width:50%;" class="float-left">
+						<label for="bank_ids" string="Cuentas bancarias" force_save="1"/>
+						<field name="bank_ids" nolabel="1">
+							<tree editable="bottom">
+									<field name="sequence" widget="handle"/>
+									<field name="bank_id" />
+									<field name="acc_number" />
+									<field name="acc_holder_name" invisible="1"/>
+							</tree>
+						</field>
+					</div>
+				</xpath>
+
+				<xpath expr="//field[@name='state']" position="attributes">
+					<attribute name="statusbar_visible">draft,sent,sale</attribute>
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="after">
+					<field name="inv" invisible="True" force_save="True"/>
+					<button name="approved_regional_management_button" 
+									string="Aprobar" 
+									type="object" 
+									class="oe_highlight"
+									attrs="{'invisible': [('inv', '!=', False)]}"
+									groups="sale_customization.group_sale_regional_manager_approval,sale_customization.group_sale_secundary_approver" 
+					/>
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="after">
+					<button name="approved_regional_management_change" 
+									string="Solicitud de aprobación" 
+									type="object" 
+									class="oe_highlight" 
+									states="sent"/>
+				</xpath>
+
+				<xpath expr="//button[@name='action_quotation_send']" position="before">
+					<button string="No aprobar" name="no_approve" type="object" class="oe_highlight" states="fin_approve" groups="sale_customization.group_sale_finance_approval"/>
+					<button string="No aprobar" name="no_approve" type="object" class="oe_highlight" groups="sale_customization.group_sale_regional_manager_approval,sale_customization.group_sale_secundary_approver" 
+							attrs="{'invisible': [('inv', '=', True)]}" />
+				</xpath>
+				<!-- Hacer informacio que esta en modo desarrollador visible siempre -->
+				<xpath expr="//group[@name='sale_reporting']" position="attributes">
+					<attribute name="groups"></attribute>
+				</xpath>
+				<!-- Hacer informacio que esta en modo desarrollador visible siempre -->
+
+				<xpath expr="//button[@name='action_cancel']" position="attributes">
+					<attribute name="states">draft,sent,reg_manag,fin_approve,sale</attribute>
+				</xpath>
+				<xpath expr="//button[@name='action_quotation_send'][4]" position="attributes">
+					<attribute name="states">sent,reg_manag,fin_approve,sale</attribute>
+				</xpath>
+				<xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+					<attribute name="attrs">{'invisible': [('state', 'not in', ['fin_approve'])]}</attribute>
+					<attribute name="string">Aprobar</attribute>
+					<attribute name="groups">sale_customization.group_sale_finance_approval</attribute>
+				</xpath>
+				<xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', '|', ('invoice_status', '!=', 'to invoice'), ('condition_create_invoice', '=', True), ('create_invoice_scheduled_date', '=', False)]}</attribute>
+				</xpath>
+				<xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', '|', '|', ('invoice_status', '!=', 'no'), ('state', '!=', 'sale'), ('condition_create_invoice', '=', True), ('create_invoice_scheduled_date', '=', False)]}</attribute>
+				</xpath>
+
+
+				<!-- hacer solo lectura los campos apartir del estado de aprobacion gerente general -->
+				<xpath expr="//field[@name='payment_term_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//group[@name='sales_person']/field[@name='company_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//page[@name='order_lines']/field[@name='order_line']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('done','cancel','reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//page/field[@name='order_line']/tree" position="inside">
+					<field name="prod_qty_for_location" invisible="True" />
+					<field name="prod_qty_for_location_rental" invisible="True" />
+				</xpath>
+				<xpath expr="//group[@name='sales_person']/field[@name='user_id']" position="replace">
+					<!-- Eliminar el campo de la pestana "Otra informacion" -->
+				</xpath>
+				<xpath expr="//field[@name='team_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='client_order_ref']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='fiscal_position_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='analytic_account_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<!-- Estos se ven solo en modo desarrollador -->
+				<xpath expr="//field[@name='campaign_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='medium_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='source_id']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='signed_by']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='signed_on']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='signature']" position="attributes">
+					<attribute name="attrs">{'readonly': [('state', 'in', ('reg_manag','fin_approve','sale'))]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='signature']" position="after">
+					<field name="order_ids" invisible="True"/>
+				</xpath>
+				<!-- hacer solo lectura los campos apartir del estado de aprobacion gerente general -->
+			</field>
+		</record>
+
+	
+		<record id="view_quotation_tree_with_onboarding_inherit" model="ir.ui.view">
+			<field name="name">view.quotation.tree.with.onboarding.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+					<attribute name="create">false</attribute>
+				</xpath>
+			</field>
+		</record>
+		
+		<record id="view_order_tree_inherit" model="ir.ui.view">
+			<field name="name">view.order.tree.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+					<attribute name="create">false</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_quotation_tree_with_onboarding_inherit_with_create" model="ir.ui.view">
+			<field name="name">view.quotation.tree.with.onboarding.inherit.with.create</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+			<field name="groups_id" eval="[(4, ref('sale_customization.group_sale_button_create'))]"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+					<attribute name="create">true</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_order_tree_inherit_with_create" model="ir.ui.view">
+			<field name="name">view.order.tree.inherit.with.create</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree"/>
+			<field name="groups_id" eval="[(4, ref('sale_customization.group_sale_button_create'))]"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+					<attribute name="create">true</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- Action order extend -->
+		<record id="sale.action_orders" model="ir.actions.act_window">
+			<field name="name">Sales Orders</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+			<field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+			<field name="context">{}</field>
+			<field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel','reg_manag','fin_approve'))]</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create a new quotation, the first step of a new sale!
+				</p><p>
+					Once the quotation is confirmed, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+				</p>
+			</field>
+		</record>
+		<!-- Action order extend -->
+	</data>
+</odoo>

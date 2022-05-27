@@ -1,0 +1,87 @@
+<odoo>
+	<record id="product_template_only_form_view_inherit" model="ir.ui.view">
+		<field name="name">product.template.only.form.view.inherit</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_only_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='categ_id']" position="after">
+				<field
+					name="product_type"
+					attrs="{
+						'invisible' : [('type','!=','product')],
+						'required' : [('type','=','product')]
+					}"
+				/>
+				<field
+					name="brand_id"
+					options="{'no_create': True, 'no_open': True}"
+					attrs="{
+						'invisible' : ['|',('type','!=','product'),('product_type','not in',['0','1','5'])],
+						'required' : [('product_type','in',['0','1','5'])]
+					}"
+					domain="[('product_types.code', '=', product_type)]"
+				/>
+				<field
+					name="communication_id"
+					widget="many2many_tags"
+					options="{'no_create': True, 'no_open': True}"
+					attrs="{
+						'invisible' : ['|',('type','!=','product'),('product_type','not in',['0', '1'])],
+						'required' : [('product_type','in',['0', '1'])]
+					}"
+				/>
+				<field
+					name="network_operator_id"
+					options="{'no_create': True, 'no_open': True}"
+					attrs="{
+						'invisible' : ['|',('type','!=','product'),('product_type','!=','3')],
+						'required' : [('product_type','=','3')]
+					}"
+				/>
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="product_normal_form_view_inherit" model="ir.ui.view">
+		<field name="name">product.normal.form.view.inherit</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_normal_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='type']" position="after">
+				<field
+					name="product_type"
+					attrs="{
+						'invisible' : [('type','!=','product')],
+						'required' : [('type','=','product')]
+					}"
+				/>
+				<field
+					name="brand_id"
+					options="{'no_create': True, 'no_open': True}"
+					attrs="{
+						'invisible' : ['|',('type','!=','product'),('product_type','not in',['0','1','5'])],
+						'required' : [('product_type','in',['0','1','5'])]
+					}"
+					domain="[('product_types.code', '=', product_type)]"
+				/>
+				<field
+					name="communication_id"
+					widget="many2many_tags"
+					options="{'no_create': True, 'no_open': True}"
+					attrs="{
+						'invisible' : ['|',('type','!=','product'),('product_type','!=','0')],
+						'required' : [('product_type','=','0')]
+					}"
+				/>
+				<field
+					name="network_operator_id"
+					options="{'no_create': True, 'no_open': True}"
+					attrs="{
+						'invisible' : ['|',('type','!=','product'),('product_type','!=','3')],
+						'required' : [('product_type','=','3')]
+					}"
+				/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

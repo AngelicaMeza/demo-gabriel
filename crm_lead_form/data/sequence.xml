@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_network_operator" model="ir.sequence">
+            <field name="name">Network Operator Sequence</field>
+            <field name="code">network.operator</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="False" name="company_id"/>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="sequence_lead" model="ir.sequence">
+            <field name="name">CRM Lead</field>
+            <field name="code">crm_lead_form.crm_lead</field>
+            <field name="implementation">standard</field>
+            <field name="prefix">OP</field>
+            <field name="padding">5</field>
+            <field name="active" eval="1"/>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

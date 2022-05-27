@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_users_form_mrp" model="ir.ui.view">
+		<field name="name">view.users.form.mrp</field>
+		<field name="model">res.users</field>
+		<field name="inherit_id" ref="base.view_users_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook/page[@name='access_rights']" position="inside">
+				<group name="mrp" string="Manufacturing">
+					<field name="workcenter_user_ids" nolabel="1">
+						<tree>
+							<field name="workcenter_id"/>
+						</tree>
+					</field>
+				</group>
+			</xpath>
+		</field>
+	</record>
+</odoo>

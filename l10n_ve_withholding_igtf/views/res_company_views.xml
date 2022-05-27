@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+	<record id="igtf_res_company_form" model="ir.ui.view">
+	    <field name="name">igtf.res.company.form</field>
+	    <field name="model">res.company</field>
+	    <field name="inherit_id" ref="base.view_company_form"/>
+	    <field name="arch" type="xml">
+	        <xpath expr="//group[@name='social_media']" position="after">
+	        	<group name="wh_igtf" string="IGTF">
+	        		<field name="igtf_exempt_currency_ids" widget="many2many_tags"/>
+	        		<field name="is_special_taxpayer_igtf"/>
+	        		<field name="igtf_percentaje"/>
+	        		<field name="igtf_sale_account_id"/>
+	        		<field name="igtf_sale_journal_id"/>
+	        		<field name="igtf_purchase_account_id"/>
+	        		<field name="igtf_purchase_journal_id"/>
+	        	</group>
+	        </xpath>
+	    </field>
+	</record>
+
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_validation" model="ir.ui.view">
+        <field name="name">purchase.order.validation</field>
+        <field name="model">purchase.valdation</field>
+        <field name="arch" type="xml">
+            <form string="Advertencia">
+                <div>
+                    <p>Usted sólo ha generado <field name="purchase_number" readonly="True"/> presupuesto(s), Deberian ser al menos <field name="conf_num" readonly="True"/> ¿Desea continuar con el proceso?</p>
+                </div>
+                <footer>
+                    <button name="wizard_confirm" string="Continuar" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="purchase_order_validation_wizard" model="ir.actions.act_window">
+        <field name="name">Confirmación</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.valdation</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="purchase_order_validation"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

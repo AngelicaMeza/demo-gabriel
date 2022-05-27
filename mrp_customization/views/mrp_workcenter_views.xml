@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="mrp_workcenter_view_inherit" model="ir.ui.view">
+		<field name="name">mrp.workcenter.view.inherit</field>
+		<field name="model">mrp.workcenter</field>
+		<field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+		<field name="arch" type="xml">
+			<!-- USER ACCESS -->
+			<xpath expr="//notebook" position="inside">
+				<page name="user_line" string="User Access" groups="mrp.group_mrp_manager">
+					<group>
+						<field name="workcenter_user_ids" nolabel="1">
+							<tree editable="top">
+								<field name="user_id" options="{'no_create': 1}"/>
+							</tree>
+						</field>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

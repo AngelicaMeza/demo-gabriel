@@ -1,0 +1,95 @@
+<odoo>
+
+	<data>
+
+		<record id="quality_customization_inherit_quality_point_view_form" model="ir.ui.view">
+			<field name="name">quality.customization.inherit.quality.point.view.form</field>
+			<field name="model">quality.point</field>
+			<field name="inherit_id" ref="quality.quality_point_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='user_id']" position="after">
+					<field name="check_list_format" options="{'no_create': True}" />
+				</xpath>
+
+				<xpath expr="//page[@name='instructions']" position="before">
+					<page name="checks" string="Check list" attrs="{'invisible': [('check_list_format', '=', False)]}">
+						<field name="check_point_line" options="{'no_quick_create': True}" force_save="True">
+							<tree editable="bottom" edit="False" open="0" create="0" delete="0" >
+								<field name="sequence" invisible="True" force_save="True"/>
+								<field name="name" string="Check points" readonly="True" force_save="True"/>
+								<field name="check_yes" string="Yes" attrs="{'readonly': [('check_no', '=', True)]}" readonly="True"/>
+								<field name="check_no" string="No" attrs="{'readonly': [('check_yes', '=', True)]}" readonly="True"/>
+								<field name="description" string="Description" readonly="True" force_save="True"/>
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="quality_check_view_form_inherit_quality_customization" model="ir.ui.view">
+			<field name="name">quality.check.view.form.inherit</field>
+			<field name="model">quality.check</field>
+			<field name="inherit_id" ref="quality_control.quality_check_view_form"/>
+			<field name="arch" type="xml">
+				<!-- fields -->
+				<xpath expr="//field[@name='product_id']" position="attributes">
+					<attribute name="options">{'no_create': True}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='lot_id']" position="attributes">
+					<attribute name="options">{'no_create': True}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='picking_id']" position="attributes">
+					<attribute name="options">{'no_create': True}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='point_id']" position="attributes">
+					<attribute name="options">{'no_create': True}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='team_id']" position="attributes">
+					<attribute name="options">{'no_create': True}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='company_id']" position="attributes">
+					<attribute name="options">{'no_create': True}</attribute>
+				</xpath>
+				<!-- condition field -->
+				<xpath expr="//button[@name='do_pass'][1]" position="before">
+					<field name="inv" invisible="True" force_save="True" />
+				</xpath>
+				<!-- buttons -->
+				<xpath expr="//button[@name='do_pass'][1]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('quality_state', '!=', 'none'), '&amp;', ('inv', '=', False), ('check_point_line', '!=', [])]}</attribute>
+				</xpath>
+				<xpath expr="//button[@name='do_pass'][2]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('quality_state', '!=', 'fail'), '&amp;', ('inv', '=', False), ('check_point_line', '!=', [])]}</attribute>
+				</xpath>
+				<xpath expr="//button[@name='do_fail'][1]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('quality_state', '!=', 'none'), '&amp;', ('inv', '=', False), ('check_point_line', '!=', [])]}</attribute>
+				</xpath>
+				<xpath expr="//button[@name='do_fail'][2]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('quality_state', '!=', 'pass'), '&amp;', ('inv', '=', False), ('check_point_line', '!=', [])]}</attribute>
+				</xpath>
+				<!-- page -->
+				<xpath expr="//notebook/page[1]" position="attributes">
+					<attribute name="invisible">True</attribute>
+					<!-- <attribute name="attrs" >{'invisible': [('check_point_line', '!=', [])]}</attribute> -->
+				</xpath>
+				<!-- checklist -->
+				<xpath expr="//notebook/page[1]" position="before">
+					<page name="checks" string="Check list" attrs="{'invisible': [('check_point_line', '=', [])]}">
+						<field name="check_point_line" attrs="{'readonly': [('quality_state', '!=', 'none')]}" options="{'no_quick_create': True}" force_save="True">
+							<tree editable="bottom" edit="False" open="0" create="0" delete="0" >
+								<field name="sequence" invisible="True" force_save="True"/>
+								<field name="name" string="Check points" readonly="True" force_save="True"/>
+								<field name="check_yes" string="Yes" attrs="{'readonly': [('check_no', '=', True)]}"/>
+								<field name="check_no" string="No" attrs="{'readonly': [('check_yes', '=', True)]}"/>
+								<field name="description" string="Description"/>
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+
+</odoo>

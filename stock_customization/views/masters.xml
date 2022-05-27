@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Brand  -->
+		<record id="master_brand_tree" model="ir.ui.view">
+			<field name="name">master.brand.tree</field>
+			<field name="model">brand.stock</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+					<field name="product_types" widget="many2many_tags" options="{'no_create': 1, 'no_open': 1}"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_brand_search" model="ir.ui.view">
+			<field name="name">master.brand.search</field>
+			<field name="model">brand.stock</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_brand_action" model="ir.actions.act_window">
+			<field name="name">Brands</field>
+			<field name="res_model">brand.stock</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create a new brand
+				</p>
+			</field>
+		</record>
+
+		<!-- Condition  -->
+		<record id="master_condition_tree" model="ir.ui.view">
+			<field name="name">master.condition.tree</field>
+			<field name="model">condition.stock</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+					<field name="default"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_condition_search" model="ir.ui.view">
+			<field name="name">master.condition.search</field>
+			<field name="model">condition.stock</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_condition_action" model="ir.actions.act_window">
+			<field name="name">Conditions</field>
+			<field name="res_model">condition.stock</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create a new condition
+				</p>
+			</field>
+		</record>
+
+		<!-- Status  -->
+		<record id="master_status_tree" model="ir.ui.view">
+			<field name="name">master.status.tree</field>
+			<field name="model">status.stock</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_status_search" model="ir.ui.view">
+			<field name="name">master.status.search</field>
+			<field name="model">status.stock</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_status_action" model="ir.actions.act_window">
+			<field name="name">Status</field>
+			<field name="res_model">status.stock</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create a new status
+				</p>
+			</field>
+		</record>
+
+		<record id="stock_courier_tree" model="ir.ui.view">
+			<field name="name">stock.courier.tree</field>
+			<field name="model">stock.courier</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+					<field name="code"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="stock_courier_search" model="ir.ui.view">
+			<field name="name">stock.courier.search</field>
+			<field name="model">stock.courier</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="stock_courier_action" model="ir.actions.act_window">
+			<field name="name">Couriers</field>
+			<field name="res_model">stock.courier</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create a new courier
+				</p>
+			</field>
+		</record>
+
+		<!-- <menuitem
+			id="master_brand_config"
+			name="Brands" 
+			action="master_brand_action"
+			parent="stock.menu_product_in_config_stock"
+			sequence="51"
+		/> -->
+		
+		<menuitem
+			id="master_brand_config_purchase"
+			name="Brands" 
+			action="master_brand_action"
+			parent="purchase.menu_product_in_config_purchase"
+			sequence="51"
+		/>
+
+		<menuitem
+			id="master_condition_config"
+			name="Conditions" 
+			action="master_condition_action"
+			parent="stock.menu_warehouse_config"
+			sequence="30"
+		/>
+
+		<menuitem
+			id="master_status_config"
+			name="Status" 
+			action="master_status_action"
+			parent="stock.menu_warehouse_config"
+			sequence="31"
+		/>
+
+		<menuitem
+			id="stock_courier_menu"
+			name="Couriers" 
+			action="stock_courier_action"
+			parent="stock.menu_warehouse_config"
+			sequence="31"
+		/>
+	</data>
+</odoo>

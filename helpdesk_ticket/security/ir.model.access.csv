@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_helpdesk_service_type,helpdesk.service.type,model_helpdesk_service_type,helpdesk.group_helpdesk_user,1,0,0,0
+access_helpdesk_channel,helpdesk.channel,model_helpdesk_channel,helpdesk.group_helpdesk_user,1,0,0,0
+access_helpdesk_analyst_user,helpdesk.analyst.user,model_helpdesk_analyst_user,helpdesk.group_helpdesk_user,1,0,0,0
+access_helpdesk_substage,helpdesk.substage,model_helpdesk_substage,helpdesk.group_helpdesk_user,1,0,0,0
+access_helpdesk_causal,helpdesk.causal,model_helpdesk_causal,helpdesk.group_helpdesk_user,1,0,0,0
+access_helpdesk_failure,helpdesk.failure,model_helpdesk_failure,helpdesk.group_helpdesk_user,1,0,0,0
+access_helpdesk_service_type_manager,helpdesk.service.type.manager,model_helpdesk_service_type,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_channel_manager,helpdesk.channel.manager,model_helpdesk_channel,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_analyst_user_manager,helpdesk.analyst.user.manager,model_helpdesk_analyst_user,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_substage_manager,helpdesk.substage.manager,model_helpdesk_substage,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_causal_manager,helpdesk.causal.manager,model_helpdesk_causal,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_failure_manager,helpdesk.failure.manager,model_helpdesk_failure,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_ticket_assign,helpdesk.ticket.assign,model_helpdesk_ticket,helpdesk_ticket.group_helpdesk_assign,1,1,1,1
+access_helpdesk_ticket_history,helpdesk.stage.history,model_helpdesk_stage_history,,1,1,1,0

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Application Versions  -->
+		<record id="master_application_versions_tree" model="ir.ui.view">
+			<field name="name">master.application.versions.tree</field>
+			<field name="model">application.versions</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+					<field name="brand_ids" widget="many2many_tags" domain="[('product_types.name', '=', 'POS')]" options="{'no_create': 1}"/>
+					<field name="product_ids" widget="many2many_tags" domain="[('product_type', '=', '0')]" options="{'no_create': 1}"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_application_versions_search" model="ir.ui.view">
+			<field name="name">master.application.versions.search</field>
+			<field name="model">application.versions</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_application_versions_action" model="ir.actions.act_window">
+			<field name="name">Application versions</field>
+			<field name="res_model">application.versions</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem 
+			id="master_application_versions_config"
+			name="Application version"
+			action="master_application_versions_action"
+			parent="mrp.menu_mrp_configuration"
+			sequence="16"
+		/>
+	</data>
+</odoo>

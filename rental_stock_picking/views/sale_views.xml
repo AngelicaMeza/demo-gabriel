@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="rental_order_form_view_hide_button" model="ir.ui.view">
+		<field name="name">rental.order.form.view.hide.button</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_renting.rental_order_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='open_pickup']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//button[@name='open_return']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+		</field>
+	</record>
+</odoo>

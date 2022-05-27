@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="task_type_view_form" model="ir.ui.view">
+		<field name="name">task.type.view.form</field>
+		<field name="model">fsm.task.type</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<field name="code" invisible="1"/>
+					<field name="cluster_domain" invisible="1"/>
+					<group>
+						<div class="oe_title">
+							<h1><field name="name" placeholder="Description"/></h1>
+						</div>
+					</group>
+					<group>
+						<notebook>
+							<page string="Times">
+								<field name="time_ids" nolabel="1">
+									<tree editable="bottom">
+										<field name="cluster_ids" widget="many2many_tags" domain="[('id','not in', parent.cluster_domain)]" options="{'no_create': True}"/>
+										<field name="hours" colspan="1"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="task_type_view_tree" model="ir.ui.view">
+		<field name="name">task.type.view.tree</field>
+		<field name="model">fsm.task.type</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="code"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="task_type_view_search" model="ir.ui.view">
+		<field name="name">task.type.view.search</field>
+		<field name="model">fsm.task.type</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="code"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="task_type_action" model="ir.actions.act_window">
+		<field name="name">Task Type</field>
+		<field name="res_model">fsm.task.type</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a new Task Type
+			</p>
+		</field>
+	</record>
+	
+	<menuitem
+		id="task_type_menu"
+		action="task_type_action"
+		parent="industry_fsm.fsm_menu_settings"
+		sequence="1"
+	/>
+
+</odoo>

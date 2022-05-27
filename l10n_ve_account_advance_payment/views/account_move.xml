@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="advance_journal_entry_tree" model="ir.ui.view">
+        <field name="name">advance.journal.entry.tree</field>
+        <field name="model">account.move.line</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="account.view_move_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="default_order">move_id desc</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="advance_journal_entry_action" model="ir.actions.act_window">
+        <field name="name">Advance Journal Entries</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="advance_journal_entry_tree" />
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="view_move_form_invoice_advance_payments_customer" model="ir.ui.view">
+        <field name="name">view.move.form.invoice.advance.payments.customer</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_get_advance_available" type="object" class="oe_stat_button" icon="fa-usd"
+                attrs="{'invisible': [('apply_advance_btn_visible', '=', False)]}">
+                    <span class="o_stat_text">Anticipos Disponibles</span>
+                </button>
+            </div>
+            <notebook position="inside">
+                <page name="customer_advance_payments" string="Customer Advance Payments"
+                attrs="{'invisible': [('type', 'not in', ['out_invoice', 'out_refund', 'out_receipt'])]}">
+                <group>
+                    <field name="invoice_in_foreign_currency" invisible="1"/>
+                    <field name="apply_advance_btn_visible" invisible="1"/>
+                    <field name="amount_advance_available_customer"/>
+                    <field name="amount_advance_available_invoice_customer" 
+                    attrs="{'invisible': [('invoice_in_foreign_currency', '=', False)]}"/>
+                </group>
+                <group name="applied_advances" string="Applied Advances">
+                    <field name="advance_payment_ids" nolabel="1" readonly="1">
+                        <tree>
+                            <field name="name" />
+                            <field name="ref" />
+                            <field name="date_apply" />
+                            <field name="amount_apply" />
+                            <field name="currency_id" invisible="1" />
+                            <field name="state" />
+                            <button name="get_report_payment_action" type="object" icon="fa-print" />
+                        </tree>
+                    </field>
+                </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_move_form_invoice_advance_payments_supplier" model="ir.ui.view">
+        <field name="name">view.move.form.invoice.advance.payments.supplier</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="supplier_advance_payments" string="Supplier Advance Payments"
+                attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund', 'in_receipt'])]}">
+                    <group>
+                        <field name="invoice_in_foreign_currency" invisible="1" />
+                        <field name="amount_advance_available_supplier" />
+                        <field name="amount_advance_available_invoice_supplier" 
+                        attrs="{'invisible': [('invoice_in_foreign_currency', '=', False)]}" />
+                    </group>
+                    <group name="applied_advances_supplier" string="Applied Advances">
+                        <field name="advance_payment_ids" nolabel="1" readonly="1">
+                            <tree default_order='date_apply desc'>
+                                <field name="name" />
+                                <field name="ref" />
+                                <field name="date_apply" />
+                                <field name="amount_apply" />
+                                <field name="currency_id" invisible="1" />
+                                <field name="state" />
+                                <button name="get_report_payment_action" type="object" icon="fa-print" title="Print Payment Receipt" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

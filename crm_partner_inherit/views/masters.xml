@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Regiones  -->
+		<record id="master_region_tree" model="ir.ui.view">
+			<field name="name">master.region.tree</field>
+			<field name="model">crm.region</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_region_search" model="ir.ui.view">
+			<field name="name">master.region.search</field>
+			<field name="model">crm.region</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_region_form" model="ir.ui.view">
+			<field name="name">master.region.form</field>
+			<field name="model">crm.region</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Regiones">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Región">
+							<group name="group_left" style="width:50%;">
+								<field name="name"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+								<field name="states" string="Estados" widget="many2many_tags" domain="[('country_id', '=', 238)]"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_crm_region_no_edit_view_form" model="ir.ui.view">
+			<field name="name">crm.region.edit.view.form</field>
+			<field name="model">crm.region</field>
+			<field name="arch" type="xml">
+				<form string="Region">
+					<sheet>
+						<group>
+							<field name="name" readonly="True"/>
+						</group>
+						<group>
+							<field name="states" readonly="True" widget="many2many_tags"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_region_action" model="ir.actions.act_window">
+			<field name="name">Regiones</field>
+			<field name="res_model">crm.region</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_region_config"
+			name="Regiones" action="master_region_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="11"
+			groups="crm_partner_inherit.admin_group"
+		/>
+		
+		<!-- Regiones bancarias  -->
+		<record id="master_bank_region_tree" model="ir.ui.view">
+			<field name="name">master.bank.region.tree</field>
+			<field name="model">crm.bank.region</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_bank_region_search" model="ir.ui.view">
+			<field name="name">master.bank.region.search</field>
+			<field name="model">crm.bank.region</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_bank_region_form" model="ir.ui.view">
+			<field name="name">master.bank.region.form</field>
+			<field name="model">crm.bank.region</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Regiones">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Región">
+							<group name="group_left" style="width:50%;">
+								<field name="name"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_bank_region_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.bank.region.no.edit.view.form</field>
+			<field name="model">crm.bank.region</field>
+			<field name="arch" type="xml">
+				<form string="Regiones">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Región">
+							<group name="group_left">
+								<field name="name" readonly="True"/>
+							</group>
+							<group name="group_right">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_bank_region_action" model="ir.actions.act_window">
+			<field name="name">Regiones Bancarias</field>
+			<field name="res_model">crm.bank.region</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_bank_region_config"
+			name="Regiones Bancarias" action="master_bank_region_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="11"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Territorios   -->
+		<record id="master_territory_tree" model="ir.ui.view">
+			<field name="name">master.territory.tree</field>
+			<field name="model">territory</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="territory"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_territory_search" model="ir.ui.view">
+			<field name="name">master.territory.search</field>
+			<field name="model">territory</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="territory"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_territory_form" model="ir.ui.view">
+			<field name="name">master.territory.form</field>
+			<field name="model">territory</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Territorios">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Territorio">
+							<group name="group_left" style="width:50%;">
+								<field name="territory"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_territory_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.territory.no.edit.view.form</field>
+			<field name="model">territory</field>
+			<field name="arch" type="xml">
+				<form string="Territorios">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Territorio">
+							<group name="group_left" style="width:50%;">
+								<field name="territory" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_territory_action" model="ir.actions.act_window">
+			<field name="name">Territorios</field>
+			<field name="res_model">territory</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_territory_config" 
+			name="Territorios"
+			action="master_territory_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="12"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Segmentación/Cluster   -->
+		<record id="master_cluster_tree" model="ir.ui.view">
+			<field name="name">master.cluster.tree</field>
+			<field name="model">segmentation.cluster</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="priority" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_cluster_search" model="ir.ui.view">
+			<field name="name">master.cluster.search</field>
+			<field name="model">segmentation.cluster</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<field name="priority" />
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_cluster_form" model="ir.ui.view">
+			<field name="name">master.cluster.form</field>
+			<field name="model">segmentation.cluster</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Segmentación/Cluster">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Segmentación/Cluster">
+							<group name="group_left" style="width:50%;">
+								<field name="name"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+								<field name="priority" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_cluster_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.cluster.no.edit.view.form</field>
+			<field name="model">segmentation.cluster</field>
+			<field name="arch" type="xml">
+				<form string="Segmentación/Cluster">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Segmentación/Cluster">
+							<group name="group_left" style="width:50%;">
+								<field name="name" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+								<field name="priority" readonly="True"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_cluster_action" model="ir.actions.act_window">
+			<field name="name">Segmentación/Cluster</field>
+			<field name="res_model">segmentation.cluster</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_cluster_config" 
+			name="Segmentación/Cluster"
+			action="master_cluster_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="13"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Categoria   -->
+		<record id="master_category_tree" model="ir.ui.view">
+			<field name="name">master.category.tree</field>
+			<field name="model">code.category</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="code"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_category_search" model="ir.ui.view">
+			<field name="name">master.category.search</field>
+			<field name="model">code.category</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="code"/>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_category_form" model="ir.ui.view">
+			<field name="name">master.category.form</field>
+			<field name="model">code.category</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Categoría">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Categoría comercial">
+							<group name="group_left" style="width:50%;">
+								<field name="code"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+								<field name="name"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_category_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.category.no.edit.view.form</field>
+			<field name="model">code.category</field>
+			<field name="arch" type="xml">
+				<form string="Categoría">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Categoría comercial">
+							<group name="group_left" style="width:50%;">
+								<field name="code" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+								<field name="name" readonly="True"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_category_action" model="ir.actions.act_window">
+			<field name="name">Categorías comerciales</field>
+			<field name="res_model">code.category</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_category_config" 
+			name="Categorías comerciales"
+			action="master_category_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="14"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Código Cadena   -->
+		<record id="master_chain_tree" model="ir.ui.view">
+			<field name="name">master.chain.tree</field>
+			<field name="model">code.chain</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="code"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_chain_search" model="ir.ui.view">
+			<field name="name">master.chain.search</field>
+			<field name="model">code.chain</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="code"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_chain_form" model="ir.ui.view">
+			<field name="name">master.chain.form</field>
+			<field name="model">code.chain</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Código Cadena">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Código Cadena">
+							<group name="group_left" style="width:50%;">
+								<field name="code"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_chain_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master_chain_no_edit_view_form</field>
+			<field name="model">code.chain</field>
+			<field name="arch" type="xml">
+				<form string="Código Cadena">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Código Cadena">
+							<group name="group_left" style="width:50%;">
+								<field name="code" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_chain_action" model="ir.actions.act_window">
+			<field name="name">Código Cadena</field>
+			<field name="res_model">code.chain</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_chain_config" 
+			name="Código Cadena"
+			action="master_chain_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="15"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- UBA   -->
+		<record id="master_uba_tree" model="ir.ui.view">
+			<field name="name">master.uba.tree</field>
+			<field name="model">crm.uba</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="code" width="50%"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_uba_search" model="ir.ui.view">
+			<field name="name">master.uba.search</field>
+			<field name="model">crm.uba</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="code"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_uba_form" model="ir.ui.view">
+			<field name="name">master.uba.form</field>
+			<field name="model">crm.uba</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="UBA">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="UBA">
+							<group name="group_left" style="width:50%;">
+								<field name="code"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_uba_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.uba.no.edit.view.form</field>
+			<field name="model">crm.uba</field>
+			<field name="arch" type="xml">
+				<form string="UBA">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="UBA">
+							<group name="group_left" style="width:50%;">
+								<field name="code" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_uba_action" model="ir.actions.act_window">
+			<field name="name">UBA</field>
+			<field name="res_model">crm.uba</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_uba_config" 
+			name="UBA"
+			action="master_uba_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="16"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Cartera Asociada   -->
+		<record id="master_wallet_tree" model="ir.ui.view">
+			<field name="name">master.walet.tree</field>
+			<field name="model">wallet.associate</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="wallet_associate"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_wallet_search" model="ir.ui.view">
+			<field name="name">master.walet.search</field>
+			<field name="model">wallet.associate</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="wallet_associate"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_wallet_form" model="ir.ui.view">
+			<field name="name">master.wallet.form</field>
+			<field name="model">wallet.associate</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Código de centros comerciales">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Código de centros comerciales">
+							<group name="group_left" style="width:50%;">
+								<field name="wallet_associate"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_wallet_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.wallet.no.edit.view.form</field>
+			<field name="model">wallet.associate</field>
+			<field name="arch" type="xml">
+				<form string="Código de centros comerciales">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Código de centros comerciales">
+							<group name="group_left" style="width:50%;">
+								<field name="wallet_associate" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_wallet_action" model="ir.actions.act_window">
+			<field name="name">Código de centros comerciales</field>
+			<field name="res_model">wallet.associate</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_wallet_config" 
+			name="Código de centros comerciales"
+			action="master_wallet_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="17"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Banco adquirente  -->
+		<record id="master_acquiring_bank_tree" model="ir.ui.view">
+			<field name="name">master.acquiring.bank.tree</field>
+			<field name="model">acquiring.bank</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_acquiring_bank_search" model="ir.ui.view">
+			<field name="name">master.acquiring.bank.search</field>
+			<field name="model">acquiring.bank</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_acquiring_bank_form" model="ir.ui.view">
+			<field name="name">master.acquiring.bank.form</field>
+			<field name="model">acquiring.bank</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Banco adquirente">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Banco adquirente">
+							<group name="group_left" style="width:50%;">
+								<field name="name"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_acquiring_bank_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.acquiring.bank.no.edit.view.form</field>
+			<field name="model">acquiring.bank</field>
+			<field name="arch" type="xml">
+				<form string="Banco adquirente">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Banco adquirente">
+							<group name="group_left" style="width:50%;">
+								<field name="name" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_acquiring_bank_action" model="ir.actions.act_window">
+			<field name="name">Banco adquirente</field>
+			<field name="res_model">acquiring.bank</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_acquiring_bank_config" 
+			name="Banco adquirente"
+			action="master_acquiring_bank_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="18"
+			groups="crm_partner_inherit.admin_group"
+		/>
+		
+		<!-- banca o segmento  -->
+		<record id="master_bank_segment_tree" model="ir.ui.view">
+			<field name="name">master.bank.segment.tree</field>
+			<field name="model">bank.segment</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_bank_segment_search" model="ir.ui.view">
+			<field name="name">master.bank.segment.search</field>
+			<field name="model">bank.segment</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_bank_segment_form" model="ir.ui.view">
+			<field name="name">master.bank.segment.form</field>
+			<field name="model">bank.segment</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Banca o segmento">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Banca o segmento">
+							<group name="group_left" style="width:50%;">
+								<field name="name"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_bank_segment_bank_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.bank.segment.bank.no.edit.view.form</field>
+			<field name="model">bank.segment</field>
+			<field name="arch" type="xml">
+				<form string="Banca o segmento">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Banca o segmento">
+							<group name="group_left" style="width:50%;">
+								<field name="name" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_bank_segment_action" model="ir.actions.act_window">
+			<field name="name">Banca o segmento</field>
+			<field name="res_model">bank.segment</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_bank_segment_config"
+			name="Banca o segmento"
+			action="master_bank_segment_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="19"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+		<!-- Gerencia regional bancos  -->
+		<record id="master_mgr_regional_tree" model="ir.ui.view">
+			<field name="name">master.mgr.regional.tree</field>
+			<field name="model">mgr.regional</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_mgr_regional_search" model="ir.ui.view">
+			<field name="name">master.mgr.regional.search</field>
+			<field name="model">mgr.regional</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_mgr_regional_form" model="ir.ui.view">
+			<field name="name">master.mgr.regional.form</field>
+			<field name="model">mgr.regional</field>
+			<field name="priority">15</field>
+			<field name="arch" type="xml">
+				<form string="Gerencia regional bancas">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Gerencia regional bancas">
+							<group name="group_left" style="width:50%;">
+								<field name="name"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_mgr_regional_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.mgr.regional.no.edit.view.form</field>
+			<field name="model">mgr.regional</field>
+			<field name="arch" type="xml">
+				<form string="Gerencia regional bancas">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Gerencia regional bancas">
+							<group name="group_left" style="width:50%;">
+								<field name="name" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_mgr_regional_action" model="ir.actions.act_window">
+			<field name="name">Gerencia regional bancas</field>
+			<field name="res_model">mgr.regional</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_mgr_regional_config"
+			name="Gerencia regional bancas"
+			action="master_mgr_regional_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="20"
+			groups="crm_partner_inherit.admin_group"
+		/>
+	</data>
+</odoo>

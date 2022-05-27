@@ -1,0 +1,348 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_requisition
+# 
+# Translators:
+# Martin Trigaux, 2019
+# Alejandro Santana <alejandrosantana@anubia.es>, 2019
+# Rick Hunter <rick.hunter.ec@gmail.com>, 2019
+# Cristopher Cravioto <ccr@odoo.com>, 2019
+# Mariana Santos Romo <msn@odoo.com>, 2019
+# Jon Perez <jop@odoo.com>, 2019
+# Francis Peña <francisca.e@gmx.com>, 2019
+# Pedro M. Baeza <pedro.baeza@gmail.com>, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-27 09:22+0000\n"
+"PO-Revision-Date: 2019-08-26 09:13+0000\n"
+"Last-Translator: Pedro M. Baeza <pedro.baeza@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/odoo/teams/41243/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_VE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: purchase_requisition
+#: model:ir.actions.report,print_report_name:purchase_requisition.action_report_purchase_requisitions
+msgid "'Tender - %s' % (object.name)"
+msgstr "'Requisición - %s' % (object.name)"
+
+#. module: purchase_requisition
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Call for Tender Reference:</strong><br/>"
+msgstr "<strong>Referencia de Requisición:</strong><br/>"
+
+#. module: purchase_requisition
+#: model:purchase.requisition.type,name:purchase_requisition.type_multi
+msgid "Call for Tender"
+msgstr "Convocatoria de Requisición"
+
+#. module: purchase_requisition
+#: model:ir.actions.report,name:purchase_requisition.action_report_purchase_requisitions
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "Call for Tenders"
+msgstr "Requisición"
+
+#. module: purchase_requisition
+#: model_terms:ir.actions.act_window,help:purchase_requisition.action_purchase_requisition
+msgid ""
+"In a call for tenders, you can record the products you need to buy\n"
+"            and generate the creation of RfQs to vendors. Once the tenders have\n"
+"            been registered, you can review and compare them and you can\n"
+"            validate some and cancel others."
+msgstr ""
+"En una requisición, puede incluir los productos que necesita comprar\n"
+"            and generate the creation of RfQs to vendors. Once the tenders have\n"
+"            been registered, you can review and compare them and you can\n"
+"            validate some and cancel others."
+
+#. module: purchase_requisition
+#: model:ir.model.fields.selection,name:purchase_requisition.selection__product_template__purchase_requisition__tenders
+msgid "Propose a call for tenders"
+msgstr "Proponer una requisición"
+
+#. module: purchase_requisition
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+#: model:ir.model.fields.selection,name:purchase_requisition.selection__purchase_requisition__state__in_progress
+msgid "Confirmed"
+msgstr "Pendiente de gestión"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_res_config_settings__module_purchase_requisition
+msgid "Purchase Agreements"
+msgstr "Requisición de compra"
+
+#. module: purchase
+#: model_terms:ir.ui.view,arch_db:purchase.res_config_settings_view_form_purchase
+msgid "Manage your purchase agreements (call for tenders, blanket orders)"
+msgstr ""
+"Administre sus Requisiciones de compra (convocatoria de ofertas, órdenes "
+"generales)"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_order__requisition_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line__requisition_id
+msgid "Purchase Agreement"
+msgstr "Requisiciones de compra"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,name:purchase_requisition.action_purchase_requisition
+#: model:ir.ui.menu,name:purchase_requisition.menu_purchase_requisition_pro_mgt
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_tree
+msgid "Purchase Agreements"
+msgstr "Requisiciones de compra"
+
+#. module: purchase_requisition
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Search Purchase Agreements"
+msgstr "Buscar Requisiciones de compra"
+
+#. module: purchase_requisition
+#: model_terms:ir.actions.act_window,help:purchase_requisition.action_purchase_requisition
+msgid ""
+"Example of purchase agreements include call for tenders and blanket orders."
+msgstr ""
+"Los Requisiciones de compra incluyen las licitaciones y los acuerdos marco."
+
+#. module: purchase
+#: model_terms:ir.ui.view,arch_db:purchase.purchase_order_form
+msgid "Define your terms and conditions ..."
+msgstr "Observaciones"
+
+#. module: purchase
+#: model_terms:ir.ui.view,arch_db:purchase.report_purchaseorder_document
+msgid "<strong>Purchase Representative:</strong>"
+msgstr "<strong>Representante de compra:</strong>"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order__user_id
+#: model:ir.model.fields,field_description:purchase.field_purchase_report__user_id
+#: model_terms:ir.ui.view,arch_db:purchase.purchase_order_view_search
+#: model_terms:ir.ui.view,arch_db:purchase.view_purchase_order_filter
+#: model_terms:ir.ui.view,arch_db:purchase.view_purchase_order_search
+msgid "Purchase Representative"
+msgstr "Representante de compra"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition__user_id
+#: model_terms:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Purchase Representative"
+msgstr "Responsable de atención"
+
+#. module: purchase_confirmation
+#: model:ir.model.fields,field_description:purchase_confirmation.field_purchase_order__contact_person
+msgid "Contact Person"
+msgstr "Persona de contacto Nativa"
+
+#. module: purchase_confirmation
+#: model:ir.model.fields,field_description:purchase_confirmation.field_purchase_order__contact_person_supplier
+msgid "Contact Person Supplier"
+msgstr "Perosna de contacto proveedor"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Address</span>"
+msgstr "<span>Dirección</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Applicant</span>"
+msgstr "<span>Solicitante</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Contact</span>"
+msgstr "<span>Contacto</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Date</span>"
+msgstr "<span>Fecha</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Department</span>"
+msgstr "<span>Departamento</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Phone</span>"
+msgstr "<span>Teléfono</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>Supplier</span>"
+msgstr "<span>Proveedor</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<span>VAT</span>"
+msgstr "<span>RIF</span>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong style=\"color: white\">DESCRIPTION</strong>"
+msgstr "<strong style=\"color: white\">DESCRIPCIÓN</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong style=\"color: white\">PURCHASE ORDER</strong>"
+msgstr "<strong style=\"color: white\">ORDEN DE COMPRA</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong style=\"color: white\">QUANTITY</strong>"
+msgstr "<strong style=\"color: white\">CANTIDAD</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong style=\"color: white\">UNIT PRICE</strong>"
+msgstr "<strong style=\"color: white\">PRECIO UNITARIO</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong style=\"font-size: 12px\">Supplier Data</strong>"
+msgstr "<strong style=\"font-size: 12px\">DATOS DEL PROVEEDOR</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong>DELIVERY DATE</strong>"
+msgstr "<strong>FECHA DE ENTREGA</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong>IMPORTANT PURCHASING REMARKS</strong>"
+msgstr "<strong>OBSERVACIONES IMPORTANTES SOBRE COMPRA</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong>PAYMENT TERM</strong>"
+msgstr "<strong>PLAZO DE PAGO</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong>SHIPPING / BILLING INSTRUCTIONS</strong>"
+msgstr "<strong>INSTRUCCIONES DE DESPACHO / FACTURACIÓN</strong>"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "<strong>TAX</strong>"
+msgstr "<strong>IMPUESTO</strong>"
+
+#. module: purchase_confirmation
+#: model:ir.model.fields,field_description:purchase_confirmation.field_purchase_requisition__supervisor_approved
+msgid "Supervisor Approved"
+msgstr "Aprobado por el supervisor"
+
+#. module: purchase_confirmation
+#: model:ir.model.fields,field_description:purchase_confirmation.field_purchase_requisition__supervisor_approved_date
+msgid "Supervisor Approved Date"
+msgstr "Fecha de aprobacion"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.report_purchaseorder_document_custom
+msgid "Approved by:"
+msgstr "Aprobado por:"
+
+#. module: purchase_confirmation
+#: model:res.groups,comment:purchase_confirmation.group_purchase_finance_vp_approval
+msgid ""
+"the user will have an access to the purchase department finance vp button."
+msgstr ""
+"Este usuario va a tener acceso al botón de aprobación de VP de finanzas en los presupuestos de compra."
+
+#. module: purchase_confirmation
+#: model:res.groups,comment:purchase_confirmation.group_purchase_department_supervisor_approval
+msgid ""
+"the user will have an access to the purchase department supervisor approval "
+"button."
+msgstr ""
+"Este usuario va a tener acceso los botónes de aprobación de supervisor en los presupuestos y requisiciones de"
+"compra."
+
+#. module: purchase_confirmation
+#: model:res.groups,name:purchase_confirmation.group_purchase_department_supervisor_approval
+msgid "purchase department supervisor approval"
+msgstr "Aprobación de Supervisor/Gerente de Área"
+
+#. module: purchase_confirmation
+#: model:res.groups,name:purchase_confirmation.group_purchase_finance_vp_approval
+msgid "purchase finance vp approval"
+msgstr "Aprobación de VP de finanzas"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.message_group_assigned
+msgid "You have been assigned to the"
+msgstr "Has sido asignado al"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.message_group_assigned
+msgid "Dear"
+msgstr "Estimado/a"
+
+#. module: purchase_confirmation
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.message_group_assigned
+msgid "View"
+msgstr "Ver"
+
+#. module: purchase_confirmation
+#: model:res.groups,comment:purchase_confirmation.group_purchase_secondary_approver_quotation
+msgid ""
+"the user will have an access to the purchase department supervisor approval "
+"button in quotation."
+msgstr "Este usuario va a tener acceso los botónes de aprobación de gerente de área en los presupuestos"
+"de compra"
+
+#. module: purchase_confirmation
+#: model:res.groups,comment:purchase_confirmation.group_purchase_secondary_approver_requisition
+msgid ""
+"the user will have an access to the purchase department supervisor approval "
+"button in requisitions."
+msgstr "Este usuario va a tener acceso los botónes de aprobación de supervisor del departamento en las requisiciones"
+"de compra"
+
+#. module: purchase_confirmation
+#: model:res.groups,name:purchase_confirmation.group_purchase_secondary_approver_quotation
+msgid "purchase secondary approver for quotation"
+msgstr "Autorizador secundario Gerente de Área"
+
+#. module: purchase_confirmation
+#: model:res.groups,name:purchase_confirmation.group_purchase_secondary_approver_requisition
+msgid "purchase secondary approver for requisition"
+msgstr "Autorizador secundario Supervisor"
+
+#. module: purchase_confirmation
+#: model:ir.actions.report,print_report_name:purchase_confirmation.report_purchase_quotation_bs
+msgid "'Request for Quotation bs- %s' % (object.name)"
+msgstr "'Solicitud de presupuesto Bs- %s' % (object.name)"
+
+#. module: purchase_confirmation
+#: model:ir.actions.report,name:purchase_confirmation.report_purchase_quotation_bs
+msgid "Request for Quotation bs"
+msgstr "Solicitud de presupuesto Bs"
+
+#. module: purchase_confirmation
+#: model:res.groups,name:purchase_confirmation.group_purchase_secondary_finance_vp_approval
+msgid "purchase secondary finance vp approval"
+msgstr "Aprobador secundario etapa aprobación Vp de finanzas"
+
+#. module: purchase_confirmation
+#: model:res.groups,name:purchase_confirmation.group_purchase_create_button
+msgid "purchase create button"
+msgstr "Bóton de crear en compra"
+
+#. module: purchase_confirmation
+#: model:ir.model.fields,field_description:purchase_confirmation.field_purchase_requisition__hr_supervisor
+msgid "Department supervisor"
+msgstr "Supervisor de departamento"
+
+#. module: purchase_confirmation
+#: model:ir.model.fields,field_description:purchase_confirmation.field_purchase_requisition__hr_department_id
+#: model_terms:ir.ui.view,arch_db:purchase_confirmation.view_purchase_requisition_form_confirm
+msgid "Department"
+msgstr "Departamento" 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="template_wh_islr" name="islr_retention_customization" inherit_id="l10n_ve_withholding_islr.template_wh_islr">
+        <xpath expr="//div[@class='article']//br[1]" position="replace"></xpath>
+
+        <xpath expr="//div/t[@t-foreach='data']/div[1]/t[1]/table[1]" position="replace">
+            <table border="1" style="width:100%;margin-top:30px;">
+                <tr>
+                    <td style="width:50%;text-align:center;padding:0px;margin:0px;">
+                        <img class="img Firma_YG" src="/account_customization/static/src/img/Sello_Nativa-PhotoRoom.png" style="height:120px; margin-bottom:1px;" />
+                        <img class="img Firma_YG" src="/account_customization/static/src/img/Firma_Nativa-PhotoRoom.png" style="height:120px; margin-bottom:1px;" />
+                        <hr/>
+                        <b><span t-esc="d.company_id.partner_id.name"/></b>
+                        <br/>
+                        <b>Firma Sello</b>
+                    </td>
+                    <td style="width:50%;text-align:center;padding:0px;margin:0px;">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <hr/>
+                        <b><span t-esc="d.partner_id.name"/></b>
+                        <br/>
+                        <b>Firma Sello</b>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="model_access_crm_negotiation" model="ir.model.access">
+            <field name="name">model.access.crm.negotiation</field>
+            <field name="model_id" ref="crm_lead_form.model_crm_negotiation"/>
+            <!-- <field name="group_id" ref="base.group_system"/> -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <record id="model_access_crm_point_sale" model="ir.model.access">
+            <field name="name">model.access.crm.point.sale</field>
+            <field name="model_id" ref="crm_lead_form.model_crm_point_sale"/>
+            <!-- <field name="group_id" ref="base.group_system"/> -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <record id="model_access_crm_company_pos" model="ir.model.access">
+            <field name="name">model.access.crm.company.pos</field>
+            <field name="model_id" ref="crm_lead_form.model_crm_company_pos"/>
+            <!-- <field name="group_id" ref="base.group_system"/> -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <record id="model_access_kind_attention" model="ir.model.access">
+            <field name="name">model.access.event.name</field>
+            <field name="model_id" ref="crm_lead_form.model_event_name"/>
+            <!-- <field name="group_id" ref="base.group_system"/> -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <record id="model_access_crm_origin" model="ir.model.access">
+            <field name="name">model.access.crm.origin</field>
+            <field name="model_id" ref="crm_lead_form.model_crm_origin"/>
+            <!-- <field name="group_id" ref="base.group_system"/> -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    </data>
+</odoo>

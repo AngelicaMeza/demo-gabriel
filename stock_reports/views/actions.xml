@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_serial_xlsx_report" model="ir.actions.act_window">
+        <field name="name">Reporte de seriales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.lot.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="stock_lot_report_view_form"/>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+        <field name="help">Esta acción afectara a todos los seriales seleccionados.</field>
+        <field name="binding_model_id" ref="stock.model_stock_production_lot" />
+        <field name="binding_view_types">list</field>
+    </record>
+
+    <menuitem
+        id="serial_reports_menu"
+        name="Reporte de seriales"
+        action="action_serial_xlsx_report"
+        parent="stock.menu_warehouse_report"
+        sequence="10"/>
+    
+    <report
+        id="serial_report_xlsx"
+        model="stock.production.lot"
+        string="Reporte de seriales"
+        report_type="xlsx"
+        name="stock_reports.serial_report"
+        file="Reporte de seriales"
+    />
+
+</odoo>

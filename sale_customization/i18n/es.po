@@ -1,0 +1,485 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sale
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-18 14:06+0000\n"
+"PO-Revision-Date: 2016-05-15 18:50+0000\n"
+"Last-Translator: Martin Trigaux\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/odoo/odoo-9/"
+"language/es_VE/)\n"
+"Language: es_VE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
+msgid "<strong class=\"text-muted\">Salesperson</strong>"
+msgstr "<strong class=\"text-muted\">Ejecutivo cartera</strong>"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
+msgid "<strong>Salesperson:</strong>"
+msgstr "<strong>Ejecutivo cartera:</strong>"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_report_all_channels_sales__user_id
+#: model:ir.model.fields,field_description:sale.field_sale_order__user_id
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__salesman_id
+#: model:ir.model.fields,field_description:sale.field_sale_report__user_id
+#: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
+#: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
+#: model_terms:ir.ui.view,arch_db:sale.view_sales_order_line_filter
+msgid "Salesperson"
+msgstr "Ejecutivo cartera"
+
+#. module: sale
+#: model_terms:ir.actions.act_window,help:sale.action_order_report_all
+msgid ""
+"This report performs analysis on your quotations and sales orders. Analysis "
+"check your sales revenues and sort it by different group criteria (salesman,"
+" partner, product, etc.) Use this report to perform analysis on sales not "
+"having invoiced yet. If you want to analyse your turnover, you should use "
+"the Invoice Analysis report in the Accounting application."
+msgstr ""
+"Este informe realiza un análisis de sus presupuestos y pedidos de venta. El "
+"análisis verifica los ingresos de sus ventas y las ordena por diferentes "
+"grupos de criterios (Ejecutivo cartera, contacto, producto, etc.). Utilice este "
+"informe para realizar un análisis sobre sus ventas todavía no facturadas. Si"
+" desea analizar sus ingresos, debería utilizar el informe de análisis de "
+"facturas en la aplicación de Contabilidad."
+
+#. module: sale
+#: model_terms:ir.actions.act_window,help:sale.action_order_report_quotation_salesteam
+msgid ""
+"This report performs analysis on your quotations. Analysis check your sales "
+"revenues and sort it by different group criteria (salesman, partner, "
+"product, etc.) Use this report to perform analysis on sales not having "
+"invoiced yet. If you want to analyse your turnover, you should use the "
+"Invoice Analysis report in the Accounting application."
+msgstr ""
+"Este informe realiza un análisis sobre sus presupuestos. El análisis "
+"comprueba sus ingresos por ventas y los ordena por diferentes criterios de "
+"agrupación (Ejecutivo cartera, contacto, producto, etc). Use este informe para "
+"realizar un análisis de las ventas aún no facturadas. Si quiere analizar su "
+"volumen de negocios, debe usar el informe de análisis de facturas en la "
+"aplicación de Contabilidad"
+
+#. module: sale
+#: model_terms:ir.actions.act_window,help:sale.action_order_report_so_salesteam
+msgid ""
+"This report performs analysis on your sales orders. Analysis check your "
+"sales revenues and sort it by different group criteria (salesman, partner, "
+"product, etc.) Use this report to perform analysis on sales not having "
+"invoiced yet. If you want to analyse your turnover, you should use the "
+"Invoice Analysis report in the Accounting application."
+msgstr ""
+"Este informe realiza el análisis de sus pedidos de venta. El análisis "
+"comprueba su ingresos por ventas y los ordena por diferentes criterios de "
+"agrupación (Ejecutivo cartera, cliente, producto, etc). Use este informe para "
+"analizar las ventas que aún no han sido facturadas. Si lo que quiere "
+"analizar es su volumen de negocios, debería usar el informe de análisis de "
+"facturas en la aplicación de Contabilidad."
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_order__bank_ids
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_order__city
+#: model_terms:ir.ui.view,arch_db:sale_customization.view_order_form_inherit
+msgid "City"
+msgstr "Ciudad"
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_order__country_id
+#: model_terms:ir.ui.view,arch_db:sale_customization.view_order_form_inherit
+msgid "Country"
+msgstr "país"
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_event__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_event__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sale_customization
+#: model:ir.model,name:sale_customization.model_sale_event
+msgid "Event"
+msgstr "Evento"
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_order__state_id
+#: model_terms:ir.ui.view,arch_db:sale_customization.view_order_form_inherit
+msgid "State"
+msgstr "Estado"
+
+#. module: sale_customization
+#: model:ir.model.fields,field_description:sale_customization.field_sale_order__street
+msgid "Street"
+msgstr "Calle"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.view_order_form_inherit
+msgid "Street 2..."
+msgstr "Calle 2"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>Comercial denomination: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Denominación comercial: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>Email: </strong>"
+msgstr ""
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>Phone: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Teléfono: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>RIF: </strong>"
+msgstr ""
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>Region: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Región: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>Regional manager: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Gerente regional: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<br/>\n"
+"                        <strong>legal representative's first name and last name: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Nombre y apellido del resentante legal: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong style=\"font-size: 13px; \">Model</strong>"
+msgstr "<strong style=\"font-size: 13px; \">Modelo</strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong style=\"font-size: 13px; \">Quantity</strong>"
+msgstr "<strong style=\"font-size: 13px; \">Cantidad</strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong style=\"font-size: 13px; \">Total</strong>"
+msgstr "<strong style=\"font-size: 13px; \">Total</strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong style=\"font-size: 13px; \">Unit Price</strong>"
+msgstr "<strong style=\"font-size: 13px; \">Precio unitario</strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong style=\"font-size: 13px;\">COD Producto</strong>"
+msgstr "<strong style=\"font-size: 13px;\">COD Producto</strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong style=\"font-size: 14px;\">Partner's data</strong><br/>"
+msgstr "<strong style=\"font-size: 14px;\">Datos del cliente</strong><br/>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong>Account number: </strong>"
+msgstr "<strong>Número de cuenta: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong>Affiliated number: </strong>"
+msgstr "<strong>Número de afiliación: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid ""
+"<strong>Form of payment: </strong><br/>\n"
+"                    <strong>Notes: </strong>"
+msgstr ""
+"<strong>Forma de pago: </strong><br/>\n"
+"                    <strong>Notas: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong>Operator: </strong>"
+msgstr "<strong>Operadora: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "<strong>Portfolio advisor: </strong>"
+msgstr "<strong>Ejecutivo Cartera: </strong>"
+
+#. module: sale_customization
+#: model:res.groups,name:sale_customization.group_sale_finance_approval
+msgid "sales finance approval"
+msgstr "Aprobación de Finanzas en Ventas"
+
+#. module: sale_customization
+#: model:res.groups,name:sale_customization.group_sale_regional_manager_approval
+msgid "sales regional manager approval"
+msgstr "Aprobación de Gerente Regional"
+
+#. module: sale_customization
+#: model:res.groups,comment:sale_customization.group_sale_finance_approval
+msgid "the user will have an access to the sales finance approval button."
+msgstr "Este usuario va a tener acceso al botón de aprobación de finanzas en los presupuestos de venta"
+
+#. module: sale_customization
+#: model:res.groups,comment:sale_customization.group_sale_regional_manager_approval
+msgid ""
+"the user will have an access to the sales regional manager approval button."
+msgstr ""
+"Este usuario va a tener acceso al botón de aprobación de gerente regional en los presupuestos de venta"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom
+#: model_terms:ir.ui.view,arch_db:sale_customization.report_saleorder_document_custom_bs
+msgid "Approved by:"
+msgstr "Aprobado por"
+
+#. module: sale_customization
+#: model:ir.actions.report,name:sale_customization.action_report_saleorder_bs
+msgid "Quotation / Order Bs"
+msgstr "Presupuesto / Pedido en Bs"
+
+#. module: sale_customization
+#: model:ir.actions.report,print_report_name:sale_customization.action_report_saleorder_bs
+msgid ""
+"(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or "
+"'Order - %s' % (object.name)"
+msgstr ""
+"(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or "
+"'Pedido - %s' % (object.name)"
+
+#. module: sale_customization
+#: code:addons/sale_customization/models/sale_inherit.py:0
+#, python-format
+msgid "Approval of %s "
+msgstr "Aprobación de %s "
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_approval
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_assigned
+msgid "Dear"
+msgstr "Estimado"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_approval
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_assigned
+msgid "View"
+msgstr "ver"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_assigned
+msgid "You have been assigned to the"
+msgstr "Has sido asignado al"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_approval
+msgid "is awaiting approval."
+msgstr "Esta esperando aprobación."
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.message_sale_approval
+msgid "The"
+msgstr "El"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid ""
+"<br/>\n"
+"                    <strong>Comercial denomination: </strong>"
+msgstr ""
+"<br/>\n"
+"                    <strong>Denominación comercial: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid ""
+"<br/>\n"
+"                    <strong>Phone: </strong>"
+msgstr ""
+"<br/>\n"
+"                    <strong>Teléfono: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid ""
+"<br/>\n"
+"                    <strong>Region: </strong>"
+msgstr ""
+"<br/>\n"
+"                    <strong>Región: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid ""
+"<br/>\n"
+"                    <strong>Regional manager: </strong>"
+msgstr ""
+"<br/>\n"
+"                    <strong>Gerente regional: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid ""
+"<br/>\n"
+"                    <strong>legal representative's first name and last name: </strong>"
+msgstr ""
+"<br/>\n"
+"                    <strong>Nombre y apellido del representante legal: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid "<strong>Address: </strong>"
+msgstr "<strong>Dirección: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid ""
+"<strong>Form of payment: </strong><br/>\n"
+"                        <strong>Notes: </strong>"
+msgstr ""
+"<strong>Forma de pago: </strong><br/>\n"
+"                        <strong>Notas: </strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid "Expiration date:"
+msgstr "Fecha de Expiración:"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid "Order date:"
+msgstr "Fecha de presupuesto:"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.portal_sale_order_inherit
+msgid "SALE ORDER"
+msgstr "PEDIDO DE VENTA"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.sale_order_portal_content_inherit_sale_stock_inherit_sale_customization
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.sale_order_portal_content_inherit_sale_stock_inherit_sale_customization
+msgid "<strong>Delivery Orders</strong>"
+msgstr "<strong>Ordenes de entrega</strong>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.sale_order_portal_content_inherit_sale_stock_inherit_sale_customization
+msgid "<i class=\"fa fa-fw fa-clock-o\"/> <b>Preparation</b>"
+msgstr "<i class=\"fa fa-fw fa-clock-o\"/> <b>En preparación</b>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.sale_order_portal_content_inherit_sale_stock_inherit_sale_customization
+msgid "<i class=\"fa fa-fw fa-times\"/> <b>Cancelled</b>"
+msgstr "<i class=\"fa fa-fw fa-times\"/> <b>Cancelado</b>"
+
+#. module: sale_customization
+#: model_terms:ir.ui.view,arch_db:sale_customization.sale_order_portal_content_inherit_sale_stock_inherit_sale_customization
+msgid "<i class=\"fa fa-fw fa-truck\"/> <b>Shipped</b>"
+msgstr "<i class=\"fa fa-fw fa-truck\"/> <b>Enviado</b>"
+
+#. module: sale_customization
+#: model:res.groups,name:sale_customization.group_sale_button_create
+msgid "sales button create"
+msgstr "Bóton de create en ventas"
+
+#. module: sale_customization
+#: model:res.groups,name:sale_customization.group_sale_secundary_approver
+msgid "sales secundary approver"
+msgstr "Autorizador secundario etapa aprobacion de Gerente Regional"
+
+
+#. module: sale_customization
+#: model:res.groups,name:sale_customization.group_sale_finance_approval_notification
+msgid "finance approval notification"
+msgstr "Notificación para Aprobación de Finanzas"
+
+#. module: sale_customization
+#: code:addons/sale_customization/models/sale_inherit.py:0
+#: code:addons/sale_customization/models/sale_inherit.py:0
+#, python-format
+msgid "You cannot assign sales quotes to opportunities with submitted quotes."
+msgstr "No se pueden asignar presupuestos de ventas a oportunidades con presupuestos enviados"
+
+#. module: sale_customization
+#: code:addons/sale_customization/models/sale_inherit.py:0
+#, python-format
+msgid "No opportunity was found that matches the source document provided."
+msgstr "No se encontró oportunidad que concuerde con el documento de origen proporcionado"

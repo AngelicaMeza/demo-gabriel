@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Tipo de negociacion  -->
+		<record id="master_crm_negotiation_tree" model="ir.ui.view">
+			<field name="name">master.crm.negotiation.tree</field>
+			<field name="model">crm.negotiation</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_crm_negotiation_search" model="ir.ui.view">
+			<field name="name">master.crm.negotiation.search</field>
+			<field name="model">crm.negotiation</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_crm_negotiation_action" model="ir.actions.act_window">
+			<field name="name">Tipo de negociación</field>
+			<field name="res_model">crm.negotiation</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem
+			id="master_crm_negotiation_config"
+			name="Tipo de negociación"
+			action="master_crm_negotiation_action"
+			parent="crm.crm_menu_config"
+			sequence="16"
+		/>
+
+		<!-- Tipo de comunicación  -->
+		<record id="master_crm_point_sale_tree" model="ir.ui.view">
+			<field name="name">master.crm.point.sale.tree</field>
+			<field name="model">crm.point.sale</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+					<field name="type_code" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_crm_point_sale_search" model="ir.ui.view">
+			<field name="name">master.crm.point.sale.search</field>
+			<field name="model">crm.point.sale</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_crm_point_sale_action" model="ir.actions.act_window">
+			<field name="name">Tipo de comunicación</field>
+			<field name="res_model">crm.point.sale</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem 
+			id="master_crm_point_sale_config"
+			name="Tipo de comunicación"
+			action="master_crm_point_sale_action"
+			parent="crm.crm_menu_config"
+			sequence="17"
+		/>
+		<menuitem 
+			id="master_crm_point_sale_config_purchase"
+			name="Tipo de comunicación"
+			action="master_crm_point_sale_action"
+			parent="purchase.menu_product_in_config_purchase"
+			sequence="17"
+		/>
+
+		<!-- Compania que requiere punto de venta  -->
+		<record id="master_crm_company_pos_tree" model="ir.ui.view">
+			<field name="name">master.crm.company.pos.tree</field>
+			<field name="model">crm.company.pos</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+					<field name="code"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_crm_company_pos_search" model="ir.ui.view">
+			<field name="name">master.crm.company.pos.search</field>
+			<field name="model">crm.company.pos</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_crm_company_pos_action" model="ir.actions.act_window">
+			<field name="name">Operadora Telefónica</field>
+			<field name="res_model">crm.company.pos</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<!-- <menuitem id="master_crm_company_pos_config"
+					name="Operadora Telefónica"
+					action="master_crm_company_pos_action"
+					parent="crm.crm_menu_config"
+					sequence="18"/> -->
+
+		<menuitem
+			id="menu_master_crm_company_pos_config_purchase"
+			parent="purchase.menu_product_in_config_purchase"
+			action="master_crm_company_pos_action"
+			sequence="1"
+		/>
+		<!-- <menuitem
+			id="menu_master_crm_company_pos_config_stock"
+			parent="stock.menu_product_in_config_stock"
+			action="master_crm_company_pos_action"
+			sequence="1"
+		/> -->
+
+		<!-- evento -->
+		<record id="master_events_tree" model="ir.ui.view">
+			<field name="name">master.events.tree</field>
+			<field name="model">event.name</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_events_search" model="ir.ui.view">
+			<field name="name">master.events.search</field>
+			<field name="model">event.name</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_events_action" model="ir.actions.act_window">
+			<field name="name">Eventos</field>
+			<field name="res_model">event.name</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem id="master_events_config"
+					name="Eventos"
+					action="master_events_action"
+					parent="crm.crm_menu_config"
+					sequence="21"/>
+
+		<!-- Origen -->
+		<record id="master_crm_origin_tree" model="ir.ui.view">
+			<field name="name">master.crm.origin.tree</field>
+			<field name="model">crm.origin</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_crm_origin_search" model="ir.ui.view">
+			<field name="name">master.crm.origin.search</field>
+			<field name="model">crm.origin</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_crm_origin_action" model="ir.actions.act_window">
+			<field name="name">Origen</field>
+			<field name="res_model">crm.origin</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem id="master_crm_origin_config"
+					name="Origen"
+					action="master_crm_origin_action"
+					parent="crm.crm_menu_config"
+					sequence="22"/>
+
+	</data>
+</odoo>

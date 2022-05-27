@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="asset_amortization_form">
+        <field name="name">wizard.asset.amortization.form</field>
+        <field name="model">account.asset.amortization</field>
+        <field name="arch" type="xml">
+            <form string="calculate amortization">
+                <p>This will calculate amortization for all selected active</p>
+                <footer>
+                    <button name="do_action" string="Calculate amortization" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

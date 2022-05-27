@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="asset_validate_form">
+        <field name="name">wizard.asset.validate.form</field>
+        <field name="model">account.asset.validate</field>
+        <field name="arch" type="xml">
+            <form string="Validate actives">
+                <p>This will validate all selected active</p>
+                <footer>
+                    <button name="do_action" string="Validate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

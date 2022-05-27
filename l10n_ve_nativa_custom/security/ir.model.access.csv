@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fiscal_book_manual_iva,fiscal.book.manual_iva,l10n_ve_fiscal_book.model_fiscal_book_manual_iva,l10n_ve_location_group.group_localizacion,1,1,1,1
+

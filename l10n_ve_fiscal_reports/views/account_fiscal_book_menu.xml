@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="sale_fiscal_book_action_report" model="ir.actions.client">
+		<field name="name">Sale Fiscal Book</field>
+		<field name="tag">account_report</field>
+		<field name="context" eval="{'model': 'sale.fiscal.book'}" />
+	</record>
+	
+	<record id="purchase_fiscal_book_action_report" model="ir.actions.client">
+		<field name="name">Purchase Fiscal Book</field>
+		<field name="tag">account_report</field>
+		<field name="context" eval="{'model': 'purchase.fiscal.book'}" />
+	</record>
+	<menuitem id="menu_fr_main_2" name="Informes Fiscales" parent="account.menu_finance_reports" />
+	<!-- Account Financial Report Menuitems -->
+	<menuitem id="menu_sale_fiscal_book_action_report" name="Sale Fiscal Book" action="sale_fiscal_book_action_report" parent="menu_fr_main_2"/>
+	<menuitem id="menu_purchase_fiscal_book_action_report" name="Purchase Fiscal Book" action="purchase_fiscal_book_action_report" parent="menu_fr_main_2"/>
+
+
+</odoo>

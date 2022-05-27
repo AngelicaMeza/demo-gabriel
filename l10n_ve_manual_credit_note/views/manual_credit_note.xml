@@ -1,0 +1,15 @@
+<odoo>
+
+  <record id="manual_debit_note_form_view" model="ir.ui.view">
+    <field name="name">manual.debit.note.form.view</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="arch" type="xml">
+      <group id="header_left_group" position="inside">
+        <field name="credit_note_date" attrs="{'invisible': ['|',['reversed_entry_id','!=',False],['type','not in',['out_refund','in_refund']]], 'required': ['&amp;',['reversed_entry_id','=',False],['type','in',['out_refund','in_refund']]]}"/>
+        <field name="credit_note_number" attrs="{'invisible': ['|',['reversed_entry_id','!=',False],['type','not in',['out_refund','in_refund']]], 'required': ['&amp;',['reversed_entry_id','=',False],['type','in',['out_refund','in_refund']]]}"/>
+      </group>
+    </field>
+  </record>
+
+</odoo>

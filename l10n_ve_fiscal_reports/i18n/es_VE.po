@@ -1,0 +1,388 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_ve_fiscal_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20211105\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-24 20:05+0000\n"
+"PO-Revision-Date: 2022-02-24 20:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields,field_description:l10n_ve_fiscal_reports.field_account_move__exclude_from_fiscal_book
+msgid "Exclude from fiscal book"
+msgstr "Excluir de libro fiscal"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields.selection,name:l10n_ve_fiscal_reports.selection__account_tax__tax_type__exempt
+msgid "Exempt"
+msgstr "Exento"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields.selection,name:l10n_ve_fiscal_reports.selection__account_tax__tax_type__untaxed
+msgid "Not subject to taxation"
+msgstr "Sin derecho a débito/crédito fiscal"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields.selection,name:l10n_ve_fiscal_reports.selection__account_tax__tax_type__general
+msgid "General tax"
+msgstr "Alícuota general"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields.selection,name:l10n_ve_fiscal_reports.selection__account_tax__tax_type__reduced
+msgid "Reduced tax"
+msgstr "Alícuota reducida"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields.selection,name:l10n_ve_fiscal_reports.selection__account_tax__tax_type__additional
+msgid "Additional tax"
+msgstr "Alícuota adicional"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields,help:l10n_ve_fiscal_reports.field_account_tax__tax_type
+msgid "Allows to identify the tax type for fiscal reports."
+msgstr "Permite identificar el tipo de alícuota para los reportes fiscales."
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.actions.client,name:l10n_ve_fiscal_reports.sale_fiscal_book_action_report
+#: model:ir.model,name:l10n_ve_fiscal_reports.model_sale_fiscal_book
+#: model:ir.ui.menu,name:l10n_ve_fiscal_reports.menu_sale_fiscal_book_action_report
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Sale Fiscal Book"
+msgstr "Libro Fiscal de Ventas"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.actions.client,name:l10n_ve_fiscal_reports.purchase_fiscal_book_action_report
+#: model:ir.model,name:l10n_ve_fiscal_reports.model_purchase_fiscal_book
+#: model:ir.ui.menu,name:l10n_ve_fiscal_reports.menu_purchase_fiscal_book_action_report
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Purchase Fiscal Book"
+msgstr "Libro Fiscal de Compras"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model.fields,field_description:l10n_ve_fiscal_reports.field_account_tax__tax_type
+msgid "Tax type"
+msgstr "Tipo de alícuota"
+
+#. module: l10n_ve_fiscal_reports
+#: model:ir.model,name:l10n_ve_fiscal_reports.model_account_fiscal_book
+msgid "Venezuelan Fiscal Books"
+msgstr "Libros Fiscales Venezolanos"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "National or Import Sales"
+msgstr "Ventas Internas ó Exportación Gravadas"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Withholding IVA Sales"
+msgstr "Retenciones IVA Clientes"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "National Purchases"
+msgstr "Compras Internas"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Import Purchases"
+msgstr "Compras de Importaciones"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Withholding IVA Purchases"
+msgstr "Retenciones IVA Proveedores"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Item"
+msgstr "Nro. Operación"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Date"
+msgstr "Fecha Emisión Documento"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Vat"
+msgstr "Nro. de RIF"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Partner name"
+msgstr "Nombre o Razón Social"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Person type"
+msgstr "Tipo Persona"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Control number"
+msgstr "Nro. de Control"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Invoice number"
+msgstr "Nro. de Factura"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Credit note"
+msgstr "Nro. Nota de Crédito"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Debit note"
+msgstr "Nro. Nota de Débito"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Affected invoice"
+msgstr "Nro. Factura Afectada"
+
+#. module: l10n_ve_purchase_import
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Import template number"
+msgstr "N° de Planilla de Importación"
+
+#. module: l10n_ve_purchase_import
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+msgid "Import file number"
+msgstr "N° de Expediente de Importación"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Transaction type"
+msgstr "Tipo de Transacción"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Amount total"
+msgstr "Total Incluyendo IVA"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Exempt"
+msgstr "Exentas o No Gravadas"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Not subject to taxation"
+msgstr "Exoneradas o Sin derecho a crédito Fiscal"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Base general tax"
+msgstr "Base Imponible Alícuota General"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Percent general tax"
+msgstr "% Alícuota General"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Balance general tax"
+msgstr "Impuesto (I.V.A) Alícuota General"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Base reduced tax"
+msgstr "Base Imponible Alícuota Reducida"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Percent reduced tax"
+msgstr "% Alícuota Reducida"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Balance reduced tax"
+msgstr "Impuesto (I.V.A) Alícuota Reducida"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Base additional tax"
+msgstr "Base Imponible Alícuota Adicional"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Percent additional tax"
+msgstr "% Alícuota Adicional"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Balance additional tax"
+msgstr "Impuesto (I.V.A) Alícuota Adicional"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Receipt number"
+msgstr "Nro. de Comprobante"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Withholding amount"
+msgstr "IVA Retenido"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Withholding rate"
+msgstr "% de Retención"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Withholding date"
+msgstr "Fecha del Comprobante"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Totals"
+msgstr "Totales"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "RESUME %s"
+msgstr "RESUMEN %s"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "BASE"
+msgstr "BASE IMPONIBLE"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "TAX %s"
+msgstr "%s FISCAL"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume exempt %s"
+msgstr "%s Internas Exentas ó No Gravadas"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume untaxed %s"
+msgstr "%s Internas Exoneradas o Sin derecho a credito Fiscal"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume general %s"
+msgstr "%s Internas gravadas por Alicuota General"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume reduced %s"
+msgstr "%s Internas gravadas por Alicuota Reducida"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume additional %s"
+msgstr "%s Internas gravadas por Alicuota General mas Alicuota Adicional"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume import general"
+msgstr "Importaciones gravadas Alícuota General"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume import reduced"
+msgstr "Importaciones gravadas por Alicuota Reducida"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume import additional"
+msgstr "Importaciones gravadas por Alícuota General mas Adicional"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Total %s and tax %s"
+msgstr "Total %s y %s Fiscales"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume total"
+msgstr "Totales"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "Resume withholdin IVA"
+msgstr "Total IVA Retenido"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "credit"
+msgstr "Crédito"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "debit"
+msgstr "Débito"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "purchases"
+msgstr "Compras"
+
+#. module: l10n_ve_fiscal_reports
+#: code:addons/l10n_ve_fiscal_reports/models/account_fiscal_book.py:0
+#, python-format
+msgid "sales"
+msgstr "Ventas"

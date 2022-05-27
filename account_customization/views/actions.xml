@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_compute_amount_move" model="ir.actions.act_window">
+        <field name="name">Calcular montos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.compute.amounts.action</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="account_compute_amount_wizard"/>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+        <field name="help">Este wizard va a calcular los mosntos de las facturas seleccionadas</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_advance_fields_form" model="ir.ui.view">
+        <field name="name">res.partner.advance.fields.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form" />
+        <field name="arch" type="xml">
+          <xpath expr="//group[@name='accounting_entries']" position="inside">
+              <group colspan="4" name="account_advance_fields" string="Advance Payments">
+                  <field name="journal_advance_sales_id" />
+                  <field name="journal_advance_purchases_id" />
+                  <field name="account_advance_sales_id" />
+                  <field name="account_advance_purchases_id" />
+              </group>
+          </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_advance_available_form" model="ir.ui.view">
+        <field name="name">res.partner.advance.available.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+          <div name="button_box" position="inside">
+              <button name="open_move_lines_advance_customer" type="object" class="oe_stat_button" icon="fa-usd"
+              title="Advance Customer Available">
+                  <div class="o_form_field o_stat_info">
+                      <span class="o_stat_value">
+                          <field name="customer_advance_available" widget="statinfo"/>
+                      </span>
+                      <span class="o_stat_text">Customer Advance Payment</span>
+                  </div>
+              </button>
+              <button name="open_move_lines_advance_supplier" type="object" class="oe_stat_button" icon="fa-shopping-cart"
+               title="Advance Supplier Available">
+                <div class="o_form_field o_stat_info">
+                    <span class="o_stat_value">
+                        <field name="supplier_advance_available" widget="statinfo"/>
+                    </span>
+                    <span class="o_stat_text">Supplier Advance Payment</span>
+                </div>
+            </button>
+          </div>
+        </field>
+    </record>
+
+</odoo>

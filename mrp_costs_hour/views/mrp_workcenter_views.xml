@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="mrp_workcenter_view_costs_hour" model="ir.ui.view">
+		<field name="name">mrp.workcenter.view.costs_hour</field>
+		<field name="model">mrp.workcenter</field>
+		<field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='costs_hour']" position="replace">
+				<label for="currency_id" string="Cost hour" class="oe_inline"/>
+				<div name="costs_hour" class="o_row">
+					<field name="currency_id" options="{'no_create': 1, 'no_open': 1}"/>
+					<field name="costs_hour"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+</odoo>

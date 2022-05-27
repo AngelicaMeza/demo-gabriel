@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="account_compute_amount_wizard">
+        <field name="name">wizard.compute.amount.action.form</field>
+        <field name="model">account.compute.amounts.action</field>
+        <field name="arch" type="xml">
+            <form string="Recalcular montos">
+                <p>Esta acción los montos de todas las facturas seleccionadas</p>
+                <footer>
+                    <button name="do_action" string="Aceptar" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_production_form_view" model="ir.ui.view">
+        <field name="name">mrp.production.inherit.form.view</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="after">
+                <field name="product_type" invisible="1"/>
+                <button string="SOLICITAR LLAVES" name="action_request_keys" type="object" class="oe_highlight"
+                attrs="{'invisible': ['|', ('state', '!=', 'confirmed'), ('product_type', '!=', '0')]}"/>
+            </button>
+            <field name="routing_id" position="after">
+                <field name="product_brand" invisible="1"/>
+                <field name="application_version" attrs="{'readonly': [('state', '=', 'done')]}" options="{'no_create': True}" domain="['|', ('brand_ids', 'in', product_brand), ('product_ids', 'in', product_id)]"/>
+                <field name="key_version" attrs="{'readonly': [('state', '=', 'done')]}" domain="[('product_type', '=', '5'), ('brand_id', '=', product_brand)]" options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- check points -->
+	<record id="master_check_point_tree" model="ir.ui.view">
+		<field name="name">master.check.point.tree</field>
+		<field name="model">check.point</field>
+		<field name="arch" type="xml">
+			<tree editable="top">
+				<field name="name" required="True" string="Check points"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="master_check_point_search" model="ir.ui.view">
+		<field name="name">master.check.point.search</field>
+		<field name="model">check.point</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="master_check_point_action" model="ir.actions.act_window">
+		<field name="name">Check points</field>
+		<field name="res_model">check.point</field>
+		<field name="view_mode">tree</field>
+	</record>
+
+	<menuitem
+		id="master_check_point_config"
+		name="Check points"
+		action="master_check_point_action"
+		parent="quality_control.menu_quality_configuration"
+		sequence="16"
+	/>
+
+	<!-- check list -->
+	<record id="master_check_list_tree" model="ir.ui.view">
+		<field name="name">master.check.list.tree</field>
+		<field name="model">check.list</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" string="Name"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="master_check_list_search" model="ir.ui.view">
+		<field name="name">master.check.list.search</field>
+		<field name="model">check.list</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<separator/>
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="master_check_list_form" model="ir.ui.view">
+		<field name="name">master.check.list.form</field>
+		<field name="model">check.list</field>
+		<field name="arch" type="xml">
+			<form string="Check list">
+				<header>
+				</header>
+				<sheet>
+					<h1><field name="name" class="oe_title" required="True"/></h1>
+					<field name="check_points" sting="Check points">
+						<tree>
+							<field name="sequence" widget="handle"/>
+							<field name="name" />
+						</tree>
+					</field>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="master_check_list_action" model="ir.actions.act_window">
+		<field name="name">Check list</field>
+		<field name="res_model">check.list</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem
+		id="master_check_list_config"
+		name="Check list"
+		action="master_check_list_action"
+		parent="quality_control.menu_quality_configuration"
+		sequence="11"
+	/>
+</odoo>

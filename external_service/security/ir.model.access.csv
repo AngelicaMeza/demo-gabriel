@@ -1,0 +1,27 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fsm_task_type_line,fsm.task.type.line,model_fsm_task_type_line,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_task_type,fsm.task.type,model_fsm_task_type,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_project,fsm.project,project.model_project_project,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_task_type_project_user,fsm.task.type.project.user,project.model_project_task_type,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_project_task,fsm.project.task,project.model_project_task,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_partner_task user,fsm.base.res.partner user,base.model_res_partner,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_resource_calendar,fsm.resource_calendar user,resource.model_resource_calendar,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_resource_calendar_attendance,fsm.resource_calendar_attendance user,resource.model_resource_calendar_attendance,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_resource_calendar_leaves_user,fsm.resource.calendar.leaves user,resource.model_resource_calendar_leaves,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_account_analytic_account_user,fsm.account.analytic.account,analytic.model_account_analytic_account,industry_fsm.group_fsm_user,1,0,0,0
+access_fsm_project_task_assign,fsm.project.task.assign,project.model_project_task,external_service.group_fsm_assign,1,1,0,0
+access_fsm_resource_calendar_leaves_assign,fsm.resource.calendar.leaves.assign,resource.model_resource_calendar_leaves,external_service.group_fsm_assign,1,1,0,0
+access_fsm_task_type_line_manager,fsm.task.type.line.manager,model_fsm_task_type_line,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_task_type_manager,fsm.task.type.manager,model_fsm_task_type,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_project_manager,manager.project,project.model_project_project,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_task_type_manager,fsm.task.type manager,project.model_project_task_type,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_report_project_task_user,fsm.report.project.task.user,project.model_report_project_task_user,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_tags_manager,fsm.project_tags_manager,project.model_project_tags,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_mail_alias,fsm.mail.alias,mail.model_mail_alias,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_mail_activity_type_project_manager,fsm.mail.activity.type.project.manager,mail.model_mail_activity_type,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_account_analytic_account_manager,fsm.account.analytic.account,analytic.model_account_analytic_account,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_account_analytic_line_project,fsm.account.analytic.line project,analytic.model_account_analytic_line,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_profitability_report_analysis_manager,fsm.profitability.report.analysis,sale_timesheet.model_project_profitability_report,industry_fsm.group_fsm_manager,1,1,1,1
+access_fsm_sale_line_employee_map_manager,access_fsm_sale_line_employee_map_project_manager,sale_timesheet.model_project_sale_line_employee_map,industry_fsm.group_fsm_manager,1,1,1,1
+access_sale_order_line_fsm_manager,sale.order.line.fsm.manager,sale.model_sale_order_line,industry_fsm.group_fsm_manager,1,0,0,0
+access_sale_order_fsm_manager,sale.order.fsm.manager,sale.model_sale_order,industry_fsm.group_fsm_manager,1,0,0,0

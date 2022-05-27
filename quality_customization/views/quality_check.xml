@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="quality_check_view_form_small_inherit_quality_customization" model="ir.ui.view">
+            <field name="name">quality.check.view.form.small.inherit.quality.customization</field>
+            <field name="model">quality.check</field>
+            <field name="inherit_id" ref="quality_control.quality_check_view_form_small"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <br/><field name="lot_id" readonly="1" options="{'no_open': True}" />
+                </xpath>
+                <xpath expr="//field[@name='note']" position="replace">
+                    <field name="check_point_line" readonly="False" attrs="{'invisible': [('check_point_line', '=', [])]}" options="{'no_quick_create': True}" force_save="True">
+                        <tree editable="top" create="0" delete="0" open="0">
+                            <field name="name" string="Check points" readonly="True" force_save="True"/>
+                            <field name="check_yes" string="Yes" attrs="{'readonly': [('check_no', '=', True)]}"/>
+                            <field name="check_no" string="No" attrs="{'readonly': [('check_yes', '=', True)]}"/>
+                            <field name="description" string="Description"/>
+                        </tree>
+                    </field>
+                </xpath>
+                <xpath expr="//button[@name='do_pass'][2]" position="before">
+                    <field name="inv" invisible="True"/>
+                </xpath>
+                <xpath expr="//button[@name='do_pass'][2]" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|',('test_type', '!=', 'passfail'), '&amp;', ('inv', '=', False), ('check_point_line', '!=', [])]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_fail']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|',('test_type', '!=', 'passfail'), '&amp;', ('inv', '=', False), ('check_point_line', '!=', [])]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="quality_check_view_form_success" model="ir.ui.view">
+            <field name="name">quality.check.view.form.success</field>
+            <field name="priority">1000</field>
+            <field name="model">quality.check</field>
+            <field name="arch" type="xml">
+                <form string="Quality Check successful">
+                    <field name="test_type" invisible="1"/>
+                    <div>
+                        <field name="note"/>
+                    </div>
+                    <footer>
+                        <button name="correct_measure" type="object" class="btn-primary" string="Correct Measure"
+                            attrs="{'invisible': [('test_type', '!=', 'measure')]}"/>
+                        <button name="redirect_after_failure" type="object" string="Confirm Measure"
+                            attrs="{'invisible': [('test_type', '!=', 'measure')]}"/>
+                        <button name="redirect_after_failure" type="object" class="btn-primary" string="OK"
+                            attrs="{'invisible': [('test_type', '!=', 'passfail')]}"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_warehouse_project" model="ir.ui.view">
+		<field name="name">view.warehouse.project</field>
+		<field name="model">stock.warehouse</field>
+		<field name="inherit_id" ref="stock.view_warehouse"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='partner_id']" position="after">
+				<field
+					name="project_id"
+					domain="[('company_id', '=', company_id), ('is_fsm', '=', True), ('region_id','=', region)]"
+					options="{'no_create': True, 'no_open': True}"
+				/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_picking_type_form_fsm_task" model="ir.ui.view">
+		<field name="name">view.picking.type.form.fsm.task</field>
+		<field name="model">stock.picking.type</field>
+		<field name="inherit_id" ref="stock.view_picking_type_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//sheet" position="inside">
+				<group name="fsm_task">
+					<group string="Field Service" attrs="{'invisible': [('code','!=','outgoing')]}">
+						<field name="use_fsm"/>
+						<field name="project_id" options="{'no_open': True}"/>
+						<field
+							name="task_type_id"
+							options="{'no_create': True, 'no_open': True}"
+							attrs="{
+								'invisible': [('use_fsm','=',False)],
+								'required': [('use_fsm','=',True)]
+							}"
+						/>
+					</group>
+				</group>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_picking_form_fsm_task" model="ir.ui.view">
+		<field name="name">stock.picking.form.fsm.task</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='button_validate']" position="before">
+				<field name="use_fsm" invisible="1" />
+				<field name="delivery_ticket_id" invisible="1" />
+				<field name="show_intervention" invisible="1" />
+				<button class="oe_highlight" name="action_generate_fsm_task" type="object" string="Plan Intervention" attrs="{'invisible': ['|','|', ('use_fsm','=',False), ('delivery_ticket_id', '!=', False), ('show_intervention','=', False)]}"/>
+			</xpath>
+			<xpath expr="//div[@name='button_box']" position="inside">
+				<button class="oe_stat_button" name="action_view_fsm_tasks" type="object" icon="fa-tasks" attrs="{'invisible': [('fsm_task_count','=',0)]}">
+					<field string="Tasks" name="fsm_task_count" widget="statinfo" />
+				</button>
+			</xpath>
+			<xpath expr="//field[@name='origin']" position="after">
+				<field 
+					name="task_stage" 
+					options="{'no_open' : True}" 
+					force_save="1" 
+					attrs="{'invisible': [('task_stage','=',False)]}"
+				/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="vpicktree_task_stage" model="ir.ui.view">
+		<field name="name">vpicktree.task.stage</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.vpicktree"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree/field[@name='activity_exception_decoration']" position="after">
+				<field name="task_stage" optional="hide"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_picking_internal_search_by_task_stage" model="ir.ui.view">
+		<field name="name">view.picking.internal.search.by.task.stage</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_internal_search"/>
+		<field name="arch" type="xml">
+			<xpath expr="//search/group[1]" position="inside">
+				<filter string="Task stage" name="task_stage" domain="[]" context="{'group_by': 'task_stage'}"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+	<record id="igtf_view_move_form" model="ir.ui.view">
+	    <field name="name">igtf.view.move.form</field>
+	    <field name="model">account.move</field>
+	    <field name="inherit_id" ref="account.view_move_form"/>
+	    <field name="arch" type="xml">
+
+	        <field name="ref" position="after">
+	        	<field name="payment_foreign_currency" invisible="1"/>
+	        	<field name="possible_payment_currency_id" attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund', 'in_receipt', 'out_invoice', 'out_refund', 'out_receipt'])]}"/>
+	        	<field name="possible_payment_method" attrs="{'invisible': ['|', ('type', 'not in', ['in_invoice', 'in_refund', 'in_receipt', 'out_invoice', 'out_refund', 'out_receipt']), ('payment_foreign_currency', '=', False)], 'required': [('type', 'in', ['in_invoice', 'in_refund', 'in_receipt', 'out_invoice', 'out_refund', 'out_receipt']), ('payment_foreign_currency', '=', True)]}"/>
+	        </field>
+
+	        <page id="aml_tab" position="after">
+	        	<page attrs="{'invisible': ['|', '|', ('type', 'not in', ['in_invoice', 'in_refund', 'in_receipt', 'out_invoice', 'out_refund', 'out_receipt']), ('possible_payment_currency_id', '=', False), ('possible_payment_method', '=', False)]}" name="igtf" string="IGTF">
+	        		<group name="igtf_pays" string="IGTF payments">
+	        			<field name="igtf_move_ids" nolabel="1">
+	        				<tree>
+	        					<field name="state" invisible="1"/>
+	        					<field name="currency_id" invisible="1"/>
+	        					<field name="company_currency_id" invisible="1"/>
+	        					<field name="name"/>
+	        					<field name="date"/>
+	        					<field name="amount_total" string="Importe Pagado"/>
+	        					<field name="amount_total_signed" string="Total En Bolivares"/>
+	        				</tree>
+	        			</field>
+	        		</group>
+	        	</page>
+	        </page>
+
+	        <xpath expr="//group[@class='oe_subtotal_footer']" position="replace">
+	        	<div class="row">
+	        		<div class="col-sm-12 col-md-8">
+	        			<group class="oe_subtotal_footer" attrs="{'invisible': [('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}">
+                        <field name="igtf_invoice_amount"/>
+                		</group>
+	        		</div>
+	        		<div class="col-sm-12 col-md-4">
+	        			<group class="oe_subtotal_footer" attrs="{'invisible': [('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}">
+						    <field name="amount_untaxed"/>
+						    <field name="amount_by_group" widget="tax-group-custom-field" nolabel="1" colspan="2"/>
+						    <field name="amount_total" class="oe_subtotal_footer_separator"/>
+						    <field name="invoice_payments_widget" colspan="2" nolabel="1" widget="payment"/>
+						    <field name="amount_residual" class="oe_subtotal_footer_separator" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+						</group>
+	        		</div>
+	        	</div>
+	        </xpath>
+
+	    </field>
+	</record>
+
+</odoo>
+
+ 

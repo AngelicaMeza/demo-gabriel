@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="custom_layout_delivery_guide" name="custom_layout">
+		<t t-if="not o" t-set="o" t-value="doc"/>
+			<div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')" style="font-size: 20px">
+				<t t-raw="0"/>
+			</div>
+	</template>
+
+	<template id="report_delivery_guide_document_custom" name="custom_template">
+		<t t-call="stock_reports.custom_layout_delivery_guide">
+			<t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+			<t t-foreach="range(o.package_number)" t-as="package">
+				<div class="page text-center" style="page-break-inside: avoid; height: 15cm;">
+					<t t-if="(package + 1) % 2 == 0">
+						<div class="row" style="height: 1cm;"/>
+					</t>
+					<strong style="font-size: 40px; margin-bottom: 5px;">Guide number:<span t-field="o.name" /></strong>
+					<style>
+						th, tr, td {
+							border: 1px solid #5c5c5c;
+							border-collapse: collapse;
+						}
+					</style>
+					<table class="table table-sm">
+						<tr>
+							<th><strong>Delivery date</strong></th>
+							<th><strong>package number</strong></th>
+							<th><strong>Package code</strong></th>
+						</tr>
+						<tr>
+							<td><span t-field="o.scheduled_date" t-options="{'widget': 'date'}"/></td>
+							<t t-set="one_package" t-value="package + 1"/>
+							<td><span t-esc="one_package"/>  of  <span t-field="o.package_number" /></td>
+							<td><span/></td>
+						</tr>
+					</table>
+					<table class="table table-sm" >
+						<tr>
+							<th colspan="3" style="background-color: #88c0d0;" ><strong>PARTENER DATA</strong></th>
+						</tr>
+						<tr>
+							<th><strong>COMPANY NAME</strong></th>
+							<th><strong>CITY</strong></th>
+							<th><strong>COURIER</strong></th>
+						</tr>
+						<tr style="height: 2cm;">
+							<td><span t-field="o.partner_id"/></td>
+							<td><span t-field="o.partner_id.city"/></td>
+							<td><span t-field="o.courier_id"/></td>
+						</tr>
+						<tr>
+							<td colspan="3" ><strong>ADDRESS</strong></td>
+						</tr>
+						<tr style="font-size: 30px; height: 4cm;">
+							<t t-set="address" t-value="o.get_address()"/>
+							<td colspan="3" ><span t-esc="address" /></td>
+						</tr>
+					</table>
+				</div>
+				<t t-if="(package + 1) % 2 != 0">
+					<div class="row" style="border-bottom: 1px dashed #5c5c5c;"/>
+				</t>
+			</t>
+		</t>
+	</template>
+
+	<template id="delivery_guide">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="stock_reports.report_delivery_guide_document_custom" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+
+	<record id="paperformat_delivery_guide_report" model="report.paperformat">
+		<field name="name">paperformat.delivery.guide.report</field>
+		<field name="format">Letter</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">10</field>
+		<field name="margin_bottom">10</field>
+		<field name="margin_left">5</field>
+		<field name="margin_right">5</field>
+	</record>
+
+	<report
+		id="delivery_guide_report"
+		model="stock.picking"
+		string="Delivery guide"
+		name="stock_reports.delivery_guide"
+		file="stock_reports.delivery_guide"
+		paperformat="paperformat_delivery_guide_report"
+		report_type="qweb-pdf"
+	/>
+
+</odoo>

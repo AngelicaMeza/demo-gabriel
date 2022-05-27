@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="delivery_order_template">
+		<t t-call="stock_reports.picking_report_layout">
+			<div class="page">
+				<style>
+					#accessories, #security_info, #driver_info {
+						page-break-inside: avoid;
+					}
+					table {
+						width: 100%;
+						text-align: center;
+						font-size: 12px;
+					}
+					th, tr, td {
+						border: 1px solid #dddddd;;
+						border-collapse: collapse;
+					}
+				</style>
+				<div id="order_info" class="mt16 mb16" style="font-size: 13px;">
+					<h5>ORDEN DE SALIDA DE ACTIVOS Y MATERIALES / NOTA DE ENTREGA</h5>
+					<div id="picking_info">
+						<div name="picking_name">
+							<span>Nro. Orden: <span t-field="o.name"/></span>
+						</div>
+						<div name="picking_date">
+							<span>Fecha Solicitud: <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/></span>
+						</div>
+					</div>
+				</div>
+				<div id="partner_info" class="mt16 mb16">
+					<table class="table table-sm" id="partner_info">
+						<tr>
+							<th colspan="4" style="background-color: #dddddd;">DATOS DEL DESTINATARIO</th>
+						</tr>
+						<tr>
+							<th style="width: 30%;">Destinatario</th>
+							<th style="width: 10%;">Zona</th>
+							<th style="width: 50%;">Dirección fiscal</th>
+							<th style="width: 10%;">Teléfono</th>
+						</tr>
+						<tr>
+							<td><span t-field="o.partner_id"/></td>
+							<td><span t-field="o.partner_id.city"/></td>
+							<td><span t-field="o.partner_id.contact_address"/></td>
+							<td>
+								<span t-field="o.partner_id.phone_one"/><br/>
+								<span t-field="o.partner_id.phone_two"/><br/>
+								<span t-field="o.partner_id.phone_three"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="picking_lines" class="mt16 mb16">
+					<table class="table table-sm o_main_table" id="lines_table">
+						<thead>
+							<tr>
+								<th colspan="6" style="background-color: #dddddd;">DESCRIPCIÓN DEL MATERIAL Y/O ACTIVO</th>
+							</tr>
+							<tr>
+								<th>Item</th>
+								<th>Producto</th>
+								<th>Lote/Serial</th>
+								<th>Condición</th>
+								<th>Operadora</th>
+								<th>SIM/LLave</th>
+							</tr>
+						</thead>
+						<tbody>
+							<t t-set="count_items" t-value="0"/>
+							<t t-foreach="o.move_line_ids" t-as="line">
+								<tr>
+									<t t-set="count_items" t-value="count_items + 1"/>
+									<td><span t-esc="count_items"/></td>
+									<td><span t-field="line.product_id"/></td>
+									<td><span t-field="line.lot_id"/></td>
+									<td><span t-field="line.condition_id"/></td>
+									<td><span t-field="line.lot_id.network_operator_id"/></td>
+									<td><span t-field="line.lot_id.sim_card"/></td>
+								</tr>
+							</t>
+						</tbody>
+					</table>
+				</div>
+				<div id="accessories" class="mt16 mb16">
+					<table class="table table-sm" id="accessories_table">
+						<tr>
+							<th colspan="5" style="background-color: #dddddd;">ACCESORIOS</th>
+						</tr>
+						<tr>
+							<th>Transformadores</th>
+							<th>Entorchado</th>
+							<th>Bateria</th>
+							<th>Forros</th>
+							<th>Cargadores</th>
+						</tr>
+						<tr style="height: 35px;">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div id="security_info" class="mt16 mb16">
+					<table class="table table-sm" id="security_table">
+						<tr>
+							<th colspan="2" style="background-color: #dddddd;">RESPONSABLE</th>
+							<th colspan="2" style="background-color: #dddddd;">CONTROL SEGURIDAD</th>
+						</tr>
+						<tr>
+							<th style="width: 25%;">Remitente</th>
+							<th style="width: 25%;">Cargo</th>
+							<th style="width: 25%;">Nombres y Apellidos</th>
+							<th style="width: 25%;">Firma y Sello</th>
+						</tr>
+						<tr style="height: 35px;">
+							<td rowspan="3"></td>
+							<td rowspan="3"></td>
+							<td></td>
+							<td rowspan="3"></td>
+						</tr>
+						<tr>
+							<th>Fecha</th>
+						</tr>
+						<tr style="height: 35px;">
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div id="driver_info" class="mt16 mb16">
+					<table class="table table-sm" id="driver_table">
+						<tr>
+							<th colspan="2" style="background-color: #dddddd;">DATOS DEL TRANSPORTE</th>
+							<th colspan="2" style="background-color: #dddddd;">RECIBI CONFORME</th>
+						</tr>
+						<tr>
+							<th style="width: 25%;">Empresa</th>
+							<th style="width: 25%;">Nombre del Transportista</th>
+							<th style="width: 25%;">Nombres y Apellidos</th>
+							<th style="width: 25%;">Firma y Sello</th>
+						</tr>
+						<tr style="height: 35px;">
+							<td><span t-field="o.courier_id"/></td>
+							<td></td>
+							<td></td>
+							<td rowspan="3"></td>
+						</tr>
+						<tr>
+							<th>Total Valor Declarado</th>
+							<th>Firma</th>
+							<th>Fecha</th>
+						</tr>
+						<tr style="height: 35px;">
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="delivery_order">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="stock_reports.delivery_order_template"/>
+			</t>
+		</t>
+	</template>
+
+	<report
+		id="delivery_order_report"
+		model="stock.picking"
+		string="Delivery Order"
+		name="stock_reports.delivery_order"
+		file="stock_reports.delivery_order"
+		paperformat="stock_reports.paperformat_delivery_order_report"
+		report_type="qweb-pdf"
+	/>
+</odoo>

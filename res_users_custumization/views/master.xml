@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Asesor cartera  -->
+		<record id="master_portfolio_advisor_tree" model="ir.ui.view">
+			<field name="name">master.portfolio.advisor.tree</field>
+			<field name="model">portfolio.advisor</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="master_portfolio_advisor_search" model="ir.ui.view">
+			<field name="name">master.portfolio.advisor.search</field>
+			<field name="model">portfolio.advisor</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<separator/>
+					<filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="master_portfolio_advisor_form" model="ir.ui.view">
+			<field name="name">master.portfolio.advisor.form</field>
+			<field name="model">portfolio.advisor</field>
+			<field name="arch" type="xml">
+				<form string="Asesor cartera">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Asesor cartera">
+							<group name="group_left" style="width:50%;">
+								<field name="name" required="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_portfolio_advisor_no_edit_view_form" model="ir.ui.view">
+			<field name="name">master.portfolio.advisor.no.edit.view.form</field>
+			<field name="model">portfolio.advisor</field>
+			<field name="priority">17</field>
+			<field name="arch" type="xml">
+				<form string="Asesor cartera">
+					<header>
+					</header>
+					<sheet>
+						<group name="group_top" string="Asesor cartera">
+							<group name="group_left" style="width:50%;">
+								<field name="name" readonly="True"/>
+							</group>
+							<group name="group_right" style="width:50%;">
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="master_portfolio_advisor_action" model="ir.actions.act_window">
+			<field name="name">Asesor cartera</field>
+			<field name="res_model">portfolio.advisor</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="master_portfolio_advisor_config"
+			name="Asesores cartera"
+			action="master_portfolio_advisor_action"
+			parent="contacts.res_partner_menu_config"
+			sequence="11"
+			groups="crm_partner_inherit.admin_group"
+		/>
+
+</odoo>

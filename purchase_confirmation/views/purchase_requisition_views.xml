@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_purchase_requisition_form_confirm" model="ir.ui.view">
+		<field name="name">purchase.requisition.form.confirm</field>
+		<field name="model">purchase.requisition</field>
+		<field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[@class='oe_button_box'][@name='button_box']" position="attributes">
+				<attribute name="states">in_progress,open,done,cancel</attribute>
+			</xpath>
+			<xpath expr="//button[@name='action_in_progress']" position="attributes">
+				<attribute name="confirm">La atención del requerimiento se realizará dentro de los 5 días hábiles.</attribute>
+				<attribute name="name">need_supervisor_approve</attribute>
+			</xpath>
+			<xpath expr="//field[@name='company_id']" position="after">
+				<field name="mail_partner_id" invisible="True" force_save="True"/>
+				<field name="user_confirm" attrs="{'invisible': [('user_confirm', '=', False)]}"/>
+				<field name="hr_department_id" attrs="{'invisible': [('user_confirm', '=', False)]}"/>
+				<field name="hr_supervisor" attrs="{'invisible': [('user_confirm', '=', False)]}"/>
+				<!-- <field name="change_state" invisible="0"/> -->
+				<label for="supervisor_approved" string="Aprobación del supervisor" class="oe_inline" attrs="{'invisible': [('supervisor_approved', '=', False)]}"/>
+				<div class="row" attrs="{'invisible': [('supervisor_approved', '=', False)]}">
+					<div class="col-6">
+						<field name="supervisor_approved" readonly="True" force_save="True"/>
+					</div>
+					<div class="col-6" >
+						<field name="supervisor_approved_date" readonly="True" force_save="True"/>  
+					</div>
+				</div>
+			</xpath>
+			<xpath expr="//button[@name='action_open']" position="attributes">
+				<attribute name="invisible">True</attribute>
+			</xpath>
+			<xpath expr="//button[@name='action_open']" position="after">
+				<field name="inv" invisible="True"/>
+				<button string="Aprobar" name="action_in_progress" attrs="{'invisible': [('inv', '=', True)]}" type="object" class="oe_highlight" groups="purchase_confirmation.group_purchase_department_supervisor_approval,purchase_confirmation.group_purchase_secondary_approver_requisition" />
+				<field name="auto_close" invisible='True' />
+			</xpath>
+			<xpath expr="//button[@name='action_cancel']" position="attributes">
+				<attribute name="states">draft,set_supervisor_approval,in_progress,ongoing</attribute>
+			</xpath>
+		</field>
+	</record>
+</odoo>

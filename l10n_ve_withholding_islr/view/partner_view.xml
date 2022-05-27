@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <data>
+    <!--
+    =============================================================================================
+    Partners Extension Income
+    =============================================================================================
+    -->
+        <record id="res_partner_wh_islr" model="ir.ui.view">
+            <field name="name">res.partner.wh.islr</field> <!-- Nombre de la vista-->
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after" sequence="2">
+                    <page name="retencion_islr" string="Retención ISLR">
+                        <newline/>
+                        <separator colspan="4" string="Retenciones de Ingresos (ISLR)"/>
+                        <group col="6" colspan="2">
+                            <field name="islr_withholding_agent"/>
+                            <field name="spn"/>
+                        </group>
+                        <group string="Diarios de Retención de ISLR">
+                            <field name="purchase_islr_journal_id"/>
+                            <field name="sale_islr_journal_id"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

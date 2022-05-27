@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_warehouse_form_rental" model="ir.ui.view">
+		<field name="name">view.warehouse.form.rental</field>
+		<field name="model">stock.warehouse</field>
+		<field name="inherit_id" ref="stock.view_warehouse"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[1]/group/group" position="attributes">
+				<attribute name="string">Shipments and Rental</attribute>
+			</xpath>
+			<xpath expr="//page[1]/group/group" position="inside">
+				<field name="rental_location_id" domain="[('company_id', '=', company_id)]"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_location_form_rental" model="ir.ui.view">
+		<field name="name">view.location.form.rental</field>
+		<field name="model">stock.location</field>
+		<field name="inherit_id" ref="stock.view_location_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='additional_info']" position="inside">
+				<field name="rental_location"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

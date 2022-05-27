@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="res_config_settings_view_form_sent_purchase" model="ir.ui.view">
+		<field name="name">res.config.settings.view.form.sent.purchase</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='purchase_setting_container']" position="inside">
+				<div class="col-12 col-lg-6 o_setting_box">
+					<div class="o_setting_left_pane">
+						<field name="sent_purchase_order"/>
+					</div>
+					<div class="o_setting_right_pane">
+						<label for="sent_purchase_order"/>
+						<div class="text-muted">
+							Presupuestos mínimos para validar un acuerdo de compra
+						</div>
+						<div class="content-group"  attrs="{'invisible': [('sent_purchase_order','=',False)]}">
+							<div class="mt16">
+								<span class="col-4">Mínimo: <field name="sent_purchase_order_count" attrs="{'required': [('sent_purchase_order', '=', True)]}"/> presupuestos</span>
+							</div>
+						</div>
+					</div>
+				</div> 
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

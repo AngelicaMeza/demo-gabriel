@@ -1,0 +1,31 @@
+<odoo>
+
+  <record id="action_validate_account_asset" model="ir.actions.act_window">
+    <field name="name">Validate active</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.asset.validate</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="asset_validate_form"/>
+    <field name="context">{}</field>
+    <field name="target">new</field>
+    <field name="help">This wizard will validate actives selected.</field>
+    <field name="binding_model_id" ref="account_asset.model_account_asset" />
+    <field name="binding_view_types">list</field>
+    <field name="limit">80</field>
+  </record>
+
+  <record id="action_amortization_account_asset" model="ir.actions.act_window">
+    <field name="name">Calculate amortization</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.asset.amortization</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="asset_amortization_form"/>
+    <field name="context">{}</field>
+    <field name="target">new</field>
+    <field name="help">This will calculate amortization for all selected active.</field>
+    <field name="binding_model_id" ref="account_asset.model_account_asset" />
+    <field name="binding_view_types">list</field>
+    <field name="limit">80</field>
+  </record>
+
+</odoo>

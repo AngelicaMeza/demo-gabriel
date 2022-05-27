@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-extend="sale_stock.QtyDetailPopOver">
+        <t t-jquery="t[t-if='!data.is_mto']" t-operation='append'>
+            <t t-if="!data.is_rental">
+                <tr>
+                    <td><strong>Disponible en ubicación de venta</strong><br /><small>On <span t-esc="data.delivery_date"/></small></td>
+                    <td><t t-esc='data.prod_qty_for_location'/>
+                    <t t-esc='data.product_uom.data.display_name'/></td>
+                </tr>
+            </t>
+            <t t-else="">
+                <tr>
+                    <td><strong>Disponible en ubicación de alquiler</strong><br /><small>On <span t-esc="data.delivery_date"/></small></td>
+                    <td><t t-esc='data.prod_qty_for_location_rental'/>
+                    <t t-esc='data.product_uom.data.display_name'/></td>
+                </tr>
+            </t>
+        </t>
+    </t>
+</template>

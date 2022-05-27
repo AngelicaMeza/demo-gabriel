@@ -1,0 +1,15 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="account_advance_payment_view_form_inherit" model="ir.ui.view">
+			<field name="name">account.advance.payment.view.form.inherit</field>
+			<field name="model">account.advance.payment</field>
+			<field name="inherit_id" ref="l10n_ve_account_advance_payment.account_advance_payment_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='payment_advance_id_check']" position="after">
+					<field name="payment_advance_id_igtf_check" invisible="1"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo> -->

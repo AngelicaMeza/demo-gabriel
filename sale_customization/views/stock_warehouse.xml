@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="renting_inherit_warehouse" model="ir.ui.view">
+        <field name="name">renting.inherit.warehouse</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='delivery_steps']" position="after">
+                <field name="sale_stock_location"  domain="[('id', 'child_of', view_location_id), ('usage', '=', 'internal')]"/>
+                <field name="rental_stock_location" domain="[('id', 'child_of', view_location_id), ('usage', '=', 'internal')]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

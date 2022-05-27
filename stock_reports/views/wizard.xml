@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_lot_report_view_form" model="ir.ui.view">
+        <field name="name">stock.lot.report.view.form</field>
+        <field name="model">stock.lot.report</field>
+        <field name="arch" type="xml">
+            <form string="Generar reporte">
+                <p>Esta acción generará un archivo xlsx con los datos de todos los seriales.</p>
+                <footer>
+                    <button name="action_print_report" string="Confirmar" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

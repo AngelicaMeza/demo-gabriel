@@ -1,0 +1,37 @@
+<odoo>
+	<data>
+
+		<record id="view_auditlog_log_form_inherit_auditlog" model="ir.ui.view">
+			<field name="name">view.auditlog.log.form.inherit.auditlog</field>
+			<field name="model">auditlog.log</field>
+			<field name="inherit_id" ref="auditlog.view_auditlog_log_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form" position="attributes">
+					<attribute name="delete">false</attribute>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+				<xpath expr="//field[@name='http_session_id']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='http_request_id']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_auditlog_log_tree_inherit_auditlog" model="ir.ui.view">
+			<field name="name">view.auditlog.log.tree.inherit.auditlog</field>
+			<field name="model">auditlog.log</field>
+			<field name="inherit_id" ref="auditlog.view_auditlog_log_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+					<attribute name="delete">false</attribute>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>

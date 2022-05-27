@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_ve_withholding_igtf
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-26 19:24+0000\n"
+"PO-Revision-Date: 2022-03-26 15:26-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_VE\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_company__igtf_purchase_account_id
+msgid "Accounting account for IGTF withholdings for purchases."
+msgstr "Cuenta contable para las retenciones de IGTF de compras."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_company__igtf_sale_account_id
+msgid "Accounting account for IGTF withholdings for sales."
+msgstr "Cuenta contable para las retenciones de IGTF de ventas."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_company__igtf_purchase_journal_id
+msgid "Accounting journal for IGTF withholdings for purchases."
+msgstr "Diario contable para las retenciones de IGTF de compras."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_company__igtf_sale_journal_id
+msgid "Accounting journal for IGTF withholdings for sales."
+msgstr "Diario contable para las retenciones de IGTF de ventas."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_payment__apply_igtf
+msgid "Apply Igtf"
+msgstr "Aplica IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields.selection,name:l10n_ve_withholding_igtf.selection__account_move__possible_payment_method__bank_tranfer
+#: model:ir.model.fields.selection,name:l10n_ve_withholding_igtf.selection__account_payment__payment_method__bank_tranfer
+msgid "Bank Transfer"
+msgstr "Transferencia Bancaria"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields.selection,name:l10n_ve_withholding_igtf.selection__account_move__possible_payment_method__cash
+#: model:ir.model.fields.selection,name:l10n_ve_withholding_igtf.selection__account_payment__payment_method__cash
+msgid "Cash"
+msgstr "Efectivo"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model,name:l10n_ve_withholding_igtf.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model,name:l10n_ve_withholding_igtf.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_company__igtf_exempt_currency_ids
+msgid "Currencies of national issuance, IGTF exempted."
+msgstr "Monedas de emision nacional, exentas de IGTF."
+
+#. module: l10n_ve_withholding_igtf
+#: model_terms:ir.ui.view,arch_db:l10n_ve_withholding_igtf.igtf_res_company_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_withholding_igtf.igtf_view_move_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_withholding_igtf.wh_igtf_partner
+msgid "IGTF"
+msgstr ""
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__igtf_percentaje
+msgid "IGTF Rate (%)"
+msgstr "Tasa IGTF (%)"
+
+#. module: l10n_ve_withholding_igtf
+#: model_terms:ir.ui.view,arch_db:l10n_ve_withholding_igtf.igtf_view_move_form
+msgid "IGTF payments"
+msgstr "Pagos IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_payment__igtf_account_id
+msgid "Igtf Account"
+msgstr "Cuenta Pago IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__igtf_exempt_currency_ids
+msgid "Igtf Exempt Currency"
+msgstr "Monedas exentas de IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_move__igtf_invoice_amount
+msgid "Igtf Invoice Amount"
+msgstr "IGTF Factura"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_move_line__igtf_line_payment
+msgid "Igtf Line Payment"
+msgstr ""
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_move__igtf_move_ids
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_payment__igtf_move_id
+msgid "Igtf Move"
+msgstr "Asiento IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__igtf_purchase_account_id
+msgid "Igtf Purchase Account"
+msgstr "Cuenta Contable IGTF Compras."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__igtf_purchase_journal_id
+msgid "Igtf Purchase Journal"
+msgstr "Diario Contable IGTF Compras."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__igtf_sale_account_id
+msgid "Igtf Sale Account"
+msgstr "Cuenta Contable IGTF Ventas"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__igtf_sale_journal_id
+msgid "Igtf Sale Journal"
+msgstr "Diario Contable IGTF Ventas"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_company__is_special_taxpayer_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_partner__is_special_taxpayer_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_res_users__is_special_taxpayer_igtf
+msgid "Indicates that the company is a special taxpayer for IGTF withholding."
+msgstr "Indica que la compañía es un contribuyente especial para el IGTF."
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_company__is_special_taxpayer_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_partner__is_special_taxpayer_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_res_users__is_special_taxpayer_igtf
+msgid "Is Special Taxpayer Igtf"
+msgstr "Contribuyente especial para IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model,name:l10n_ve_withholding_igtf.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model,name:l10n_ve_withholding_igtf.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_move__payment_foreign_currency
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_payment__payment_foreign_currency
+msgid "Payment Foreign Currency"
+msgstr ""
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_payment__payment_method
+msgid "Payment Method"
+msgstr "Método de pago IGTF"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model,name:l10n_ve_withholding_igtf.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_move__possible_payment_currency_id
+msgid "Possible Payment Currency"
+msgstr "Moneda Acordada para Pago"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_move__possible_payment_method
+msgid "Possible Payment Method"
+msgstr "Metodo de Pago Acordado"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,help:l10n_ve_withholding_igtf.field_account_tax__type_tax
+msgid "Selecione el Tipo de Impuesto"
+msgstr ""
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model,name:l10n_ve_withholding_igtf.model_account_tax
+msgid "Tax"
+msgstr "Impuesto"
+
+#. module: l10n_ve_withholding_igtf
+#: model:ir.model.fields,field_description:l10n_ve_withholding_igtf.field_account_tax__type_tax
+msgid "Tipo de Impuesto"
+msgstr ""

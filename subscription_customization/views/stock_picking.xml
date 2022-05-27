@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="subscription_inherit_stock_production_lot" model="ir.ui.view">
+        <field name="name">subscription.inherit.stock.production.lot</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='network_operator_id']" position="after">
+                <field name="subscription_id" string='Related subscription' readonly="True" attrs="{'invisible' : ['|',('product_type', 'not in', ['0','1']),('tracking', '!=', 'serial')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

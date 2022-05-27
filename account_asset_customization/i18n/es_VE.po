@@ -1,0 +1,70 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_asset_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-30 15:58+0000\n"
+"PO-Revision-Date: 2022-01-30 15:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_asset_customization
+#: model:ir.actions.act_window,name:account_asset_customization.action_amortization_account_asset
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_amortization_form
+msgid "Calculate amortization"
+msgstr "Calcular amortización"
+
+#. module: account_asset_customization
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_amortization_form
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_validate_form
+msgid "Cancel"
+msgstr "Calcelar"
+
+#. module: account_asset_customization
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_amortization_form
+msgid "This will calculate amortization for all selected active"
+msgstr "Esto calculará la amortización para todos los activos seleccionados"
+
+#. module: account_asset_customization
+#: model_terms:ir.actions.act_window,help:account_asset_customization.action_amortization_account_asset
+msgid "This will calculate amortization for all selected active."
+msgstr "Esto calculará la amortización para todos los activos seleccionados"
+
+#. module: account_asset_customization
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_validate_form
+msgid "This will validate all selected active"
+msgstr "Esto confirmará los todos los activos seleccionados"
+
+#. module: account_asset_customization
+#: model_terms:ir.actions.act_window,help:account_asset_customization.action_validate_account_asset
+msgid "This wizard will validate actives selected."
+msgstr "Esto confirmará los todos los activos seleccionados"
+
+#. module: account_asset_customization
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_validate_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: account_asset_customization
+#: model:ir.actions.act_window,name:account_asset_customization.action_validate_account_asset
+#: model:ir.model,name:account_asset_customization.model_account_asset_validate
+msgid "Validate active"
+msgstr "Validar activo"
+
+#. module: account_asset_customization
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_validate_form
+msgid "Validate actives"
+msgstr "Validación de activos"
+
+#. module: account_asset_customization
+#: model:ir.model,name:account_asset_customization.model_account_asset_amortization
+#: model_terms:ir.ui.view,arch_db:account_asset_customization.asset_amortization_form
+msgid "calculate amortization"
+msgstr "Calcular amortización"

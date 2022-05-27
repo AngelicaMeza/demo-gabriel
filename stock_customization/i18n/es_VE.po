@@ -1,0 +1,379 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-11 00:49+0000\n"
+"PO-Revision-Date: 2022-01-11 00:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__partner_id
+msgid "Affiliate assigned"
+msgstr "Afiliado asignado"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__application_version
+msgid "Application version"
+msgstr "Versión de aplicativo"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_move__assembly_date
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__assembly_date
+msgid "Assembly date"
+msgstr "Fecha de ensamblaje"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_move__assembly_place
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__assembly_place
+msgid "Assembly place"
+msgstr "Casa ensambladora"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__battery_number
+msgid "Battery number"
+msgstr "Número de batería"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_brand_stock
+#: model:ir.model.fields,field_description:stock_customization.field_product_product__brand_id
+#: model:ir.model.fields,field_description:stock_customization.field_product_template__brand_id
+msgid "Brand"
+msgstr "Marca"
+
+#. module: stock_customization
+#: model:ir.actions.act_window,name:stock_customization.master_brand_action
+#: model:ir.ui.menu,name:stock_customization.master_brand_config
+#: model:ir.ui.menu,name:stock_customization.master_brand_config_purchase
+msgid "Brands"
+msgstr "Marcas"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_brand_stock_line__code
+#: model:ir.model.fields,field_description:stock_customization.field_stock_courier__code
+msgid "Code"
+msgstr "Código"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_product_product__communication_id
+#: model:ir.model.fields,field_description:stock_customization.field_product_template__communication_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__communication_id
+msgid "Communication"
+msgstr "Tipo de comunicación"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_condition_stock
+#: model:ir.model.fields,field_description:stock_customization.field_stock_location__condition_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_move_line__condition_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__condition_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_quant__condition_id
+msgid "Condition"
+msgstr "Condición"
+
+#. module: stock_customization
+#: code:addons/custom-addons/nativa/stock_customization/models/masters.py:0
+#: code:addons/stock_customization/models/masters.py:0
+#, python-format
+msgid "Condition \"%s\" is default already !!!"
+msgstr "\"%s\" ya es la condición predeterminada !!!"
+
+#. module: stock_customization
+#: model:ir.actions.act_window,name:stock_customization.master_condition_action
+#: model:ir.ui.menu,name:stock_customization.master_condition_config
+msgid "Conditions"
+msgstr "Condiciones"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_courier__name
+#: model:ir.model.fields,field_description:stock_customization.field_stock_picking__courier_id
+msgid "Courier"
+msgstr "Courier"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_picking__courier_guide
+msgid "Courier guide"
+msgstr "Guia del courier"
+
+#. module: stock_customization
+#: model:ir.actions.act_window,name:stock_customization.stock_courier_action
+#: model:ir.model,name:stock_customization.model_stock_courier
+#: model:ir.ui.menu,name:stock_customization.stock_courier_menu
+msgid "Couriers"
+msgstr "Couriers"
+
+#. module: stock_customization
+#: model_terms:ir.actions.act_window,help:stock_customization.master_brand_action
+msgid "Create a new brand"
+msgstr "Crea una nueva marca"
+
+#. module: stock_customization
+#: model_terms:ir.actions.act_window,help:stock_customization.master_condition_action
+msgid "Create a new condition"
+msgstr "Crea una nueva condición"
+
+#. module: stock_customization
+#: model_terms:ir.actions.act_window,help:stock_customization.stock_courier_action
+msgid "Create a new courier"
+msgstr "Crea un nuevo Courier"
+
+#. module: stock_customization
+#: model_terms:ir.actions.act_window,help:stock_customization.master_status_action
+msgid "Create a new status"
+msgstr "Crea un nuevo Estatus"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__current_location
+msgid "Current Location"
+msgstr "Lugar"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_condition_stock__default
+msgid "Default condition"
+msgstr "Condición predeterminada"
+
+#. module: stock_customization
+#: model:ir.model.constraint,message:stock_customization.constraint_brand_stock_unique_brand
+msgid "Duplicate brand."
+msgstr "Marca duplicada."
+
+#. module: stock_customization
+#: model:ir.model.constraint,message:stock_customization.constraint_brand_stock_line_unique_code
+#: model:ir.model.constraint,message:stock_customization.constraint_stock_courier_unique_status
+msgid "Duplicate code."
+msgstr "Código duplicado."
+
+#. module: stock_customization
+#: model:ir.model.constraint,message:stock_customization.constraint_condition_stock_unique_condition
+msgid "Duplicate condition."
+msgstr "Condición duplicada."
+
+#. module: stock_customization
+#: model:ir.model.constraint,message:stock_customization.constraint_status_stock_unique_status
+msgid "Duplicate status."
+msgstr "Estatus duplicado."
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_warehouse__event
+msgid "Event"
+msgstr "Evento"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__in_warehouse_date
+msgid "In Warehouse Date"
+msgstr "Tiempo en almacén"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_location
+msgid "Inventory Locations"
+msgstr "Ubicaciones de inventario"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__key_version
+msgid "Key version"
+msgstr "Versión de llave"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_warehouse__kind_attention
+msgid "Kind Attention"
+msgstr "Tipo de atención"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__length_stay
+#: model:ir.model.fields,field_description:stock_customization.field_stock_quant__length_stay
+msgid "Length Stay"
+msgstr "Tiempo de estancia"
+
+#. module: stock_customization
+#: model_terms:ir.ui.view,arch_db:stock_customization.view_production_lot_form_inherit
+#: model_terms:ir.ui.view,arch_db:stock_customization.view_production_lot_tree_inherit_stock_production_lot
+#: model_terms:ir.ui.view,arch_db:stock_customization.view_stock_quant_tree_editable_condition_status
+msgid "Length of stay"
+msgstr "Tiempo de estancia"
+
+#. module: stock_customization
+#: model_terms:ir.ui.view,arch_db:stock_customization.view_production_lot_form_inherit
+#: model_terms:ir.ui.view,arch_db:stock_customization.view_production_lot_tree_inherit_stock_production_lot
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lote/Serial"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__name
+msgid "Lot/Serial Number"
+msgstr "Lote/Nº de serie"
+
+#. module: stock_customization
+#: code:addons/custom-addons/nativa/stock_customization/models/product_template.py:0
+#: code:addons/stock_customization/models/product_template.py:0
+#, python-format
+msgid "N/A"
+msgstr "Otro"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_brand_stock_line__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__number_transactions
+msgid "Number of transactions"
+msgstr "Numero de transacciones"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipo de albarán"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_move__production_line
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__production_line
+msgid "Production line"
+msgstr "Línea de producción"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_quant
+msgid "Quants"
+msgstr "Cantidades"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_warehouse__region
+msgid "Region"
+msgstr "Región"
+
+#. module: stock_customization
+#: code:addons/custom-addons/nativa/stock_customization/models/stock_production_lot.py:0
+#: code:addons/stock_customization/models/stock_production_lot.py:0
+#, python-format
+msgid ""
+"SIM card is already assigned to \n"
+"Product: %s \n"
+"Serial/Lot: %s"
+msgstr ""
+"El SIM card ya se encuentra asignado a un producto \n"
+"Producto: %s \n"
+"Lote/Serial: %s"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_scrap
+msgid "Scrap"
+msgstr "Desechar"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_warehouse__code
+msgid "Short Name"
+msgstr "Nombre corto"
+
+#. module: stock_customization
+#: model:ir.model.fields,help:stock_customization.field_stock_warehouse__code
+msgid "Short name used to identify your warehouse"
+msgstr "Nombre corto usado para identificar su almacén"
+
+#. module: stock_customization
+#: model:ir.actions.act_window,name:stock_customization.master_status_action
+#: model:ir.model,name:stock_customization.model_status_stock
+#: model:ir.model.fields,field_description:stock_customization.field_stock_location__status_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_move_line__status_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__status_id
+#: model:ir.model.fields,field_description:stock_customization.field_stock_quant__status_id
+#: model:ir.ui.menu,name:stock_customization.master_status_config
+msgid "Status"
+msgstr "Estatus"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_move
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__move_id
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_rule
+msgid "Stock Rule"
+msgstr "Regla de Inventario"
+
+#. module: stock_customization
+#: code:addons/custom-addons/nativa/stock_customization/models/stock_production_lot.py:0
+#: code:addons/stock_customization/models/stock_production_lot.py:0
+#, python-format
+msgid ""
+"The number of days the product has been in stock at the current warehouse."
+msgstr "El numero de días que el producto ha estado en el almacén"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: stock_customization
+#: model:ir.model.fields,help:stock_customization.field_stock_production_lot__name
+msgid "Unique Lot/Serial Number"
+msgstr "Lote/Número de serie único"
+
+#. module: stock_customization
+#: model:ir.model,name:stock_customization.model_stock_warehouse
+#: model:ir.model.fields,field_description:stock_customization.field_stock_production_lot__warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: stock_customization
+#: code:addons/custom-addons/nativa/stock_customization/models/stock_production_lot.py:0
+#: code:addons/stock_customization/models/stock_production_lot.py:0
+#, python-format
+msgid "current location where the product is located"
+msgstr "Ubicación en la que el producto se encuentra "
+
+#. module: stock_customization
+#: model_terms:ir.ui.view,arch_db:stock_customization.view_production_lot_form_inherit
+msgid "days"
+msgstr "dias"
+
+#. module: stock
+#: model:ir.model.fields,field_description:stock.field_stock_quant__reserved_quantity
+msgid "Reserved Quantity"
+msgstr "Cantidad reservada"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_location__delivery_location
+msgid "Is a helpdesk delivery location?"
+msgstr "¿Es una ubicación origen para entregas de mesa de ayuda?"
+
+#. module: stock_customization
+#: model:ir.model.fields,field_description:stock_customization.field_stock_location__sim_location
+msgid "Is a SIM location?"
+msgstr "¿Es una ubicación de asignación de SIM?"
+
+#. module: stock_customization
+#: model_terms:ir.ui.view,arch_db:stock_customization.master_brand_search
+#: model_terms:ir.ui.view,arch_db:stock_customization.master_condition_search
+#: model_terms:ir.ui.view,arch_db:stock_customization.master_status_search
+#: model_terms:ir.ui.view,arch_db:stock_customization.stock_courier_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: stock_customization
+#: code:addons/stock_customization/models/stock_inventory.py:0
+#: code:addons/stock_customization/models/stock_picking.py:0
+#: code:addons/stock_customization/models/stock_quant.py:0
+#, python-format
+msgid ""
+"The products with serial tracking only can have 1 quantity per company, you are trying to add more\n"
+"Serial numbers: {}"
+msgstr ""
+"Los productos con seguimiento por serial solo puede tener una cantidad por compañía, esta intentando añadir mas.\n"
+"Números de serial: {}"

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_auditlog_http_request_form_inherit_auditlog" model="ir.ui.view">
+			<field name="name">view.auditlog.http.request.form.inherit.auditlog</field>
+			<field name="model">auditlog.http.request</field>
+			<field name="inherit_id" ref="auditlog.view_auditlog_http_request_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form" position="attributes">
+					<attribute name="delete">false</attribute>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+				<xpath expr="//field[@name='root_url']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='create_date']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='user_context']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='http_session_id']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+					<attribute name="readonly">True</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_auditlog_http_request_tree_inherit_auditlog" model="ir.ui.view">
+			<field name="name">view.auditlog.http.request.tree.inherit.auditlog</field>
+			<field name="model">auditlog.http.request</field>
+			<field name="inherit_id" ref="auditlog.view_auditlog_http_request_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree" position="attributes">
+					<attribute name="delete">false</attribute>
+					<attribute name="create">false</attribute>
+				</xpath>
+			</field>
+		</record>
+    
+    </data>
+</odoo>

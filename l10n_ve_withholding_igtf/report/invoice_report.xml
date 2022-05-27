@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+	<template id="report_invoice_document" inherit_id="account.report_invoice_document">
+		<div id="total" position="after">
+			<div class="my-5" id="igtf_text">
+				<p class="lead">
+					<small>Este documento tendrá un importe adicional por concepto IGTF de <span t-esc="o.igtf_invoice_amount_company_currency"/> Bs. Según gaceta oficial Nro 42.339 del 17 de Marzo de 2022 en la cual se publico la providencia administrativa SNAT/2022/000013, donde queda establecido que  los sujetos pasivos especiales a partir del 28  de marzo del 2022 tienen la responsabilidad de percibir el importe por IGTF el cual se gravara con Alicuota del 3% sobre Monto total pagado con moneda extranjera o criptomoneda distinta al petro sin mediación del sistema financiero.</small>
+				</p>
+			</div>
+		</div>
+	</template>
+
+</odoo>

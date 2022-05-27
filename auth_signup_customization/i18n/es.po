@@ -1,0 +1,55 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* auth_signup_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-01 20:44+0000\n"
+"PO-Revision-Date: 2022-02-01 20:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: auth_signup_customization
+#: model_terms:ir.ui.view,arch_db:auth_signup_customization.password_reset_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: auth_signup_customization
+#: model_terms:ir.ui.view,arch_db:auth_signup_customization.password_reset_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: auth_signup_customization
+#: model_terms:ir.ui.view,arch_db:auth_signup_customization.password_reset_form
+msgid "Send password reset"
+msgstr "Enviar establecimiento de contraseña"
+
+#. module: auth_signup_customization
+#: model:ir.actions.act_window,name:auth_signup_customization.action_send_password_reset
+msgid "Send password reset email"
+msgstr "Enviar establecimiento de contraseña"
+
+#. module: auth_signup_customization
+#: model_terms:ir.actions.act_window,help:auth_signup_customization.action_send_password_reset
+msgid "This will send a email for reset password to all selected users."
+msgstr "Esta acción enviará un correo con el establecimiento de contraseña a todos los usuarios seleccionados"
+
+#. module: auth_signup_customization
+#: model_terms:ir.ui.view,arch_db:auth_signup_customization.password_reset_form
+msgid ""
+"This will send a email to all selected users with a link to set a new "
+"password"
+msgstr ""
+"Esto enviara un correo a todos los usuarios seleccionados con un enlace para establecer"
+"la contraseña"
+
+#. module: auth_signup_customization
+#: model:ir.model,name:auth_signup_customization.model_auth_signup_reset_password
+msgid "action to reset password of users"
+msgstr "Acción para establecer la contraseña de los usuarios"

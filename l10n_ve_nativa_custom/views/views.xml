@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <record id="view_islr_form_customers_inherit" model="ir.ui.view">
+      <field name="name">view.islr.form.customers.inherit</field>
+      <field name="model">islr.wh.doc</field>
+      <field name="inherit_id" ref="l10n_ve_withholding_islr.view_islr_form_customers"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='name']" position="attributes">
+          <attribute name="attrs">{'readonly' : [('type', '=', 'in_invoice')]}</attribute>
+          <attribute name="force_save">1</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

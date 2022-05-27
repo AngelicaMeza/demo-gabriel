@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_form_inherit_stock" model="ir.ui.view">
+        <field name="name">view.picking.form.inherit.stock</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='courier_guide']" position="after">
+                <field name="package_number" string="Package number" attrs="{'invisible': [('picking_type_report', '=', False)]}"/>
+                <field name="picking_type_report" invisible="True"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_type_form_inherit_stock_picking" model="ir.ui.view">
+        <field name="name">view.picking.type.form.inherit.stock.picking</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.view_picking_type_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group name="reports" string="Reports" attrs="{'invisible': [('code', 'not in', ['internal', 'outgoing'])]}">
+                    <field name="print_delivery_guide" string="Delivery guide"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

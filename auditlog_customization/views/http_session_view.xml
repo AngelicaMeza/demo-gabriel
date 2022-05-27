@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_auditlog_http_session_form_inherit_auditlog" model="ir.ui.view">
+            <field name="name">view.auditlog.http.session.form.inherit.auditlog</field>
+            <field name="model">auditlog.http.session</field>
+            <field name="inherit_id" ref="auditlog.view_auditlog_http_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+					<attribute name="delete">false</attribute>
+                    <attribute name="create">false</attribute>
+                    <attribute name="edit">false</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                    <attribute name="force_save">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                    <attribute name="force_save">True</attribute>
+                </xpath>
+            </field>
+        </record>
+    
+        <record id="view_auditlog_http_session_tree_inherit_auditlog" model="ir.ui.view">
+            <field name="name">view.auditlog.http.session.tree.inherit.auditlog</field>
+            <field name="model">auditlog.http.session</field>
+            <field name="inherit_id" ref="auditlog.view_auditlog_http_session_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+					<attribute name="delete">false</attribute>
+                    <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

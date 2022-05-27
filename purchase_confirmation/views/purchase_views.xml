@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="purchase_order_form_comfirm_button" model="ir.ui.view">
+		<field name="name">purchase.order.form.confirm.button</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//header" position="inside">
+				<button string="Actualizar tarifas" name="update_price" type="object" icon="fa-refresh" attrs="{'invisible': ['|',('requisition_id', '=', False), ('state', '=', 'done')]}"/>
+			</xpath>
+			<xpath expr="//button[@name='action_rfq_send']" position="before">
+				<field name="inv" invisible="True"/>
+				<!-- <field name="x_css" invisible="True"/> -->
+				<button name="request_VP_approval" string="Solicitud de aprobación" type="object" class="oe_highlight" states="sent"/>
+				<button name="request_manager_approval" string="Aprobar" type="object" class="oe_highlight" states="fin_approve" groups="purchase_confirmation.group_purchase_finance_vp_approval,purchase_confirmation.group_purchase_secondary_finance_vp_approval"/>
+			</xpath>
+			<xpath expr="//button[@id='draft_confirm']" position="attributes">
+				<attribute name="string">Aprobar</attribute>
+				<attribute name="class">oe_highlight</attribute>
+				<attribute name="states"></attribute>
+				<attribute name="groups">purchase_confirmation.group_purchase_department_supervisor_approval,purchase_confirmation.group_purchase_secondary_approver_quotation</attribute>
+				<attribute name="attrs">{'invisible': [('inv', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//button[@id='bid_confirm']" position="replace"></xpath>
+			<!-- <xpath expr="//button[@name='button_cancel']" position="attributes">
+				<attribute name="states">draft,to approve,sent,purchase,fin_approve,man_approve</attribute>
+			</xpath> -->
+			<xpath expr="//field[@name='date_approve']" position="after">
+				<label for="fin_approve" string="Aprobación VP finanzas" class="oe_inline"/>
+				<div class="row">
+					<div class="col-6">
+						<field name="fin_approve" force_save="1" readonly="1"/>
+					</div>
+					<div class="col-6" >
+						<field name="fin_approve_date" attrs="{'invisible': [('fin_approve', '=', False)]}"/>  
+					</div>
+				</div>
+				<label for="man_approve" string="Aprobación de gerente de área" class="oe_inline"/>
+				<div class="row" >
+					<div class="col-6">
+						<field name="man_approve" force_save="1" readonly="1"/>
+					</div>
+					<div class="col-6" >
+						<field name="man_approve_date" attrs="{'invisible': [('man_approve', '=', False)]}"/>
+					</div>
+				</div>
+			</xpath>
+			<xpath expr="//button[@name='button_cancel']" position="attributes">
+				<attribute name="states">draft,man_approve,fin_approve,to approve,sent,purchase</attribute>
+			</xpath>
+
+			<!-- cuentas y etiquetas analiticas requeridas -->
+			<xpath expr="//notebook/page[1]/field[1]/tree[1]/field[@name='account_analytic_id']" position="attributes">
+				<attribute name="optional">show</attribute>
+			</xpath>
+			<xpath expr="//notebook/page[1]/field[1]/tree[1]/field[@name='analytic_tag_ids']" position="attributes">
+				<attribute name="optional">show</attribute>
+			</xpath>
+
+			<!-- campos referentes a la persona de contacto nativa -->
+			<xpath expr="//group[@name='other_info']" position="after">
+				<group>
+					<field name="contact_person" string="Persona de contacto Nativa" domain="[('parent_id', '=', company_id), ('type', '=', 'contact')]" options="{'no_create_edit':True}" required="True"/>
+				</group>
+				<group>
+					<field name="contact_person_supplier" string="Persona de contacto del proveedor" domain="[('parent_id', '=', partner_id)]" options="{'no_create_edit':True}" required="True"/>
+				</group>
+			</xpath>
+			<!-- representante dominio segun campo de proveedor -->
+			<xpath expr="//field[@name='user_id']" position="attributes">
+				<attribute name="required">True</attribute>
+			</xpath>
+			
+			<!-- filtro de proveedores para el campo partner -->
+			<xpath expr="//field[@name='partner_id']" position="attributes">
+				<attribute name="domain">[('parent_id', '=', False), ('contact_type', 'in', ['1', '2'])]</attribute>
+				<attribute name="options">{'no_create_edit':True}</attribute>	
+			</xpath>
+
+			<!-- boton de recepcion de servicios -->
+			<xpath expr="//header/button[@name='action_view_invoice']" position="after">
+				<button string="Validar recepción de servicios" name="unlock_invoice" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '!=', 'purchase'), ('invoice_locked', '=', False)]}" />
+				<field name="invoice_locked" invisible="True"/>
+				<field name="mail_partner_id" invisible="True" force_save="True"/>
+			</xpath>
+			<xpath expr="//header/button[@name='action_view_invoice'][1]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|','|', ('invoice_locked', '=', True), ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'in', ('no', 'invoiced'))]}</attribute>
+			</xpath>
+			<xpath expr="//header/button[@name='action_view_invoice'][2]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', '|', '|', ('invoice_locked', '=', True), ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'not in', ('no', 'invoiced')), ('order_line', '=', [])]}</attribute>
+			</xpath>
+			
+		</field>
+	</record>
+
+	<record id="purchase_order_tree_inherit_purchase_confirmation" model="ir.ui.view">
+		<field name="name">purchase.order.tree.inherit.purchase.confirmation</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_tree"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="create">false</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="purchase_order_tree_inherit_purchase_confirmation_with_create" model="ir.ui.view">
+		<field name="name">purchase.order.tree.inherit.purchase.confirmation.with.create</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_tree"/>
+		<field name="groups_id" eval="[(4, ref('purchase_confirmation.group_purchase_create_button'))]"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="create">true</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="purchase_order_view_tree_inherit_purchase_customization" model="ir.ui.view">
+		<field name="name">purchase.order.view.tree.inherit.purchase.customization</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="create">false</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="purchase_order_view_tree_inherit_purchase_customization_with_create" model="ir.ui.view">
+		<field name="name">purchase.order.view.tree.inherit.purchase.customization.with.create</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+		<field name="groups_id" eval="[(4, ref('purchase_confirmation.group_purchase_create_button'))]"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="create">true</attribute>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,35 @@
+<odoo>
+	<data>
+		<record id="view_invoice_tree_inherit_dollar_fiedls" model="ir.ui.view">
+			<field name="name">account.invoice.tree.inherit.dollar.fields</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_invoice_tree" />
+			<field name="arch" type="xml">
+				<xpath expr="//tree/field[1]" position="before">
+					<field name="dollar_currency_id" invisible="1"/>
+				</xpath>
+				<xpath expr="//tree/field[@name='amount_residual_signed']" position="after">
+					<field name="amount_untaxed_dollar" widget="monetary" options="{'currency_field': 'dollar_currency_id'}" sum="Total" optional="show"/>
+				</xpath>
+				<xpath expr="//tree/field[@name='state']" position="before">
+					<field name="amount_tax_dollar" widget="monetary" options="{'currency_field': 'dollar_currency_id'}" sum="Total" optional="show"/>
+					<field name="amount_total_dollar" widget="monetary" options="{'currency_field': 'dollar_currency_id'}" sum="Total" optional="show"/>
+					<field name="amount_residual_dollar" widget="monetary" options="{'currency_field': 'dollar_currency_id'}" sum="Total" optional="show"/>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_invoice_tree_inherit_dollar_fiedls_inherit_account_move_view_inherited_tree_dollar_fields" model="ir.ui.view">
+			<field name="name">view.invoice.tree.inherit.dollar.fiedls.inherit.account.move.view.inherited.tree.dollar.fields</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account_move_view_inherited_tree_dollar_fields.view_invoice_tree_inherit_dollar_fiedls"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='amount_tax_dollar']" position="before">
+					<xpath expr="//field[@name='amount_untaxed_dollar']" position="move">
+					</xpath>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>

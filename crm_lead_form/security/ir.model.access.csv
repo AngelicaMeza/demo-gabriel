@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+model_access_crm_negotiation,model.access.crm.negotiation,model_crm_negotiation,,1,0,0,0
+model_access_crm_negotiation_admin,model.access.crm.negotiation.admin,model_crm_negotiation,sales_team.group_sale_manager,1,1,1,1
+model_access_crm_point_sale,model.access.crm.point.sale,model_crm_point_sale,,1,0,0,0
+model_access_crm_point_sale_admin,model.access.crm.point.sale.admin,model_crm_point_sale,sales_team.group_sale_manager,1,1,1,1
+model_access_crm_company_pos,model.access.crm.company.pos,model_crm_company_pos,,1,0,0,0
+model_access_crm_company_pos_admin,model.access.crm.company.pos.admin,model_crm_company_pos,sales_team.group_sale_manager,1,1,1,1
+model_access_kind_attention,model.access.event.name,model_event_name,,1,0,0,0
+model_access_kind_attention_admin,model.access.event.name.admin,model_event_name,sales_team.group_sale_manager,1,1,1,1
+model_access_crm_origin,model.access.crm.origin,model_crm_origin,,1,0,0,0
+model_access_crm_origin_admin,model.access.crm.origin.admin,model_crm_origin,sales_team.group_sale_manager,1,1,1,1

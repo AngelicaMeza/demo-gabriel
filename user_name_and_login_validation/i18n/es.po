@@ -1,0 +1,59 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* user_name_and_login_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-13 15:06+0000\n"
+"PO-Revision-Date: 2022-01-13 15:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: user_name_and_login_validation
+#: code:addons/extra-addons/nativa/user_name_and_login_validation/models/res_users.py:0
+#: code:addons/user_name_and_login_validation/models/res_users.py:0
+#, python-format
+msgid ""
+"The mailing address must comply with the following format: "
+"jsmith@example.com"
+msgstr "La dirección de correo debe cumplir con el siguiente formato: "
+"pedroperez@ejemplo.com"
+
+#. module: user_name_and_login_validation
+#: code:addons/extra-addons/nativa/user_name_and_login_validation/models/res_users.py:0
+#: code:addons/user_name_and_login_validation/models/res_users.py:0
+#, python-format
+msgid "The user name can't have spacial charecters"
+msgstr "El nombre de usuario no puede contener caracteres especiales"
+
+#. module: user_name_and_login_validation
+#: model:ir.model,name:user_name_and_login_validation.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: user_name_and_login_validation
+#: code:addons/extra-addons/nativa/user_name_and_login_validation/models/res_users.py:0
+#: code:addons/user_name_and_login_validation/models/res_users.py:0
+#, python-format
+msgid "The user name must be single-spaced and at least 6 characters long"
+msgstr "El nombre de usuario debe tener un solo espacio entre palabras y tener al menos 6 caracteres"
+
+#. module: user_name_and_login_validation
+#: code:addons/extra-addons/nativa/user_name_and_login_validation/models/res_users.py:0
+#: code:addons/user_name_and_login_validation/models/res_users.py:0
+#, python-format
+msgid "success"
+msgstr "éxito"
+
+#. module: user_name_and_login_validation
+#: code:addons/extra-addons/nativa/user_name_and_login_validation/models/res_users.py:0
+#: code:addons/user_name_and_login_validation/models/res_users.py:0
+#, python-format
+msgid "The user was created successfully"
+msgstr "El usuario fue creado con éxito"

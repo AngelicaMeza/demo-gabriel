@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="advance_apply_tree" model="ir.ui.view">
+        <field name="name">advance.apply.tree</field>
+        <field name="model">account.advance.payment.apply</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name" />
+            <field name="ref" />
+            <field name="date_apply" />
+            <field name="invoice_id" />
+            <field name="amount_apply" />
+            <field name="currency_id" invisible="1" />
+            <field name="partner_id" string="Customer" />
+            <field name="journal_id" />
+            <field name="state" />
+          </tree>
+        </field>
+      </record>
+    
+      <record id="advance_apply_form" model="ir.ui.view">
+        <field name="name">advance.apply.form</field>
+        <field name="model">account.advance.payment.apply</field>
+        <field name="arch" type="xml">
+          <form>
+            <header>
+              <button string="Cancel" name="action_cancel_advance_apply" type="object" 
+                class="oe_highlight" states="done"/>
+                <button string="Return To Draft" name="action_return_to_draft" type="object" 
+                  class="oe_highlight" states="cancel"/>
+              <button string="Apply" name="action_apply_advance" type="object" 
+                class="oe_highlight" states="draft"/>
+              <field name="state" widget="statusbar" />
+            </header>
+            <sheet>
+              <field name="advance_id" invisible="1" />
+              <group name="main_info">
+                <group name="main_info_left">
+                  <field name="name" />
+                  <field name="date_apply" required="1" />
+                  <field name="partner_id" string="Customer" />
+                  <field name="journal_id" />
+                  <field name="amount_available" />
+                </group>
+                <group name="main_info_right">
+                  <field name="invoice_id" options="{'no_create': True}"
+                    domain="[('partner_id', '=', partner_id), ('state', '=', 'posted'),
+                     ('type', '=', 'out_invoice'), ('invoice_payment_state', '=', 'not_paid')]"
+                     required="1"/>
+                  <field name="invoice_currency_id" invisible="1" />
+                  <field name="has_different_currency_with_invoice" invisible="1" />
+                  <field name="amount_invoice" />
+                  <field name="amount_invoice_currency_advance"  
+                    attrs="{'invisible': [('has_different_currency_with_invoice', '=', False)]}"/>
+                  <field name="currency_id" />
+                  <field name="amount_apply" required="1" />
+                  <field name="ref" />
+                  <field name="move_apply_id" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                </group>
+              </group>
+              <notebook>
+                <page name="move_apply_line_ids" string="Journal Items" attrs="{'invisible': [('state', '=', 'draft')]}">
+                  <field name="move_apply_line_ids" />
+                </page>
+              </notebook>
+              </sheet>
+              <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+              </div>
+          </form>
+        </field>
+      </record>
+    
+      <record id="advance_apply_customer_action" model="ir.actions.act_window">
+        <field name="name">Advance Apply Customer</field>
+        <field name="res_model">account.advance.payment.apply</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('advance_id.type', '=', 'customer')]</field>
+        <field name="context">{}</field>
+      </record>
+      
+      <record id="action_advance_apply_customer_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="advance_apply_customer_action"/>
+        <field name="view_id" ref="advance_apply_tree"/>
+      </record>
+    
+      <record id="action_advance_apply_customer_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="act_window_id" ref="advance_apply_customer_action"/>
+        <field name="view_id" ref="advance_apply_form"/>
+      </record>
+
+
+<!-- Advance Apply Supplier Views -->
+
+      <record id="advance_apply_supplier_form" model="ir.ui.view">
+        <field name="name">advance.apply.supplier.form</field>
+        <field name="model">account.advance.payment.apply</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="advance_apply_form" />
+        <field name="arch" type="xml">
+          <field name="invoice_id" position="replace">
+            <field name="invoice_id" options="{'no_create': True}"
+                    domain="[('partner_id', '=', partner_id), ('state', '=', 'posted'),
+                     ('type', '=', 'in_invoice'), ('invoice_payment_state', '=', 'not_paid')]"
+                     required="1"/>
+          </field>
+          <field name="partner_id" position="replace">
+            <field name="partner_id" string="Supplier" />
+          </field>
+        </field>
+      </record>
+
+      <record id="advance_apply_supplier_tree" model="ir.ui.view">
+        <field name="name">advance.apply.supplier.tree</field>
+        <field name="model">account.advance.payment.apply</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="advance_apply_tree" />
+        <field name="arch" type="xml">
+          <field name="partner_id" position="replace">
+            <field name="partner_id" string="Supplier" />
+          </field>
+        </field>
+      </record>
+    
+      <record id="advance_apply_supplier_action" model="ir.actions.act_window">
+        <field name="name">Advance Apply Supplier</field>
+        <field name="res_model">account.advance.payment.apply</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('advance_id.type', '=', 'supplier')]</field>
+        <field name="context">{}</field>
+      </record>
+    
+      <record id="action_advance_apply_supplier_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="advance_apply_supplier_action"/>
+        <field name="view_id" ref="advance_apply_supplier_tree"/>
+      </record>
+    
+      <record id="action_advance_apply_supplier_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="act_window_id" ref="advance_apply_supplier_action"/>
+        <field name="view_id" ref="advance_apply_supplier_form"/>
+      </record>
+
+</odoo>

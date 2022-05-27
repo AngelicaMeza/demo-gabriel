@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wh_igtf,access_wh_igtf,model_withholding_igtf,,1,0,0,0
+access_admin_wh_igtf,access_wh_igtf,model_withholding_igtf,base.user_admin,1,1,1,1
+access_wh_igtf_line,access_wh_igtf_line,model_withholding_igtf_line,,1,0,0,0
+access_admin_wh_igtf_line,access_wh_igtf_line,model_withholding_igtf_line,base.user_admin,1,1,1,1

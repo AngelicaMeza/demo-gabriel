@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="group_purchase_department_supervisor_approval" model="res.groups">
+			<field name="name">purchase department supervisor approval</field>
+			<field name="comment">the user will have an access to the purchase department supervisor approval button.</field>
+			<field name="category_id" ref="base.module_category_operations_purchase" />
+		</record>
+
+        <record id="group_purchase_finance_vp_approval" model="res.groups">
+			<field name="name">purchase finance vp approval</field>
+			<field name="comment">the user will have an access to the purchase department finance vp button.</field>
+			<field name="category_id" ref="base.module_category_operations_purchase" />
+		</record>
+
+		<record id="group_purchase_secondary_finance_vp_approval" model="res.groups">
+			<field name="name">purchase secondary finance vp approval</field>
+			<field name="comment">the user will have an access to the purchase department finance vp button.</field>
+			<field name="category_id" ref="base.module_category_operations_purchase" />
+		</record>
+
+		<record id="group_purchase_secondary_approver_requisition" model="res.groups">
+			<field name="name">purchase secondary approver for requisition</field>
+			<field name="comment">the user will have an access to the purchase department supervisor approval button in requisitions.</field>
+			<field name="category_id" ref="base.module_category_operations_purchase" />
+		</record>
+
+		<record id="group_purchase_secondary_approver_quotation" model="res.groups">
+			<field name="name">purchase secondary approver for quotation</field>
+			<field name="comment">the user will have an access to the purchase department supervisor approval button in quotation.</field>
+			<field name="category_id" ref="base.module_category_operations_purchase" />
+		</record>
+
+		<record id="group_purchase_create_button" model="res.groups">
+			<field name="name">purchase create button</field>
+			<field name="category_id" ref="base.module_category_operations_purchase" />
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+		</record>
+
+    </data>
+</odoo>

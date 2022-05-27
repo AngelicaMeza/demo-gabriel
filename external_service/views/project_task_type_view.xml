@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="task_type_edit_inherit_external_service" model="ir.ui.view">
+        <field name="name">task.type.edit.inherit.external.service</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fold']" position="after">
+                <field name="failed_stage" string="Is a failure stage"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

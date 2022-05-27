@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="project_task_view_external_service_form" model="ir.ui.view">
+		<field name="name">project.task.view.external.service.form</field>
+		<field name="model">project.task</field>
+		<field name="inherit_id" ref="industry_fsm.project_task_view_form"/>
+		<field name="arch" type="xml">
+			<!-- MARK AS FAILED BUTTONS -->
+			<xpath expr="//button[@name='action_fsm_validate'][@class='btn-primary']" position="after">
+				<field name="failure_stage" invisible="True"/>
+				<field name="is_outsourcing" invisible="True"/>
+				<field name="create_in_failure" invisible="True" />
+				<button class="btn-primary" name="mark_as_faild" type="object" string="Mark as failed" groups="external_service.group_external_service_buttom"
+						attrs="{'invisible': ['|', '&amp;', ('failure_stage', '=', True),('create_in_failure', '!=', True), '&amp;', '|',  ('allow_material', '=', True),
+												'|', ('allow_timesheets', '=', True), ('allow_quotations', '=', False), 
+												'|', '|', '|', '|', '|', ('timesheet_timer_start', '!=', False), ('fsm_done', '=', True), 
+												'&amp;', ('allow_timesheets', '=', True), ('total_hours_spent', '=', 0), 
+												'&amp;', ('allow_material', '=', True), ('material_line_product_count', '=', 0), 
+												'&amp;', ('allow_timesheets', '=', False), ('allow_material', '=', False)]}"/>
+			</xpath>
+			<xpath expr="//button[@name='action_fsm_validate'][@class='btn-secondary']" position="after">
+				<button class="btn-secondary" name="mark_as_faild" type="object" string="Mark as failed" groups="external_service.group_external_service_buttom"
+						attrs="{'invisible': ['|', '&amp;', ('failure_stage', '=', True),('create_in_failure', '!=', True), '|', '|', '|','|', '|', '|', ('timesheet_timer_start', '!=', False), ('fsm_done', '=', True),
+												'&amp;', ('allow_timesheets', '=', False), ('total_hours_spent', '=', 0), 
+												'&amp;', ('allow_material', '=', False), ('material_line_product_count', '=', 0), 
+												'&amp;', ('total_hours_spent', '!=', 0), ('material_line_product_count', '!=', 0),
+												'&amp;', ('total_hours_spent', '=', 0), ('material_line_product_count', '=', 0)]}"/>
+			</xpath>
+			<xpath expr="//button[@name='action_fsm_validate'][@class='btn-primary']" position="attributes">
+				<attribute name="attrs" >{'invisible': ['|', '&amp;', ('failure_stage', '=', True),('create_in_failure', '!=', True), 
+					'&amp;', '|',  ('allow_material', '=', True), 
+					'|', ('allow_timesheets', '=', True), ('allow_quotations', '=', False), 
+					'|', '|', '|', '|', '|', ('timesheet_timer_start', '!=', False), ('fsm_done', '=', True), 
+					'&amp;', ('allow_timesheets', '=', True), ('total_hours_spent', '=', 0), 
+					'&amp;', ('allow_material', '=', True), ('material_line_product_count', '=', 0), 
+					'&amp;', ('allow_timesheets', '=', False), ('allow_material', '=', False)]}</attribute>
+				<attribute name="groups">external_service.group_external_service_buttom</attribute>
+			</xpath>
+			<xpath expr="//button[@name='action_fsm_validate'][@class='btn-secondary']" position="attributes">
+				<attribute name="attrs" >{'invisible': ['|', '&amp;', ('failure_stage', '=', True),('create_in_failure', '!=', True), 
+					'|', '|', '|','|', '|', '|', ('timesheet_timer_start', '!=', False), ('fsm_done', '=', True), 
+					'&amp;', ('allow_timesheets', '=', False), ('total_hours_spent', '=', 0), 
+					'&amp;', ('allow_material', '=', False), ('material_line_product_count', '=', 0), 
+					'&amp;', ('total_hours_spent', '!=', 0), ('material_line_product_count', '!=', 0),
+					'&amp;', ('total_hours_spent', '=', 0), ('material_line_product_count', '=', 0)]}</attribute>
+				<attribute name="groups">external_service.group_external_service_buttom</attribute>
+			</xpath>
+
+			<!-- ADD FIELDS -->
+			<!-- OUTSOURCING HELPDESK SUBSTAGE -->
+			<xpath expr="//header" position="inside">
+				<field name="substages" invisible="1"/>
+				<field name="substage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('substage_id', '=', False)]}" domain="[('id', 'in', substages), ('outsourcing', '=', True)]"/>
+			</xpath>
+			<xpath expr="//field[@name='partner_id']" position="after">
+				<field name="task_type_id" attrs="{'invisible': [('task_type_id','=',False)], 'readonly': [('task_type_id','!=',False)]}"/>
+			</xpath>
+			<xpath expr="//field[@name='project_id']" position="after">
+				<field name="task_origin" attrs="{'invisible': [('task_origin','=',False)]}"/>
+			</xpath>
+			<xpath expr="//field[@name='planned_date_begin']" position="attributes">
+				<attribute name="attrs">{'readonly': [('is_outsourcing', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='planned_date_end']" position="attributes">
+				<attribute name="attrs">{'readonly': [('is_outsourcing', '=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='task_origin']" position="after">
+				<field name="company_pos_id" options="{'no_open': True}" attrs="{'invisible': [('company_pos_id', '=', False)]}"/>
+			</xpath>
+			<!-- PAGES -->
+			<field name="description" position="replace">
+				<notebook colspan="2">
+					<page name="description" string="Descripción">
+						<field name="description" colspan="2"/>
+						<field name="timesheet_ids" invisible="1"/>
+					</page>
+					<page name="failures" string="Fallas" attrs="{'invisible': [('failure','=',[])]}">
+						<field name="failure"/>
+					</page>
+					<page name="partner_devices" string="Equipo del cliente" attrs="{'invisible': [('include_devices', '=', False)]}">
+						<group name="helpdesk_info">
+							<field name="include_devices" invisible="1" />
+							<group>
+								<field name="product_lot" options="{'no_create' : True}"/>
+								<field name="product_id" force_save="1" options="{'no_open' : True}"/>
+								<field name="product_communication_id" widget="many2many_tags" force_save="1" options="{'no_open' : True}"/>
+								<field name="product_condition_id" force_save="1" options="{'no_open' : True}"/>
+								<field name="product_status_id" force_save="1" options="{'no_open' : True}"/>
+							</group>
+							<group>
+								<field name="product_negotiation_type_id" force_save="1" options="{'no_open' : True}"/>
+								<field name="product_key_version" force_save="1"/>
+								<field name="product_sim_card" force_save="1"/>
+								<field name="product_network_operator_id" force_save="1" options="{'no_open' : True}"/>
+							</group>
+						</group>
+					</page>
+					<page string="Devices to install" attrs="{'invisible': [('lot_ids', '=', [])]}">
+						<field name="lot_ids" nolabel="1" colspan="2">
+							<tree create="0" delete="0">
+								<field name="product_id"/>
+								<field name="name"/>
+								<field name="condition_id"/>
+								<field name="status_id"/>
+								<field name="key_version"/>
+								<field name="communication_id" widget="many2many_tags"/>
+								<field name="sim_card"/>
+								<field name="network_operator_id"/>
+								<field name="negotiation_type_id"/>
+							</tree>
+						</field>
+					</page>
+					<page string="Información de cliente" attrs="{'invisible': [('partner_id', '=', False)]}">
+						<group>
+							<group>
+								<field name="affiliated"/>
+								<field name="vat"/>
+								<field name="cluster_id" />
+								<field name="address" />
+								<field name="portfolio_user" options="{'no_open': True}"/>
+								<field name="denomination" />
+							</group>
+							<group>
+								<field name="region_id" />
+								<field name="city" />
+								<field name="phone_one" />
+								<field name="phone_two" />
+								<field name="phone_three" />
+							</group>
+						</group>
+					</page>
+					<page string="Afiliado a Incorporar" attrs="{'invisible': [('affiliated_partner_id','=', False)]}">
+						<group>
+							<group>
+								<field name="affiliated_partner_id" options="{'no_open': True}"/>
+								<field name="affiliated_affiliated_number"/>
+								<field name="affiliated_vat"/>
+								<field name="portfolio_user" options="{'no_open': True}"/>
+							</group>
+							<group>
+								<field name="affiliated_address"/>
+								<field name="affiliated_phone_one"/>
+								<field name="affiliated_phone_two"/>
+								<field name="affiliated_phone_three"/>
+							</group>
+						</group>
+					</page>
+				</notebook>
+			</field>
+
+			<!-- CHANGE ATTRIBUTES -->
+			<!-- READONLY AFTER SAVE RECORD -->
+			<xpath expr="//field[@name='name']" position="attributes">
+				<attribute name="attrs">{'readonly': [('id', '!=', False)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='partner_id']" position="attributes">
+				<attribute name="context" >{'res_partner_search_mode': 'customer', 'default_is_company': True}</attribute>
+				<attribute name="attrs">{'readonly': [('id', '!=', False)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='partner_email']" position="attributes">
+				<attribute name="attrs">{'readonly': [('id', '!=', False)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='project_id']" position="attributes">
+				<attribute name="attrs">{'readonly': [('id', '!=', False)]}</attribute>
+			</xpath>
+			<xpath expr="//sheet/group/group[2]/field[@name='company_id']" position="attributes">
+				<attribute name="attrs">{'readonly': [('id', '!=', False)]}</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- RESTRICT group_fsm_outsourcing -->
+	<record id="project_task_view_form_group_outsoucing" model="ir.ui.view">
+		<field name="name">project.task.view.form.group.outsoucing</field>
+		<field name="model">project.task</field>
+		<field name="inherit_id" ref="industry_fsm.project_task_view_form"/>
+		<field name="groups_id" eval="[(4, ref('external_service.group_fsm_outsourcing'))]"/>
+		<field name="arch" type="xml">
+			<xpath expr="//sheet/group/group[2]/field[@name='user_id']" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="project_task_view_list_fsm_date_columns" model="ir.ui.view">
+		<field name="name">project.task.tree.fsm.date.columns</field>
+		<field name="model">project.task</field>
+		<field name="inherit_id" ref="industry_fsm.project_task_view_list_fsm"/>
+		<field name="arch" type="xml">
+			<tree position="inside">
+				<field name="timesheet_timer_first_start" string="Effective hours start"/>
+				<field name="timesheet_timer_last_stop" string="Effective hours stop"/>
+				<field name="cluster_id" optional="show"/>
+				<field name="task_type_id" optional="show"/>
+				<field name="stage_id" optional="show"/>
+			</tree>
+			<xpath expr="//field[@name='company_id']" position="after">
+				<field name="task_origin" optional="show"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,125 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_renting_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 19:40+0000\n"
+"PO-Revision-Date: 2021-12-11 19:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: sale_renting_customization
+#: model:ir.model,name:sale_renting_customization.model_rental_wizard
+msgid "Configure the rental of a product"
+msgstr "Configurar el alquiler de un producto"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__reg_manag
+msgid "Espera de aprobación Gerencia Regional"
+msgstr ""
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__fin_approve
+msgid "Espera de aprobación de Finanzas"
+msgstr ""
+
+#. module: sale_renting_customization
+#: model_terms:ir.ui.view,arch_db:sale_renting_customization.renting_inherit_warehouse
+msgid "For rental stock location"
+msgstr "Ubicación de stock para rentar"
+
+#. module: sale_renting_customization
+#: model:ir.model,name:sale_renting_customization.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields,field_description:sale_renting_customization.field_stock_warehouse__location_for_rental
+msgid "Location For Rental"
+msgstr "Ubicación para renta"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__return
+msgid "Picked-up"
+msgstr "Recogida"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__draft
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__sent
+msgid "Quotation Sent"
+msgstr "Presupuesto enviado"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields,field_description:sale_renting_customization.field_stock_warehouse__rental_location
+msgid "Rental Location"
+msgstr "Ubicación de renta"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields,field_description:sale_renting_customization.field_sale_order__rental_status
+msgid "Rental Status"
+msgstr "Estado de Alquiler"
+
+#. module: sale_renting_customization
+#: model_terms:ir.ui.view,arch_db:sale_renting_customization.renting_inherit_warehouse
+msgid "Rental stock location"
+msgstr "Ubicación de stock rentado"
+
+#. module: sale_renting_customization
+#: model:ir.model,name:sale_renting_customization.model_rental_order_wizard_line
+msgid "RentalOrderLine transient representation"
+msgstr "Representación transitoria de RentalOrderLine"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__pickup
+msgid "Reserved"
+msgstr "Reservado"
+
+#. module: sale_renting_customization
+#: model:ir.model.fields.selection,name:sale_renting_customization.selection__sale_order__rental_status__returned
+msgid "Returned"
+msgstr "Devuelto"
+
+#. module: sale_renting_customization
+#: model:ir.model,name:sale_renting_customization.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: sale_renting_customization
+#: model:ir.model,name:sale_renting_customization.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: sale_renting_customization
+#: code:addons/extra-addons/nativa/sale_renting_customization/models/sale.py:0
+#: code:addons/sale_renting_customization/models/sale.py:0
+#, python-format
+msgid "The warehouse does not have a location for rent"
+msgstr "El almacén no tiene una ubicación para rentar"
+
+#. module: sale_renting_customization
+#: code:addons/extra-addons/nativa/sale_renting_customization/models/sale.py:0
+#: code:addons/sale_renting_customization/models/sale.py:0
+#, python-format
+msgid "The warehouse does not have a rental location"
+msgstr "El almacén no tiene una ubicación de renta"
+
+#. module: sale_renting_customization
+#: model:ir.model,name:sale_renting_customization.model_stock_warehouse
+msgid "Warehouse"
+msgstr "Almacén"

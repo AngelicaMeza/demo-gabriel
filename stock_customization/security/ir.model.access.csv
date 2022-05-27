@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+model_access_brand_stock,model.access.brand.stock,stock_customization.model_brand_stock,,1,0,0,0
+model_access_condition_stock,model.access.condition.stock,stock_customization.model_condition_stock,,1,0,0,0
+model_access_status_stock,model.access.status.stock,stock_customization.model_status_stock,,1,0,0,0
+model_access_stock_courier,model.access.stock.courier,stock_customization.model_stock_courier,,1,0,0,0
+model_access_brand_stock_line,model.access.brand.stock.line,stock_customization.model_brand_stock_line,,1,0,0,0
+model_access_condition_stock_admin,model.access.condition.stock.admin,stock_customization.model_condition_stock,stock.group_stock_manager,1,1,1,1
+model_access_status_stock_admin,model.access.status.stock.admin,stock_customization.model_status_stock,stock.group_stock_manager,1,1,1,1
+model_access_stock_courier_admin,model.access.stock.courier.admin,stock_customization.model_stock_courier,stock.group_stock_manager,1,1,1,1
+model_access_brand_stock_line_admin,model.access.brand.stock.line.admin,stock_customization.model_brand_stock_line,stock.group_stock_manager,1,1,1,1

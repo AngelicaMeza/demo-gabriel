@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="sim_delivery_order_template">
+		<t t-call="stock_reports.picking_report_layout">
+			<div class="page">
+				<div id="order_info" class="mt32 mb32">
+					<h5>NOTA DE ENTREGA SIMCARDS A FABRICA</h5>
+					<div id="picking_info">
+						<div name="picking_date">
+							<span>FECHA: <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/></span>
+						</div>
+						<div name="picking_name">
+							<span>NOTA DE ENTREGA: <span t-field="o.name"/></span>
+						</div>
+						<div name="picking_date">
+							<span>RECEPTOR:</span>
+						</div>
+					</div>
+				</div>
+				<div id="picking_lines" class="mt32 mb32">
+					<h5>SERIALES SIMCARDS A ENTREGAR</h5>
+					<t t-foreach="o.move_lines.filtered(lambda m: m.product_id.product_type == '3')" t-as="move">
+						<div class="mt32 mb32">
+							<table>
+								<tr>
+									<td style="width: 150px;">OPERADORA:</td>
+									<td><span t-field="move.product_id.network_operator_id"/></td>
+								</tr>
+								<tr>
+									<td style="width: 150px;">TOTAL SIMCARD:</td>
+									<td><span t-esc="int(move.quantity_done)"/></td>
+								</tr>
+							</table>
+						</div>
+						<div class="mt32 mb32">
+							<style>
+								#lines_table {
+									width: 100%;
+									text-align: center;
+									font-size: 12px;
+								}
+								#lines_table tr, #lines_table td {
+									border: 1px solid #dddddd;;
+									border-collapse: collapse;
+								}
+							</style>
+							<t t-set="lines" t-value="model.get_lines(move)"/>
+							<table class="table table-sm o_main_table" id="lines_table">
+								<t t-raw="lines"/>
+							</table>
+						</div>
+					</t>
+				</div>
+				<div class="mt32 mb32" style="page-break-inside: avoid;">
+					<table style="width:100%;">
+						<tr>
+							<td style="width:50%;">
+								<div style="position:relative; height: 4cm; text-align: center;">
+									<div style="position: absolute; bottom: 0; left: 60px; right: 60px;">
+										<hr style="height: 1px;"/>
+										<span>Entregó conforme</span>
+									</div>
+								</div>
+							</td>
+							<td style="width:50%;">
+								<div style="position:relative; height: 4cm; text-align: center;">
+									<div style="position: absolute; bottom: 0; left: 60px; right: 60px;">
+										<hr style="height: 1px;"/>
+										<span>Recibió conforme</span>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="sim_delivery_order">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="stock_reports.sim_delivery_order_template"/>
+			</t>
+		</t>
+	</template>
+
+	<report
+		id="sim_delivery_order_report"
+		model="stock.picking"
+		string="SIM Delivery Order"
+		name="stock_reports.sim_delivery_order"
+		file="stock_reports.sim_delivery_order"
+		paperformat="stock_reports.paperformat_sim_delivery_order_report"
+		report_type="qweb-pdf"
+	/>
+</odoo>
